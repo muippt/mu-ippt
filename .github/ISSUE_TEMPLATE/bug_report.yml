@@ -1,11 +1,11 @@
 name: Bug Report
-description: Report a problem with PPT Master
+description: Report a problem with mu-ippt
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting! Please check the [FAQ](https://github.com/hugohe3/ppt-master/blob/main/docs/faq.md) first — your issue may already have a known solution.
+        Thanks for reporting! Please check the [FAQ](https://github.com/mupoet/mu-ippt/blob/main/docs/faq.md) first — your issue may already have a known solution.
 
   - type: dropdown
     id: area

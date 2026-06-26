@@ -15,7 +15,7 @@ We provide security updates for the latest version of mu-ippt.
 
 If you discover a security issue, please report it privately by emailing:
 
-**heyug3@gmail.com**
+**muippt@agent.qq.com**
 
 Include in your report:
 

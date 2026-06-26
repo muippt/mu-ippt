@@ -1,218 +1,189 @@
-# mu-ippt — AI generates natively editable PPTX from any document
+# mu-ippt · AI PPT Intelligent Creation Skill v1.0
 
-[![Version](https://img.shields.io/badge/version-v2.3.0-blue.svg)](https://github.com/mupoet/mu-ippt/releases)
+[![Version](https://img.shields.io/badge/version-v1.0-blue.svg)](https://github.com/mupoet/mu-ippt/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/mupoet/mu-ippt.svg)](https://github.com/mupoet/mu-ippt/stargazers)
-[![AtomGit stars](https://atomgit.com/mupoet/mu-ippt/star/badge.svg)](https://atomgit.com/mupoet/mu-ippt)
 
 English | [中文](./README_CN.md)
 
 <p align="center">
-  <a href="https://mupoet.github.io/mu-ippt/"><strong>Live Demo</strong></a> ·
-  <a href="https://www.hehugo.com/"><strong>About Hugo He</strong></a> ·
   <a href="./examples/"><strong>Examples</strong></a> ·
   <a href="./docs/faq.md"><strong>FAQ</strong></a> ·
-  <a href="mailto:heyug3@gmail.com"><strong>Contact</strong></a>
+  <a href="mailto:muippt@agent.qq.com"><strong>Contact</strong></a>
 </p>
 
-> **Official channels —** this project is published **only** on [GitHub](https://github.com/mupoet/mu-ippt) (primary) and [AtomGit](https://atomgit.com/mupoet/mu-ippt) (auto-synced mirror). Redistributions on any other platform are unofficial and not maintained by the author. Licensed under MIT — attribution required.
+> One Skill for all PPT scenarios: **Create from scratch** · **Technical diagrams** · **Consulting report templates** · **Edit existing PPT**
+
+> 🎨 **14 Design Philosophies** · 📊 **119 Chart Types** · 📐 **20 Layout Templates** · 🏛️ **40 Consulting Templates** · 🖼️ **6,732 Vector Icons** · 📏 **8 Canvas Formats**
 
 ---
 
-Drop in a PDF, DOCX, URL, or Markdown — get back a **natively editable PowerPoint** with real shapes, real text boxes, and real charts. Not images. Click anything and edit it.
+## ✨ Core Highlights
 
-**[Why mu-ippt?](./docs/why-mu-ippt.md)**
+### 🎨 14 Design Philosophy Schools
 
-There's no shortage of AI presentation tools — what's missing is one where the output is **actually usable as a real PowerPoint file**. I build presentations every day, but most tools export images or web screenshots: they look nice but you can't edit anything. Others produce bare-bones text boxes and bullet lists. And they all want a monthly subscription, upload your files to their servers, and lock you into their platform.
+Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic:
 
-mu-ippt is different:
+| School | Visual DNA |
+|--------|-----------|
+| Pentagram | Minimalist black & white, Swiss-style information-first |
+| Fathom | Data storytelling, letting numbers speak for themselves |
+| Sagmeister | Experimental avant-garde, rule-breaking artistic expression |
+| Fukasawa | MUJI-style restraint and white space |
+| Ive | Apple-inspired precision industrial aesthetics |
+| Rams | Less-is-more Bauhaus classics |
+| Zaha | Parametric curves with futuristic architectural feel |
+| Bierut | Elegant graphic narrative from the New York school |
+| Koolhaas | Bold color-clashing Dutch avant-garde |
+| Tokujin | Japanese ultimate material perception aesthetics |
+| Eames | Mid-century modernist warm geometry |
+| Muller-Brockmann | Mathematical beauty from the father of grid systems |
+| Erik Spiekermann | German typographic engineering precision |
+| Massimo Vignelli | Timeless order from the NYC subway designer |
 
-- **Real PowerPoint** — if a file can't be opened and edited in PowerPoint, it shouldn't be called a PPT. Every element mu-ippt outputs is directly clickable and editable
-- **Transparent, predictable cost** — the tool is free and open source; the only cost is your own AI editor, and you know exactly what you're paying. As low as **$0.08/deck** with VS Code Copilot
-- **Data stays local** — your files shouldn't have to be uploaded to someone else's server just to make a presentation. Apart from AI model communication, the entire pipeline runs on your machine
-- **No platform lock-in** — your workflow shouldn't be held hostage by any single company. Works with Claude Code, Cursor, VS Code Copilot, and more; supports Claude, GPT, Gemini, Kimi, and other models
+### 📊 119 Chart Types
 
-**[See live examples →](https://mupoet.github.io/mu-ippt/)** · [`examples/`](./examples/) — 15 projects, 229 pages
+Covering all common and professional chart scenarios: basic charts (bar, line, pie, radar, scatter, bubble, area), advanced charts (waterfall, Sankey, sunburst, treemap, heatmap, box plot), business charts (funnel, Gantt, KPI dashboard, org chart, issue tree), technical diagrams (architecture, sequence, flowchart, UML class, state machine, ER, deployment), and data charts (trend comparison, multi-axis, stacked, grouped, error bar charts).
 
-## Gallery
+### 🏛️ 40 Consulting-Grade Templates
 
-<table>
-  <tr>
-    <td align="center"><img src="docs/assets/screenshots/preview_magazine_garden.png" alt="Magazine style — Garden building guide" /><br/><sub><b>Magazine</b> — warm earthy tones, photo-rich layout</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/preview_academic_medical.png" alt="Academic style — Medical image segmentation research" /><br/><sub><b>Academic</b> — structured research format, data-driven</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/assets/screenshots/preview_dark_art_mv.png" alt="Dark art style — Music video analysis" /><br/><sub><b>Dark Art</b> — cinematic dark background, gallery aesthetic</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/preview_nature_wildlife.png" alt="Nature style — Wildlife wetland documentary" /><br/><sub><b>Nature Documentary</b> — immersive photography, minimal UI</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/assets/screenshots/preview_tech_claude_plans.png" alt="Tech style — Claude AI subscription plans" /><br/><sub><b>Tech / SaaS</b> — clean white cards, pricing table layout</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/preview_launch_xiaomi.png" alt="Product launch style — Xiaomi spring release" /><br/><sub><b>Product Launch</b> — high contrast, bold specs highlight</sub></td>
-  </tr>
-</table>
+Benchmarked against McKinsey / BCG / Bain level business reporting templates: strategy (SWOT, Porter's Five Forces, BCG Matrix, Value Chain, Blue Ocean Canvas), operations (Gantt timeline, milestone roadmap, RACI matrix, swimlane flowchart), finance (KPI dashboard, revenue waterfall, cost structure breakdown, ROI analysis), organization (org chart, talent 9-box, capability radar, HRBP diagnostic model), and growth (funnel conversion, user journey map, growth flywheel, NPS tracking panel).
+
+### 📐 20 Layout Templates
+
+Pre-designed professional page structures — AI automatically matches the best layout: title page, title + subtitle, title + body, two-column comparison, three-column parallel, 4-grid, 6-grid, image-text split, full-image background + text overlay, timeline, data dashboard, quote page, team intro, product showcase, screenshot demo, Q&A page, thank-you page, and more.
+
+### 🖼️ 6,732 Vector Icons
+
+All SVG vector format, lossless scaling, fully built into the Skill — no internet download required. Covers general (arrows, symbols, gestures, people, devices, UI elements), industry-specific (tech, finance, medical, education, retail, manufacturing, government), and functional (data/charts, team/collaboration, process/workflow, security/compliance) categories.
+
+### 📏 8 Canvas Formats
+
+| Format | Use Case |
+|--------|----------|
+| 16:9 Widescreen | Default, projection/large screen |
+| 4:3 Classic | Legacy device compatible |
+| 9:16 Portrait | Mobile display / short video covers |
+| 1:1 Square | Social media / Xiaohongshu |
+| A4 Portrait | Printed documents / reports |
+| A4 Landscape | Brochures / booklets |
+| LinkedIn Banner | 1584×396 |
+| Custom Size | Any pixel dimensions |
+
+### 🤖 AI Image Generation
+
+Built-in support for two major image generation engines: OpenAI DALL-E 3 (default, high-quality realistic/illustration style) and Google Gemini Imagen (alternative, diverse styles). Automatically generates images based on page themes. Can be disabled — skip AI image generation entirely without configuring an API key.
+
+### 🔄 Document to PPT Conversion
+
+| Format | Description |
+|--------|-------------|
+| PDF | Extracts text and structure, intelligently splits into multi-page PPT |
+| DOCX/Word | Preserves heading hierarchy, auto-matches layouts |
+| Markdown | Splits by headings, auto-highlights code blocks |
+| HTML/Web | Extracts body content, removes noise before conversion |
+| EPUB | Splits by chapters, great for book note sharing |
 
 ---
 
-## Built by Hugo He
+## 🚀 Five Workflows
 
-I'm a finance professional (CPA · CPV · Consulting Engineer (Investment)) who got tired of spending hours on presentations that could be automated. So I built this.
-
-mu-ippt started from a simple frustration: existing AI slide tools export images, not editable shapes. As someone who reviews and edits hundreds of slides in investment and consulting work, that was unacceptable. I wanted real DrawingML — click on any element and change it, just like you built it by hand.
-
-This project is my attempt to bridge the gap between **domain expertise** and **product engineering** — turning a complex professional pain point into an open-source tool that anyone can use.
-
-🌐 [Personal website](https://www.hehugo.com/) · 📧 [heyug3@gmail.com](mailto:heyug3@gmail.com) · 🐙 [@hugohe3](https://github.com/hugohe3)
+| Workflow | Scenario | Trigger Words |
+|----------|----------|---------------|
+| Workflow 0 | Multi-page smart routing — AI analyzes requirements, plans optimal approach per page | "make a PPT", "create a presentation", "turn this document into PPT" |
+| Workflow A | Create multi-page PPT from scratch — SVG vector layout, pixel-perfect control | (after Workflow 0 routing) "free layout", "highly customized" |
+| Workflow B | Single technical diagram — architecture/flowchart/UML/sequence/ER diagram | "draw an architecture diagram", "draw a flowchart" |
+| Workflow C | Consulting report templates — 40 professional templates, native Office shapes | "consulting report template", "KPI dashboard", "Gantt chart template" |
+| Workflow D | Edit existing PPT — read existing files, precisely modify specified content | "edit PPT", "modify PPT", "use this template to make a PPT" |
 
 ---
 
-## Quick Start
+## 💡 Usage Examples
 
-### 1. Prerequisites
+- 📈 **Management Report**: "Turn this weekly report into a 10-page PPT with deep blue data narrative style"
+- 🏗️ **Tech Sharing**: "Draw a microservices architecture diagram with deployment topology, embed in PPT"
+- 🎓 **Training Materials**: "Create a 20-page new employee onboarding training, modern and lively style"
+- 💰 **Pitch Deck**: "Make a business plan PPT for investors, use Pentagram minimalist style"
+- 📊 **Data Dashboard**: "Use KPI dashboard template to show Q2 performance with trend comparison"
+- ✏️ **Quick Edit**: "Change the title on page 3 to xxx, switch colors from blue to warm orange"
+- 📱 **Social Content**: "Make a 9:16 product intro image for sharing on social media"
+- 📖 **Document to PPT**: "Turn this 10-page PDF into a presentation"
 
-**You only need Python.** Everything else is installed via `pip install -r requirements.txt`.
+---
 
-| Dependency | Required? | What it does |
-|------------|:---------:|--------------|
-| [Python](https://www.python.org/downloads/) 3.10+ | ✅ **Yes** | Core runtime — the only thing you actually need to install |
+## ⚙️ Technical Specs
 
-> **TL;DR** — Install Python, run `pip install -r requirements.txt`, and you're ready to generate presentations.
+| Item | Description |
+|------|-------------|
+| Python Version | 3.9+ |
+| Core Dependencies | python-pptx / svglib / reportlab / PyMuPDF / mammoth |
+| Image AI | OpenAI DALL-E 3 (default) / Google Gemini Imagen (optional) |
+| Output Format | .pptx (compatible with PowerPoint / Keynote / WPS / Google Slides / LibreOffice) |
+| Input Support | PDF / DOCX / HTML / EPUB / Markdown |
+| Chart Engine | SVG native rendering + PlantUML (UML/architecture/sequence) |
+| Package Size | 14MB (includes all templates, icons, color schemes) |
 
-<details open>
-<summary><strong>Windows</strong> — see the dedicated step-by-step guide ⚠️</summary>
+---
 
-Windows requires a few extra steps (PATH setup, execution policy, etc.). We wrote a **step-by-step guide** specifically for Windows users:
+## 🛠️ Quick Start
 
-**📖 [Windows Installation Guide](./docs/windows-installation.md)** — from zero to a working presentation in 10 minutes.
-
-Quick version: download Python from [python.org](https://www.python.org/downloads/) → **check "Add to PATH"** during install → `pip install -r requirements.txt` → done.
-</details>
-
-<details>
-<summary><strong>macOS / Linux</strong> — install and go</summary>
-
-```bash
-# macOS
-brew install python
-pip install -r requirements.txt
-
-# Ubuntu / Debian
-sudo apt install python3 python3-pip
-pip install -r requirements.txt
-```
-</details>
-
-<details>
-<summary><strong>Edge-case fallbacks</strong> — 99% of users don't need these</summary>
-
-Two external tools exist as fallbacks for edge cases. **Most users will never need them** — install only if you hit one of the specific scenarios below.
-
-| Fallback | Install only if… |
-|----------|-----------------|
-| [Node.js](https://nodejs.org/) 18+ | You need to import WeChat Official Account articles **and** `curl_cffi` (part of `requirements.txt`) has no prebuilt wheel for your Python + OS + CPU combination. In normal setups `web_to_md.py` handles WeChat directly through `curl_cffi`. |
-| [Pandoc](https://pandoc.org/) | You need to convert legacy formats: `.doc`, `.odt`, `.rtf`, `.tex`, `.rst`, `.org`, or `.typ`. `.docx`, `.html`, `.epub`, `.ipynb` are handled natively by Python — no pandoc required. |
-
-```bash
-# macOS (only if the above conditions apply)
-brew install node
-brew install pandoc
-
-# Ubuntu / Debian
-sudo apt install nodejs npm
-sudo apt install pandoc
-```
-</details>
-
-### 2. Pick an AI Editor
-
-| Tool | Rating | Notes |
-|------|:------:|-------|
-| **[Claude Code](https://claude.ai/)** | ⭐⭐⭐ | Best results — native Opus, largest context |
-| [Cursor](https://cursor.sh/) / [VS Code + Copilot](https://code.visualstudio.com/) | ⭐⭐ | Good alternatives |
-| Codebuddy IDE | ⭐⭐ | Best for Chinese models (Kimi 2.5, MiniMax 2.7) |
-
-### 3. Set Up
-
-**Option A — Download ZIP** (no Git required): click **Code → Download ZIP** on the [GitHub page](https://github.com/mupoet/mu-ippt), then unzip.
-
-**Option B — Git clone** (requires [Git](https://git-scm.com/downloads) installed):
-
-```bash
-git clone https://github.com/mupoet/mu-ippt.git
-cd mu-ippt
-```
-
-Then install dependencies:
+**Step 1: Install**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-To update later (Option B only): `python3 skills/mu-ippt/scripts/update_repo.py`
-
-### 4. Create
-
-**Provide source materials (recommended):** Place your PDF, DOCX, images, or other files in the `projects/` directory, then tell the AI chat panel which files to use. The quickest way to get the path: right-click the file in your file manager or IDE sidebar → **Copy Path** (or **Copy Relative Path**) and paste it directly into the chat.
-
-```
-You: Please create a PPT from projects/q3-report/sources/report.pdf
-```
-
-**Paste content directly:** You can also paste text content straight into the chat window and the AI will generate a PPT from it.
-
-```
-You: Please turn the following into a PPT: [paste your content here...]
-```
-
-Either way, the AI will first confirm the design spec:
-
-```
-AI:  Sure. Let's confirm the design spec:
-     [Template] B) Free design
-     [Format]   PPT 16:9
-     [Pages]    8-10 pages
-     ...
-```
-
-The AI handles everything — content analysis, visual design, SVG generation, and PPTX export.
-
-> **Output:** Two timestamped files are saved to `exports/` — a native-shapes `.pptx` (directly editable) and an `_svg.pptx` snapshot for visual reference. Requires Office 2016+.
-
-> **AI lost context?** Ask it to read `skills/mu-ippt/SKILL.md`.
-
-> **Something went wrong?** Check the **[FAQ](./docs/faq.md)** — it covers model selection, layout issues, export problems, and more. Continuously updated from real user reports.
-
-### 5. AI Image Generation (Optional)
+**Step 2: Configure AI Image Generation (Optional)**
 
 ```bash
-cp .env.example .env    # then edit with your API key
+# Choose one — skip this step to use all chart and template features without AI images
+export OPENAI_API_KEY=sk-xxx
+export GEMINI_API_KEY=AIzaXXX
 ```
 
-```env
-IMAGE_BACKEND=gemini                        # required — must be set explicitly
-GEMINI_API_KEY=your-api-key
-GEMINI_MODEL=gemini-3.1-flash-image-preview
-```
+**Step 3: Start Using**
 
-Supported backends: `gemini` · `openai` · `qwen` · `zhipu` · `volcengine` · `stability` · `bfl` · `ideogram` · `siliconflow` · `fal` · `replicate`
+Just tell the AI "help me make a PPT" to trigger the workflow.
 
-Run `python3 skills/mu-ippt/scripts/image_gen.py --list-backends` to see tiers. Environment variables override `.env`. Use provider-specific keys (`GEMINI_API_KEY`, `OPENAI_API_KEY`, etc.) — global `IMAGE_API_KEY` is not supported.
-
-> **Tip:** For best quality, generate images in [Gemini](https://gemini.google.com/) and select **Download full size**. Remove the watermark with `scripts/gemini_watermark_remover.py`.
+> 💡 All chart and template features work without an API key — only AI image generation requires one.
 
 ---
 
-## Documentation
+## 📌 Comparison with Alternatives
 
-| | Document | Description |
-|---|----------|-------------|
-| 🆚 | [Why mu-ippt](./docs/why-mu-ippt.md) | How it compares to Gamma, Copilot, and other AI tools |
-| 🪟 | [Windows Installation](./docs/windows-installation.md) | Step-by-step setup guide for Windows users |
-| 📖 | [SKILL.md](./skills/mu-ippt/SKILL.md) | Core workflow and rules |
-| 📐 | [Canvas Formats](./skills/mu-ippt/references/canvas-formats.md) | PPT 16:9, Xiaohongshu, WeChat, and 10+ formats |
-| 🛠️ | [Scripts & Tools](./skills/mu-ippt/scripts/README.md) | All scripts and commands |
-| 💼 | [Examples](./examples/README.md) | 15 projects, 229 pages |
-| 🏗️ | [Technical Design](./docs/technical-design.md) | Architecture, design philosophy, why SVG |
-| ❓ | [FAQ](./docs/faq.md) | Model selection, cost, layout troubleshooting, custom templates |
+### mu-ippt vs Gamma
+
+| Dimension | mu-ippt | Gamma |
+|-----------|---------|-------|
+| Design philosophy recommendation | ✅ 14 schools, AI-matched | ❌ None |
+| Chart types | 119 | ~20 |
+| Consulting-grade templates | 40 | ❌ None |
+| Edit existing PPT | ✅ Supported | ❌ Not supported |
+| Local execution | ✅ Data stays on your machine | ❌ Cloud processing |
+| AI image generation | ✅ DALL-E 3 / Gemini | ✅ Built-in |
+| Document to PPT | ✅ 5 formats | Partial |
+| Custom canvas | ✅ 8 formats | ❌ 16:9 only |
+| Vector icon library | 6,732 | ❌ None |
+| Quality checks | ✅ Auto-verification | ❌ None |
+| Open source | ✅ MIT | ❌ Closed source |
+| Offline capable | ✅ | ❌ |
+| Cost | Free | $8-40/month |
+
+---
+
+## 🔒 Security & Privacy
+
+100% local execution — all data processing happens on your machine. Only AI image generation calls external APIs (can be completely disabled by not configuring a key). No telemetry, no data collection, no usage tracking. No dependency on any cloud service or subscription.
+
+---
+
+## About the Author
+
+💡 Signatory author of Tsinghua University Press · 2026 Dangdang Influential Author · AI & Large Model HR specialist at a leading tech company · National Level-1 HR Manager · Level-2 Psychological Counselor · Self-taught designer.
+
+📚 Author of *Erta-style Team Management*. Clients include ByteDance, Tencent, Baidu, China Mobile, SMG, BOE, and more.
+
+📧 [muippt@agent.qq.com](mailto:muippt@agent.qq.com) · 🐙 [@mupoet](https://github.com/mupoet)
 
 ---
 
@@ -232,12 +203,9 @@ Note: Much of this project was co-created with AI assistance. Some referenced ma
 
 ## Contact & Collaboration
 
-Looking to collaborate, integrate mu-ippt into your workflow, or just have questions?
-
 - 💬 **Questions & sharing** — [GitHub Discussions](https://github.com/mupoet/mu-ippt/discussions)
 - 🐛 **Bug reports & feature requests** — [GitHub Issues](https://github.com/mupoet/mu-ippt/issues)
-- 📧 **Business & consulting inquiries** — [heyug3@gmail.com](mailto:heyug3@gmail.com)
-- 🌐 **Learn more about the author** — [www.hehugo.com](https://www.hehugo.com/)
+- 📧 **Business & consulting inquiries** — [muippt@agent.qq.com](mailto:muippt@agent.qq.com)
 
 ---
 
@@ -255,31 +223,10 @@ If this project helps you, please give it a ⭐!
 
 ---
 
-## Supported by DigitalOcean
-
-<p>This project is supported by:</p>
-<p>
-  <a href="https://m.do.co/c/547f129aabe1">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_blue.svg" alt="Powered by DigitalOcean" width="201" />
-  </a>
-</p>
+> One line summary: Not "AI helps you pick a template" — it's "AI creates PPT for you from scratch like a designer."
 
 ---
 
-## Sponsor
+Made with ❤️ by [木先生iPPT](https://github.com/mupoet)
 
-If this project saves you time, consider buying me a coffee!
-
-**PayPal**
-
-<a href="https://paypal.me/hugohe3"><img src="https://img.shields.io/badge/PayPal-Sponsor-00457C?style=for-the-badge&logo=paypal&logoColor=white" alt="Sponsor via PayPal" /></a>
-
-**Alipay / 支付宝**
-
-<img src="docs/assets/alipay-qr.jpg" alt="Alipay QR Code" width="250" />
-
----
-
-Made with ❤️ by [Hugo He](https://www.hehugo.com/)
-
-[⬆ Back to Top](#mu-ippt--ai-generates-natively-editable-pptx-from-any-document)
+[⬆ Back to Top](#mu-ippt--ai-ppt-intelligent-creation-skill-v10)

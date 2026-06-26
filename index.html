@@ -1,699 +1,792 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mu-ippt — AI PPT Intelligent Creation Skill</title>
-    <meta name="description" content="Drop in a PDF, DOCX, URL, or Markdown — get back a natively editable PowerPoint with real shapes, not images. Open source, 20 templates, 15 live examples.">
-    <meta property="og:title" content="mu-ippt — AI PPT Intelligent Creation Skill">
-    <meta property="og:description" content="Drop in any document, get back a natively editable PowerPoint with real shapes, real text boxes, and real charts. Not images. Click anything and edit it.">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="https://mupoet.github.io/mu-ippt/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="mu-ippt — AI PPT Intelligent Creation Skill">
-    <meta name="twitter:description" content="Drop in any document, get back a natively editable PowerPoint with real shapes. Not images. Open source.">
-    <meta name="twitter:image" content="">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-light: #818cf8;
-            --secondary: #06b6d4;
-            --dark: #1e1e2e;
-            --darker: #11111b;
-            --text: #cdd6f4;
-            --text-muted: #9399b2;
-            --surface: #181825;
-            --surface-hover: #1e1e2e;
-            --border: #313244;
-            --success: #a6e3a1;
-            --warning: #f9e2af;
-            --accent: #f5c2e7;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mu-ippt — AI PPT Intelligent Creation Skill</title>
+  <meta name="description" content="One Skill for all PPT scenarios. 15 Design Philosophies · 119 Chart Types · 40 Consulting Templates · 6,732 Vector Icons. Free & Open Source.">
+  <meta property="og:title" content="mu-ippt — AI PPT Intelligent Creation Skill">
+  <meta property="og:description" content="Not 'AI helps you pick a template' — it's 'AI creates PPT for you from scratch like a designer.'">
+  <meta property="og:url" content="https://mupoet.github.io/mu-ippt/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a26;
+      --bg-card-hover: #222233;
+      --border: #2a2a3a;
+      --text-primary: #e8e8f0;
+      --text-secondary: #9090a8;
+      --text-muted: #606078;
+      --accent: #6c5ce7;
+      --accent-light: #a29bfe;
+      --accent-glow: rgba(108, 92, 231, 0.3);
+      --gradient-1: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #74b9ff 100%);
+      --gradient-2: linear-gradient(135deg, #fd79a8 0%, #e17055 100%);
+      --gradient-3: linear-gradient(135deg, #00cec9 0%, #55efc4 100%);
+      --gradient-text: linear-gradient(135deg, #a29bfe 0%, #74b9ff 50%, #55efc4 100%);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-light); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* ===== Nav ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(42, 42, 58, 0.5);
+      transition: background var(--transition);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; transition: color var(--transition); }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      padding: 8px 20px; border-radius: 8px; font-size: 0.875rem; font-weight: 600;
+      background: var(--accent); color: #fff; transition: all var(--transition);
+    }
+    .nav-cta:hover { background: var(--accent-light); color: #0a0a0f; transform: translateY(-1px); }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: var(--darker);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
+    /* ===== Hero ===== */
+    .hero {
+      position: relative; padding: 160px 0 120px; text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 24px;
+      background: rgba(108, 92, 231, 0.1); border: 1px solid rgba(108, 92, 231, 0.3);
+      font-size: 0.8rem; color: var(--accent-light); font-weight: 500;
+      margin-bottom: 32px;
+    }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #55efc4; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .gradient {
+      background: var(--gradient-text);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary);
+      max-width: 640px; margin: 0 auto 48px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 12px; font-size: 1rem; font-weight: 600;
+      transition: all var(--transition); cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--gradient-1); color: #fff;
+      box-shadow: 0 4px 24px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); color: #fff; }
+    .btn-secondary {
+      background: var(--bg-card); color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-2px); color: #fff; }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+    /* ===== Stats Bar ===== */
+    .stats {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+      background: var(--border); border-radius: var(--radius);
+      overflow: hidden; margin: 80px auto 0; max-width: 960px;
+    }
+    .stat {
+      background: var(--bg-secondary); padding: 32px 16px; text-align: center;
+      transition: background var(--transition);
+    }
+    .stat:hover { background: var(--bg-card); }
+    .stat-num {
+      font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 800;
+      background: var(--gradient-text);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1.2;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
+    /* ===== Section Common ===== */
+    section { padding: 100px 0; }
+    .section-label {
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent-light); margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700;
+      line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .section-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; }
+    .section-header { margin-bottom: 64px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-desc { margin: 0 auto; }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    /* ===== Design Philosophies ===== */
+    .philosophies-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .philosophy-card {
+      position: relative; padding: 28px 24px; border-radius: var(--radius-sm);
+      background: var(--bg-card); border: 1px solid var(--border);
+      transition: all var(--transition); overflow: hidden;
+    }
+    .philosophy-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--card-accent, var(--gradient-1));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .philosophy-card:hover { border-color: var(--accent); transform: translateY(-4px); background: var(--bg-card-hover); }
+    .philosophy-card:hover::before { opacity: 1; }
+    .philosophy-num { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .philosophy-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .philosophy-dna { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+    .philosophy-lineage {
+      display: inline-block; margin-top: 12px; padding: 3px 10px;
+      border-radius: 4px; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      background: rgba(108, 92, 231, 0.1); color: var(--accent-light);
+    }
 
-        .logo {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
+    /* ===== Workflows ===== */
+    .workflows-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+    .workflow-card {
+      padding: 32px; border-radius: var(--radius); background: var(--bg-card);
+      border: 1px solid var(--border); transition: all var(--transition);
+    }
+    .workflow-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .workflow-id {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--gradient-1); color: #fff;
+      font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;
+    }
+    .workflow-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .workflow-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    .workflow-trigger {
+      margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .trigger-tag {
+      padding: 3px 10px; border-radius: 4px; font-size: 0.7rem;
+      background: rgba(108, 92, 231, 0.08); color: var(--text-muted);
+      border: 1px solid rgba(108, 92, 231, 0.15);
+    }
 
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
+    /* ===== Features Grid ===== */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card {
+      padding: 36px 28px; border-radius: var(--radius); background: var(--bg-card);
+      border: 1px solid var(--border); transition: all var(--transition);
+    }
+    .feature-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    /* ===== Comparison ===== */
+    .comparison-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px; text-align: left; font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .comparison-table thead th {
+      background: var(--bg-card); font-weight: 700; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);
+    }
+    .comparison-table thead th:nth-child(2) { color: var(--accent-light); }
+    .comparison-table tbody tr { background: var(--bg-secondary); transition: background var(--transition); }
+    .comparison-table tbody tr:hover { background: var(--bg-card); }
+    .comparison-table tbody tr:last-child td { border-bottom: none; }
+    .comparison-table td:first-child { font-weight: 600; color: var(--text-primary); }
+    .comparison-table td:nth-child(2) { color: var(--accent-light); }
+    .check { color: #55efc4; font-weight: 700; }
+    .cross { color: #ff6b6b; }
+    .comparison-wrapper { overflow-x: auto; }
 
-        .header-cta {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
+    /* ===== Quick Start ===== */
+    .quickstart {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 48px; max-width: 720px;
+      margin: 0 auto;
+    }
+    .quickstart-step {
+      display: flex; gap: 20px; align-items: flex-start;
+      margin-bottom: 32px;
+    }
+    .quickstart-step:last-child { margin-bottom: 0; }
+    .step-num {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px;
+      background: var(--accent); color: #fff; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .step-content h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .step-content p { font-size: 0.88rem; color: var(--text-secondary); }
+    .code-block {
+      background: #0d0d14; border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 18px; margin-top: 10px; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem; color: #55efc4; overflow-x: auto;
+    }
 
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-        }
+    /* ===== CTA ===== */
+    .cta-section {
+      text-align: center; padding: 120px 0;
+      background: radial-gradient(ellipse at center, rgba(108, 92, 231, 0.08) 0%, transparent 70%);
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      margin-bottom: 16px; letter-spacing: -0.02em;
+    }
+    .cta-section h2 .gradient {
+      background: var(--gradient-text);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cta-section p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 40px; }
+    .cta-section .hero-actions { justify-content: center; }
 
-        .cta-btn.primary {
-            background: #fff;
-            color: var(--primary);
-        }
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0; text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
 
-        .cta-btn.primary:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-        }
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .workflows-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero { padding: 120px 0 80px; }
+      .quickstart { padding: 28px; }
+      section { padding: 64px 0; }
+    }
 
-        .cta-btn.secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .cta-btn.secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        .nav {
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            background: var(--surface-hover);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-
-        .nav-btn:hover,
-        .nav-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        /* Main Content */
-        .main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--text);
-        }
-
-        .section-title .icon {
-            font-size: 1.8rem;
-        }
-
-        /* Project Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15);
-        }
-
-        .card-preview {
-            height: 200px;
-            background: var(--darker);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #fff;
-        }
-
-        .card-preview .placeholder {
-            font-size: 4rem;
-            opacity: 0.3;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .card-badge.new {
-            background: linear-gradient(135deg, #f97316, #ef4444);
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text);
-            line-height: 1.4;
-        }
-
-        .card-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .card-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .tag {
-            background: var(--darker);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .tag.style-consulting {
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--primary-light);
-        }
-
-        .tag.style-general {
-            background: rgba(6, 182, 212, 0.2);
-            color: var(--secondary);
-        }
-
-        .tag.style-creative {
-            background: rgba(245, 194, 231, 0.2);
-            color: var(--accent);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-copy {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .header-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .stats {
-                gap: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stat-value {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Hidden class for filtering */
-        .hidden {
-            display: none !important;
-        }
-    </style>
+    /* ===== Animations ===== */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
-
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">🎨</div>
-            <h1>mu-ippt</h1>
-            <p>AI generates natively editable PPTX from any document — real PowerPoint shapes, not images</p>
-            <div class="header-cta">
-                <a href="https://github.com/mupoet/mu-ippt" class="cta-btn primary" target="_blank">Star on GitHub</a>
-                <a href="https://github.com/mupoet/mu-ippt#quick-start" class="cta-btn secondary" target="_blank">Get Started</a>
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-value">15</div>
-                    <div class="stat-label">Examples</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">229+</div>
-                    <div class="stat-label">Pages</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">20</div>
-                    <div class="stat-label">Templates</div>
-                </div>
-            </div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span>mu-ippt</span></div>
+    <ul class="nav-links">
+      <li><a href="#philosophies">Design Philosophies</a></li>
+      <li><a href="#workflows">Workflows</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#comparison">Compare</a></li>
+      <li><a href="#quickstart">Quick Start</a></li>
+    </ul>
+    <a href="https://github.com/mupoet/mu-ippt" class="nav-cta" target="_blank">GitHub →</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> Open Source · MIT License · Free Forever</div>
+    <h1>AI Creates PPT<br><span class="gradient">Like a Designer</span></h1>
+    <p class="hero-sub">
+      One Skill for all PPT scenarios — create from scratch, technical diagrams, consulting templates, edit existing files. 100% local, 100% editable, zero subscription.
+    </p>
+    <div class="hero-actions">
+      <a href="https://github.com/mupoet/mu-ippt" class="btn btn-primary" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Get Started
+      </a>
+      <a href="./examples/design-philosophies/muippt-design-philosophies_202606.pptx" class="btn btn-secondary" download>
+        ↓ Download Example PPTX
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats fade-up">
+      <div class="stat">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Design<br>Philosophies</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">119</div>
+        <div class="stat-label">Chart<br>Types</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">40</div>
+        <div class="stat-label">Consulting<br>Templates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20</div>
+        <div class="stat-label">Layout<br>Templates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6,732</div>
+        <div class="stat-label">Vector<br>Icons</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Canvas<br>Formats</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Design Philosophies -->
+<section id="philosophies">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Design Philosophies</span>
+      <h2 class="section-title">15 Schools of Visual Thinking</h2>
+      <p class="section-desc">Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic.</p>
+    </div>
+    <div class="philosophies-grid">
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #2d3436, #636e72)">
+        <div class="philosophy-num">01</div>
+        <div class="philosophy-name">Pentagram</div>
+        <div class="philosophy-dna">Minimalist black & white, Swiss-style information-first</div>
+        <span class="philosophy-lineage">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #0984e3, #74b9ff)">
+        <div class="philosophy-num">02</div>
+        <div class="philosophy-name">Fathom</div>
+        <div class="philosophy-dna">Data storytelling, letting numbers speak for themselves</div>
+        <span class="philosophy-lineage">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #d63031, #e17055)">
+        <div class="philosophy-num">03</div>
+        <div class="philosophy-name">Müller-Brockmann</div>
+        <div class="philosophy-dna">Mathematical beauty from the father of grid systems</div>
+        <span class="philosophy-lineage">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #636e72, #b2bec3)">
+        <div class="philosophy-num">04</div>
+        <div class="philosophy-name">Tufte</div>
+        <div class="philosophy-dna">Above all else, show the data — maximum data-ink ratio</div>
+        <span class="philosophy-lineage">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #e84393, #fd79a8)">
+        <div class="philosophy-num">05</div>
+        <div class="philosophy-name">Field.io</div>
+        <div class="philosophy-dna">Generative dynamics — computational aesthetics as art</div>
+        <span class="philosophy-lineage">Kinetic Poetics</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #fdcb6e, #e17055)">
+        <div class="philosophy-num">06</div>
+        <div class="philosophy-name">Sagmeister</div>
+        <div class="philosophy-dna">Emotional maximalism, rule-breaking artistic expression</div>
+        <span class="philosophy-lineage">Kinetic Poetics</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #2d3436, #000000)">
+        <div class="philosophy-num">07</div>
+        <div class="philosophy-name">Build</div>
+        <div class="philosophy-dna">Extreme minimalism — less, but better</div>
+        <span class="philosophy-lineage">Minimalism</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #dfe6e9, #b2bec3)">
+        <div class="philosophy-num">08</div>
+        <div class="philosophy-name">Notion</div>
+        <div class="philosophy-dna">Functional minimalism — beautifully organized documents</div>
+        <span class="philosophy-lineage">Minimalism</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #636e72, #2d3436)">
+        <div class="philosophy-num">09</div>
+        <div class="philosophy-name">Apple</div>
+        <div class="philosophy-dna">Cinematic minimalism — spotlight on one product</div>
+        <span class="philosophy-lineage">Minimalism</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #00cec9, #55efc4)">
+        <div class="philosophy-num">10</div>
+        <div class="philosophy-name">Instrumental</div>
+        <div class="philosophy-dna">Geometric precision — shapes as both structure and ornament</div>
+        <span class="philosophy-lineage">Experimental Avant-garde</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #6c5ce7, #a29bfe)">
+        <div class="philosophy-num">11</div>
+        <div class="philosophy-name">Olschinsky</div>
+        <div class="philosophy-dna">Digital collage — richness through layered complexity</div>
+        <span class="philosophy-lineage">Experimental Avant-garde</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #fab1a0, #e17055)">
+        <div class="philosophy-num">12</div>
+        <div class="philosophy-name">Takram</div>
+        <div class="philosophy-dna">Eastern design thinking — hand-drawn warmth meets precision</div>
+        <span class="philosophy-lineage">Eastern Philosophy</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #f5f5f5, #dfe6e9)">
+        <div class="philosophy-num">13</div>
+        <div class="philosophy-name">Kenya Hara</div>
+        <div class="philosophy-dna">Emptiness as fullness — the power of not showing</div>
+        <span class="philosophy-lineage">Eastern Philosophy</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: linear-gradient(135deg, #81ecec, #00cec9)">
+        <div class="philosophy-num">14</div>
+        <div class="philosophy-name">Fukasawa</div>
+        <div class="philosophy-dna">Without Thought — invisible craftsmanship, effortless design</div>
+        <span class="philosophy-lineage">Eastern Philosophy</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-accent: var(--gradient-1)">
+        <div class="philosophy-num">+</div>
+        <div class="philosophy-name">Selection Guide</div>
+        <div class="philosophy-dna">AI matches the best philosophy based on audience, topic, and context</div>
+        <span class="philosophy-lineage" style="background: rgba(85, 239, 196, 0.1); color: #55efc4;">Smart Routing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflows -->
+<section id="workflows" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Workflows</span>
+      <h2 class="section-title">Five Paths, One Destination</h2>
+      <p class="section-desc">AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need.</p>
+    </div>
+    <div class="workflows-grid">
+      <div class="workflow-card fade-up">
+        <div class="workflow-id">0</div>
+        <h3>Smart Routing</h3>
+        <p>AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically.</p>
+        <div class="workflow-trigger">
+          <span class="trigger-tag">make a PPT</span>
+          <span class="trigger-tag">create a presentation</span>
+          <span class="trigger-tag">turn this into PPT</span>
         </div>
-    </header>
-
-    <nav class="nav">
-        <div class="nav-content">
-            <button class="nav-btn active" data-filter="all">All Projects</button>
-            <button class="nav-btn" data-filter="consulting">🏢 Consulting</button>
-            <button class="nav-btn" data-filter="general">🎨 General</button>
-            <button class="nav-btn" data-filter="creative">✨ Creative</button>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background: var(--gradient-2);">A</div>
+        <h3>Create from Scratch</h3>
+        <p>SVG vector layout with pixel-perfect control. Full design philosophy support, custom canvas formats, AI image generation.</p>
+        <div class="workflow-trigger">
+          <span class="trigger-tag">free layout</span>
+          <span class="trigger-tag">highly customized</span>
+          <span class="trigger-tag">from scratch</span>
         </div>
-    </nav>
-
-    <main class="main">
-        <div class="projects-grid" id="projects-grid">
-            <!-- Projects will be inserted here by JavaScript -->
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background: var(--gradient-3);">B</div>
+        <h3>Technical Diagrams</h3>
+        <p>Architecture diagrams, flowcharts, UML, sequence diagrams, ER diagrams — all as single high-quality technical slides.</p>
+        <div class="workflow-trigger">
+          <span class="trigger-tag">architecture diagram</span>
+          <span class="trigger-tag">flowchart</span>
+          <span class="trigger-tag">UML</span>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="https://github.com/mupoet/mu-ippt" target="_blank">📦 GitHub</a>
-            <a href="https://github.com/mupoet/mu-ippt#quick-start" target="_blank">📖 Quick Start</a>
-            <a href="https://github.com/mupoet/mu-ippt/blob/main/docs/faq.md" target="_blank">❓ FAQ</a>
-            <a href="https://github.com/mupoet/mu-ippt/discussions" target="_blank">💬 Discussions</a>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">C</div>
+        <h3>Consulting Templates</h3>
+        <p>40 McKinsey / BCG / Bain grade templates. SWOT, Porter's Five Forces, KPI dashboards, Gantt charts, org charts, and more.</p>
+        <div class="workflow-trigger">
+          <span class="trigger-tag">consulting template</span>
+          <span class="trigger-tag">KPI dashboard</span>
+          <span class="trigger-tag">SWOT analysis</span>
         </div>
-        <p class="footer-copy">mu-ippt © 2025–2026 · Made with ❤️ by <a href="https://github.com/mupoet" target="_blank" style="color: var(--primary-light); text-decoration: none;">木先生iPPT</a></p>
-    </footer>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">D</div>
+        <h3>Edit Existing PPT</h3>
+        <p>Read existing .pptx files, unpack OOXML, precisely modify content, validate, and repack. Non-destructive editing.</p>
+        <div class="workflow-trigger">
+          <span class="trigger-tag">edit PPT</span>
+          <span class="trigger-tag">modify slides</span>
+          <span class="trigger-tag">use this template</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Project data
-        const projects = [
-            {
-                id: 'ppt169_顶级咨询风_心理治疗中的依恋',
-                title: '心理治疗中的依恋',
-                pages: 32,
-                style: 'consulting',
-                styleName: '顶级咨询风格',
-                desc: '螺旋上升结构，从 Bowlby → Ainsworth → Main → Fonagy 的理论演进，到临床实践的应用深化。',
-                tags: ['MBB 级', '心理学', '专业蓝系'],
-                isNew: false,
-                cover: 'P01_封面.svg'
-            },
-            {
-                id: 'ppt169_顶级咨询风_重庆市区域报告_ppt169_20251213',
-                title: '重庆市区域报告',
-                pages: 20,
-                style: 'consulting',
-                styleName: '顶级咨询风格',
-                desc: '基于企业预警通数据，全面分析重庆市经济、财政债务、城投、银行业等七大模块。',
-                tags: ['MBB 级', '政务财政', '数据驱动'],
-                isNew: true,
-                cover: 'P01_封面.svg'
-            },
-            {
-                id: 'ppt169_顶级咨询风_甘孜州经济财政分析',
-                title: '甘孜州经济财政分析',
-                pages: 17,
-                style: 'consulting',
-                styleName: '顶级咨询风格',
-                desc: '基于 2024 年甘孜州决算数据，涵盖 GDP、财政收支、政府债务等多维分析。',
-                tags: ['MBB 级', '政务蓝', '藏区文化'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_顶级咨询风_构建有效AI代理_Anthropic',
-                title: '构建有效 AI 代理',
-                pages: 15,
-                style: 'consulting',
-                styleName: '顶级咨询风格',
-                desc: '基于 Anthropic 官方博客，涵盖 Workflows、Agents、工具设计原则等。',
-                tags: ['MBB 级', 'AI/LLM', 'Anthropic'],
-                isNew: false,
-                cover: 'P01_Cover.svg'
-            },
-            {
-                id: 'ppt169_高端咨询风_南欧江水电站战略评估',
-                title: '南欧江水电站战略评估',
-                pages: 20,
-                style: 'consulting',
-                styleName: '高端咨询风格',
-                desc: '老挝南欧江梯级水电站项目、主权债务危机与仲裁案全景分析。',
-                tags: ['战略评估', '湄公河色系', '流域危机'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_高端咨询风_汽车认证五年战略规划',
-                title: '汽车认证五年战略规划',
-                pages: 20,
-                style: 'consulting',
-                styleName: '高端咨询风格',
-                desc: '汽车及零部件领域自愿性产品认证 2026-2030 五年战略规划。',
-                tags: ['战略规划', '新能源', '绿色低碳'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_麦肯锡风_kimsoong_customer_loyalty',
-                title: '客户忠诚度计划分析',
-                pages: 8,
-                style: 'consulting',
-                styleName: '麦肯锡风格',
-                desc: '展示麦肯锡经典的结构化思维与图表矩阵设计。',
-                tags: ['McKinsey', 'MECE 原则', '数据驱动'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_谷歌风_google_annual_report',
-                title: 'Google 年度工作汇报',
-                pages: 10,
-                style: 'consulting',
-                styleName: 'Google 品牌风格',
-                desc: 'Google 2025 年度工作汇报模板，融合 Google 设计语言与咨询专业度。',
-                tags: ['Google 色系', '品牌一致', '数据驱动'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_通用灵活+代码_debug六步法',
-                title: 'Debug 六步法',
-                pages: 10,
-                style: 'general',
-                styleName: '通用灵活 + 代码',
-                desc: '深色科技风格，适合技术团队内部培训分享。',
-                tags: ['GitHub 暗色', '程序员', '技术培训'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_通用灵活+学术_重庆大学论文格式标准',
-                title: '重庆大学论文格式标准',
-                pages: 11,
-                style: 'general',
-                styleName: '通用灵活 + 学术',
-                desc: '基于重庆大学学位论文撰写格式标准，学术、规范、清晰、实用。',
-                tags: ['学术风格', '重大蓝', '研究生'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_通过灵活+代码_三大AI编程神器横向对比',
-                title: '三大 AI 编程神器横向对比',
-                pages: 11,
-                style: 'general',
-                styleName: '通用灵活',
-                desc: 'OpenSpec vs ZCF vs Spec Kit 三大 AI 编程工具横向对比分析。',
-                tags: ['技术评测', '科技蓝', 'AI 工具'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'ppt169_易理风_地山谦卦深度研究',
-                title: '地山谦卦深度研究',
-                pages: 20,
-                style: 'creative',
-                styleName: '易理玄学风格',
-                desc: '采用「阴阳爻变」设计语言，从象数理占到现代哲学的多维同构。',
-                tags: ['易经', '阴阳对立', '六爻结构'],
-                isNew: false,
-                cover: 'P01_封面.svg'
-            },
-            {
-                id: 'ppt169_禅意风_金刚经第一品研究',
-                title: '金刚经第一品研究',
-                pages: 15,
-                style: 'creative',
-                styleName: '禅意学术风格',
-                desc: '页面布局如同禅画，以留白营造意境，暗示「空」的智慧。',
-                tags: ['禅意', '水墨留白', '般若思想'],
-                isNew: false,
-                cover: 'P01_封面.svg'
-            },
-            {
-                id: 'ppt169_像素风_git_introduction',
-                title: 'Git 入门完全指南',
-                pages: 10,
-                style: 'creative',
-                styleName: '像素复古游戏风',
-                desc: '复古游戏像素风格，用「存档点」隐喻版本控制概念。',
-                tags: ['像素风', '霓虹系', '游戏感'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            },
-            {
-                id: 'demo_project_intro_ppt169_20251211',
-                title: 'mu-ippt 官方介绍',
-                pages: 10,
-                style: 'creative',
-                styleName: '清新科技风格',
-                desc: 'mu-ippt 项目官方介绍，展示系统架构与四大角色协作机制。',
-                tags: ['官方介绍', '靛蓝渐变', '系统架构'],
-                isNew: false,
-                cover: 'slide_01_cover.svg'
-            }
-        ];
+<!-- Features -->
+<section id="features">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">Everything You Need</h2>
+      <p class="section-desc">Professional-grade capabilities, zero subscription, fully open source.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(108, 92, 231, 0.15);">📊</div>
+        <h3>119 Chart Types</h3>
+        <p>From basic bar charts to Sankey diagrams, treemaps, waterfall charts, and KPI dashboards. All rendered as native vector shapes.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(253, 121, 168, 0.15);">🏛️</div>
+        <h3>40 Consulting Templates</h3>
+        <p>McKinsey / BCG / Bain grade. SWOT, Porter's Five Forces, BCG Matrix, Value Chain, org charts, talent 9-box, and more.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(85, 239, 196, 0.15);">🖼️</div>
+        <h3>6,732 Vector Icons</h3>
+        <p>All SVG format, lossless scaling. Covers tech, finance, medical, education, retail, and more. Built-in, no internet needed.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(116, 185, 255, 0.15);">🔄</div>
+        <h3>Document to PPT</h3>
+        <p>Convert PDF, DOCX, Markdown, HTML, and EPUB into polished presentations. Preserves structure, auto-matches layouts.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(253, 203, 110, 0.15);">🤖</div>
+        <h3>AI Image Generation</h3>
+        <p>Built-in OpenAI DALL-E 3 and Google Gemini Imagen support. Auto-generates images based on slide themes. Optional — works without API key.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(162, 155, 254, 0.15);">✏️</div>
+        <h3>Truly Editable</h3>
+        <p>Real DrawingML shapes, not images. Every element can be clicked and edited in PowerPoint, Keynote, WPS, or Google Slides.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(0, 206, 201, 0.15);">📏</div>
+        <h3>8 Canvas Formats</h3>
+        <p>16:9, 4:3, 9:16 portrait, 1:1 square, A4 portrait/landscape, LinkedIn banner, and any custom pixel dimensions.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(255, 107, 107, 0.15);">🔒</div>
+        <h3>100% Local & Private</h3>
+        <p>All processing happens on your machine. No telemetry, no data collection. Only AI images call external APIs (can be disabled).</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon" style="background: rgba(129, 236, 236, 0.15);">🆓</div>
+        <h3>Free & Open Source</h3>
+        <p>MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Render projects
-        function renderProjects(filter = 'all') {
-            const grid = document.getElementById('projects-grid');
-            grid.innerHTML = '';
+<!-- Comparison -->
+<section id="comparison" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <span class="section-label">Comparison</span>
+      <h2 class="section-title">Why mu-ippt?</h2>
+      <p class="section-desc">See how mu-ippt compares to popular alternatives.</p>
+    </div>
+    <div class="comparison-wrapper fade-up">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>mu-ippt</th>
+            <th>Gamma</th>
+            <th>Beautiful.ai</th>
+            <th>Canva / iSlide</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Design Philosophy AI</td>
+            <td><span class="check">✓ 15 schools</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Chart Types</td>
+            <td><span class="check">119</span></td>
+            <td>~20</td>
+            <td>~30</td>
+            <td>Varies</td>
+          </tr>
+          <tr>
+            <td>Consulting Templates</td>
+            <td><span class="check">40</span></td>
+            <td><span class="cross">✗</span></td>
+            <td>Limited</td>
+            <td>Limited</td>
+          </tr>
+          <tr>
+            <td>Edit Existing PPT</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Local Execution</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗ Cloud</span></td>
+            <td><span class="cross">✗ Cloud</span></td>
+            <td><span class="cross">✗ Cloud</span></td>
+          </tr>
+          <tr>
+            <td>Document → PPT</td>
+            <td><span class="check">5 formats</span></td>
+            <td>Partial</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Vector Icons</td>
+            <td><span class="check">6,732</span></td>
+            <td><span class="cross">✗</span></td>
+            <td>Limited</td>
+            <td>Limited</td>
+          </tr>
+          <tr>
+            <td>Custom Canvas</td>
+            <td><span class="check">8 formats</span></td>
+            <td>16:9 only</td>
+            <td>Limited</td>
+            <td>Some</td>
+          </tr>
+          <tr>
+            <td>Open Source</td>
+            <td><span class="check">✓ MIT</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Offline Capable</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td><span class="check">Free</span></td>
+            <td>$8–40/mo</td>
+            <td>$12–40/mo</td>
+            <td>Free–Paid</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-            const filtered = filter === 'all'
-                ? projects
-                : projects.filter(p => p.style === filter);
+<!-- Quick Start -->
+<section id="quickstart">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <span class="section-label">Quick Start</span>
+      <h2 class="section-title">Up and Running in 3 Steps</h2>
+    </div>
+    <div class="quickstart fade-up">
+      <div class="quickstart-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Install Dependencies</h4>
+          <div class="code-block">pip install -r requirements.txt</div>
+        </div>
+      </div>
+      <div class="quickstart-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Configure AI Images (Optional)</h4>
+          <p>Skip this step to use all chart and template features without AI images.</p>
+          <div class="code-block">export OPENAI_API_KEY=sk-xxx &nbsp;&nbsp;# or GEMINI_API_KEY</div>
+        </div>
+      </div>
+      <div class="quickstart-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Start Creating</h4>
+          <p>Just tell the AI — "help me make a PPT" — and the workflow begins.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            filtered.forEach(project => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                card.onclick = () => {
-                    window.location.href = `viewer.html?project=${encodeURIComponent(project.id)}`;
-                };
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Not <em>"AI helps you pick a template"</em><br><span class="gradient">AI creates PPT like a designer.</span></h2>
+    <p>Free, open source, and yours forever.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/mupoet/mu-ippt" class="btn btn-primary" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Star on GitHub
+      </a>
+      <a href="./examples/design-philosophies/muippt-design-philosophies_202606.pptx" class="btn btn-secondary" download>
+        ↓ Download Example PPTX
+      </a>
+    </div>
+  </div>
+</section>
 
-                const styleClass = project.style === 'consulting' ? 'style-consulting'
-                    : project.style === 'general' ? 'style-general'
-                        : 'style-creative';
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/mupoet/mu-ippt" target="_blank">GitHub</a>
+      <a href="https://github.com/mupoet/mu-ippt/discussions" target="_blank">Discussions</a>
+      <a href="https://github.com/mupoet/mu-ippt/issues" target="_blank">Issues</a>
+      <a href="./docs/faq.md">FAQ</a>
+      <a href="mailto:muippt@agent.qq.com">Contact</a>
+    </div>
+    <p class="footer-copy">Made with ❤️ by <a href="https://github.com/mupoet">木先生iPPT</a> · MIT License · 2026</p>
+  </div>
+</footer>
 
-                const coverUrl = encodeURI(`examples/${project.id}/svg_final/${project.cover}`);
-                const img = document.createElement('img');
-                img.src = coverUrl;
-                img.alt = project.title;
-                img.onerror = function () {
-                    this.onerror = null;
-                    this.parentElement.innerHTML = '<div class="placeholder">📊</div>';
-                };
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-                card.innerHTML = `
-                    <div class="card-preview">
-                        ${project.isNew ? '<span class="card-badge new">🆕 新增</span>' : ''}
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">${project.title}</h3>
-                        <div class="card-meta">
-                            <span>📄 ${project.pages} 页</span>
-                            <span>🎨 ${project.styleName}</span>
-                        </div>
-                        <p class="card-desc">${project.desc}</p>
-                        <div class="card-tags">
-                            <span class="tag ${styleClass}">${project.styleName}</span>
-                            ${project.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                        </div>
-                    </div>
-                `;
-
-                // Insert image into card-preview
-                const preview = card.querySelector('.card-preview');
-                preview.insertBefore(img, preview.firstChild);
-
-                grid.appendChild(card);
-            });
-        }
-
-        // Filter buttons
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderProjects(btn.dataset.filter);
-            });
-        });
-
-        // Initial render
-        renderProjects();
-    </script>
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 </body>
-
 </html>

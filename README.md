@@ -14,13 +14,13 @@ English | [中文](./README_CN.md)
 
 > One Skill for all PPT scenarios: **Create from scratch** · **Technical diagrams** · **Consulting report templates** · **Edit existing PPT**
 
-> 🎨 **14 Design Philosophies** · 📊 **119 Chart Types** · 📐 **20 Layout Templates** · 🏛️ **40 Consulting Templates** · 🖼️ **6,732 Vector Icons** · 📏 **8 Canvas Formats**
+> 🎨 **15 Design Philosophies** · 📊 **119 Chart Types** · 📐 **20 Layout Templates** · 🏛️ **40 Consulting Templates** · 🖼️ **6,732 Vector Icons** · 📏 **8 Canvas Formats**
 
 ---
 
 ## ✨ Core Highlights
 
-### 🎨 14 Design Philosophy Schools
+### 🎨 15 Design Philosophy Schools
 
 Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic:
 
@@ -100,7 +100,7 @@ Built-in support for two major image generation engines: OpenAI DALL-E 3 (defaul
 
 ## 🎯 Design Philosophies Example
 
-> 📥 **[Download the showcase PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx)** — 33 slides demonstrating all 14 design philosophies across 6 design lineages.
+> 📥 **[Download the showcase PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx)** — 31 slides demonstrating all 15 design philosophies across 6 design lineages.
 
 Each philosophy includes Visual DNA, color tokens, typography logic, and a real generated sample slide. Open in PowerPoint, Keynote, or Google Slides to explore.
 

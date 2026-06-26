@@ -98,6 +98,16 @@
 
 ---
 
+## 🎯 设计哲学示例
+
+> 📥 **[下载设计哲学展示 PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx)** — 33 页幻灯片，展示全部 14 种设计哲学流派，涵盖 6 大设计谱系。
+
+每种哲学均包含 Visual DNA、色彩 Token、排版逻辑和真实生成样例。使用 PowerPoint、Keynote 或 Google Slides 打开即可浏览。
+
+在 [examples 目录](./examples/) 中查看所有示例。
+
+---
+
 ## 💡 使用场景示例
 
 - 📈 **管理汇报**："把这份周报变成10页PPT，用深蓝数据叙事风"

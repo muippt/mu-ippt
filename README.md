@@ -98,6 +98,16 @@ Built-in support for two major image generation engines: OpenAI DALL-E 3 (defaul
 
 ---
 
+## 🎯 Design Philosophies Example
+
+> 📥 **[Download the showcase PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx)** — 33 slides demonstrating all 14 design philosophies across 6 design lineages.
+
+Each philosophy includes Visual DNA, color tokens, typography logic, and a real generated sample slide. Open in PowerPoint, Keynote, or Google Slides to explore.
+
+Browse all examples in the [examples directory](./examples/).
+
+---
+
 ## 💡 Usage Examples
 
 - 📈 **Management Report**: "Turn this weekly report into a 10-page PPT with deep blue data narrative style"

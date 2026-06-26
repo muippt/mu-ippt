@@ -1,5 +1,5 @@
 # GitHub Pages 部署工作流
-# 自动将 PPT Master 示例项目部署到 GitHub Pages
+# 自动将 mu-ippt 示例项目部署到 GitHub Pages
 
 name: Deploy to GitHub Pages
 
@@ -27,15 +27,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          enablement: true
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # 上传整个仓库（包含 examples、templates 等）
           path: '.'
@@ -50,4 +48,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

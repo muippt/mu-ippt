@@ -12,94 +12,121 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-card:#1a1a26;--bg-card-hover:#222233;--border:#2a2a3a;--text-primary:#e8e8f0;--text-secondary:#9090a8;--text-muted:#606078;--accent:#6c5ce7;--accent-light:#a29bfe;--accent-glow:rgba(108,92,231,0.3);--gradient-1:linear-gradient(135deg,#6c5ce7 0%,#a29bfe 50%,#74b9ff 100%);--gradient-2:linear-gradient(135deg,#fd79a8 0%,#e17055 100%);--gradient-3:linear-gradient(135deg,#00cec9 0%,#55efc4 100%);--gradient-text:linear-gradient(135deg,#a29bfe 0%,#74b9ff 50%,#55efc4 100%);--radius:16px;--radius-sm:10px;--transition:0.3s cubic-bezier(0.4,0,0.2,1)}
+    :root{
+      --bg:#faf9f7;--bg-warm:#f5f0eb;--bg-card:#fff;--bg-code:#f7f5f2;
+      --border:#e8e2db;--border-light:#f0ebe5;
+      --text:#2d2a26;--text-secondary:#6b6560;--text-muted:#9e9690;
+      --accent:#c96442;--accent-light:#e8a07a;--accent-bg:rgba(201,100,66,0.06);
+      --green:#5a8a6a;--blue:#5a7a9a;--purple:#7a6a9a;
+      --radius:12px;--radius-sm:8px;
+      --font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC',sans-serif;
+      --font-serif:'Georgia','Noto Serif SC',serif;
+      --font-mono:'SF Mono','Fira Code',monospace;
+    }
     html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','SF Pro Display',Roboto,'PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    a{color:var(--accent-light);text-decoration:none;transition:color var(--transition)}a:hover{color:#fff}
-    .container{max-width:1200px;margin:0 auto;padding:0 24px}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(42,42,58,0.5);transition:background var(--transition)}
-    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
-    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-0.02em}
-    .nav-logo span{background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none;transition:color .25s}a:hover{color:var(--accent-light)}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    /* Nav */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,247,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-light);transition:background .25s}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+    .nav-logo span{color:var(--accent)}
     .nav-links{display:flex;gap:32px;list-style:none}
-    .nav-links a{color:var(--text-secondary);font-size:0.875rem;font-weight:500;transition:color var(--transition)}.nav-links a:hover{color:#fff}
+    .nav-links a{color:var(--text-secondary);font-size:.875rem;font-weight:500;transition:color .25s}.nav-links a:hover{color:var(--accent)}
     .nav-right{display:flex;align-items:center;gap:12px}
-    .lang-switch{display:inline-flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:0.8rem;cursor:pointer;user-select:none}
-    .lang-switch span{padding:6px 12px;transition:all var(--transition);color:var(--text-muted)}
+    .lang-switch{display:inline-flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;font-size:.8rem;cursor:pointer;user-select:none}
+    .lang-switch span{padding:6px 12px;transition:all .25s;color:var(--text-muted)}
     .lang-switch span.active{background:var(--accent);color:#fff}
-    .lang-switch span:hover:not(.active){color:var(--text-primary);background:var(--bg-card)}
-    .nav-cta{padding:8px 20px;border-radius:8px;font-size:0.875rem;font-weight:600;background:var(--accent);color:#fff;transition:all var(--transition)}
-    .nav-cta:hover{background:var(--accent-light);color:#0a0a0f;transform:translateY(-1px)}
-    .hero{position:relative;padding:160px 0 120px;text-align:center;overflow:hidden}
-    .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.15) 0%,transparent 70%);pointer-events:none}
-    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:24px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);font-size:0.8rem;color:var(--accent-light);font-weight:500;margin-bottom:32px}
-    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#55efc4;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-    .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:24px}
-    .hero h1 .gradient{background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .lang-switch span:hover:not(.active){color:var(--text);background:var(--bg-warm)}
+    .nav-cta{padding:8px 20px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:600;background:var(--accent);color:#fff;transition:all .25s}
+    .nav-cta:hover{background:var(--accent-light);color:#fff;transform:translateY(-1px)}
+    /* Hero */
+    .hero{position:relative;padding:160px 0 120px;text-align:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:24px;background:var(--accent-bg);border:1px solid var(--border);font-size:.8rem;color:var(--accent);font-weight:500;margin-bottom:32px}
+    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero h1{font-family:var(--font-serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px;color:var(--text)}
+    .hero h1 .accent-text{color:var(--accent)}
     .hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-secondary);max-width:640px;margin:0 auto 48px;line-height:1.7}
     .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:1rem;font-weight:600;transition:all var(--transition);cursor:pointer;border:none}
-    .btn-primary{background:var(--gradient-1);color:#fff;box-shadow:0 4px 24px var(--accent-glow)}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--accent-glow);color:#fff}
-    .btn-secondary{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border)}
-    .btn-secondary:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:translateY(-2px);color:#fff}
-    .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin:80px auto 0;max-width:960px}
-    .stat{background:var(--bg-secondary);padding:32px 16px;text-align:center;transition:background var(--transition)}.stat:hover{background:var(--bg-card)}
-    .stat-num{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
-    .stat-label{font-size:0.75rem;color:var(--text-muted);margin-top:6px;letter-spacing:0.08em}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius);font-size:1rem;font-weight:600;transition:all .25s;cursor:pointer;border:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);color:#fff;box-shadow:0 4px 16px rgba(201,100,66,0.15)}
+    .btn-secondary{background:var(--bg-card);color:var(--text);border:1px solid var(--border)}
+    .btn-secondary:hover{border-color:var(--accent);transform:translateY(-2px);color:var(--accent);box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin:80px auto 0;max-width:960px;border:1px solid var(--border)}
+    .stat{background:var(--bg-card);padding:32px 16px;text-align:center;transition:background .25s}.stat:hover{background:var(--bg-warm)}
+    .stat-num{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--accent);line-height:1.2}
+    .stat-label{font-size:.75rem;color:var(--text-muted);margin-top:6px;letter-spacing:.08em}
+    /* Sections */
     section{padding:100px 0}
-    .section-label{display:inline-block;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-light);margin-bottom:16px}
-    .section-title{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin-bottom:16px}
+    .section-label{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:16px}
+    .section-title{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:16px;color:var(--text)}
     .section-desc{font-size:1.1rem;color:var(--text-secondary);max-width:600px;line-height:1.7}
     .section-header{margin-bottom:64px}.section-header.center{text-align:center}.section-header.center .section-desc{margin:0 auto}
+    /* Philosophy Cards */
     .philosophies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-    .philosophy-card{position:relative;padding:28px 24px;border-radius:var(--radius-sm);background:var(--bg-card);border:1px solid var(--border);transition:all var(--transition);overflow:hidden}
-    .philosophy-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--gradient-1));opacity:0;transition:opacity var(--transition)}
-    .philosophy-card:hover{border-color:var(--accent);transform:translateY(-4px);background:var(--bg-card-hover)}.philosophy-card:hover::before{opacity:1}
-    .philosophy-num{font-size:0.7rem;color:var(--text-muted);font-weight:600;letter-spacing:0.1em;margin-bottom:12px}
-    .philosophy-name{font-size:1.05rem;font-weight:700;margin-bottom:6px}
-    .philosophy-dna{font-size:0.8rem;color:var(--text-secondary);line-height:1.5}
-    .philosophy-lineage{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:4px;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;background:rgba(108,92,231,0.1);color:var(--accent-light)}
+    .philosophy-card{padding:28px 24px;border-radius:var(--radius-sm);background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--card-color,var(--accent));transition:all .25s}
+    .philosophy-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06);border-color:var(--border)}
+    .philosophy-card:hover{border-left-color:var(--card-color,var(--accent))}
+    .philosophy-num{font-size:.7rem;color:var(--text-muted);font-weight:600;letter-spacing:.1em;margin-bottom:12px}
+    .philosophy-name{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .philosophy-dna{font-size:.8rem;color:var(--text-secondary);line-height:1.5}
+    .philosophy-lineage{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:4px;font-size:.65rem;font-weight:600;letter-spacing:.06em;background:var(--accent-bg);color:var(--accent)}
+    /* Workflow Cards */
     .workflows-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-    .workflow-card{padding:32px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all var(--transition)}.workflow-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-    .workflow-id{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:var(--gradient-1);color:#fff;font-size:0.9rem;font-weight:700;margin-bottom:16px}
-    .workflow-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
-    .workflow-card p{font-size:0.9rem;color:var(--text-secondary);line-height:1.6}
+    .workflow-card{padding:32px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all .25s}
+    .workflow-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+    .workflow-id{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;color:#fff;font-size:.9rem;font-weight:700;margin-bottom:16px}
+    .workflow-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .workflow-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.6}
     .workflow-trigger{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
-    .trigger-tag{padding:3px 10px;border-radius:4px;font-size:0.7rem;background:rgba(108,92,231,0.08);color:var(--text-muted);border:1px solid rgba(108,92,231,0.15)}
+    .trigger-tag{padding:3px 10px;border-radius:4px;font-size:.7rem;background:var(--bg-warm);color:var(--text-muted);border:1px solid var(--border-light)}
+    /* Feature Cards */
     .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .feature-card{padding:36px 28px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all var(--transition)}.feature-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-    .feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px}
-    .feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
-    .feature-card p{font-size:0.88rem;color:var(--text-secondary);line-height:1.6}
+    .feature-card{padding:36px 28px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all .25s}
+    .feature-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+    .feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;background:var(--bg-warm)}
+    .feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .feature-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.6}
+    /* Comparison Table */
     .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
-    .comparison-table th,.comparison-table td{padding:16px 20px;text-align:left;font-size:0.9rem;border-bottom:1px solid var(--border)}
-    .comparison-table thead th{background:var(--bg-card);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary)}
-    .comparison-table thead th:nth-child(2){color:var(--accent-light)}
-    .comparison-table tbody tr{background:var(--bg-secondary);transition:background var(--transition)}.comparison-table tbody tr:hover{background:var(--bg-card)}
+    .comparison-table th,.comparison-table td{padding:16px 20px;text-align:left;font-size:.9rem;border-bottom:1px solid var(--border-light)}
+    .comparison-table thead th{background:var(--bg-card);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary)}
+    .comparison-table thead th:nth-child(2){color:var(--accent)}
+    .comparison-table tbody tr{background:var(--bg-card);transition:background .25s}.comparison-table tbody tr:hover{background:var(--bg-warm)}
     .comparison-table tbody tr:last-child td{border-bottom:none}
-    .comparison-table td:first-child{font-weight:600;color:var(--text-primary)}.comparison-table td:nth-child(2){color:var(--accent-light)}
-    .check{color:#55efc4;font-weight:700}.cross{color:#ff6b6b}
+    .comparison-table td:first-child{font-weight:600;color:var(--text)}.comparison-table td:nth-child(2){color:var(--accent);font-weight:600}
+    .check{color:var(--green);font-weight:700}.cross{color:var(--text-muted)}
     .comparison-wrapper{overflow-x:auto}
-    .quickstart{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:48px;max-width:720px;margin:0 auto}
+    /* Quick Start */
+    .quickstart{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:48px;max-width:720px;margin:0 auto}
     .quickstart-step{display:flex;gap:20px;align-items:flex-start;margin-bottom:32px}.quickstart-step:last-child{margin-bottom:0}
-    .step-num{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700}
-    .step-content h4{font-size:1rem;font-weight:700;margin-bottom:8px}
-    .step-content p{font-size:0.88rem;color:var(--text-secondary)}
-    .code-block{background:#0d0d14;border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Fira Code',monospace;font-size:0.85rem;color:#55efc4;overflow-x:auto}
-    .cta-section{text-align:center;padding:120px 0;background:radial-gradient(ellipse at center,rgba(108,92,231,0.08) 0%,transparent 70%)}
-    .cta-section h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px;letter-spacing:-0.02em}
-    .cta-section h2 .gradient{background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .step-num{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700}
+    .step-content h4{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .step-content p{font-size:.88rem;color:var(--text-secondary)}
+    .code-block{background:var(--bg-code);border:1px solid var(--border-light);border-radius:8px;padding:14px 18px;margin-top:10px;font-family:var(--font-mono);font-size:.85rem;color:var(--text);overflow-x:auto}
+    /* CTA */
+    .cta-section{text-align:center;padding:120px 0}
+    .cta-section h2{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px;letter-spacing:-.02em;color:var(--text);line-height:1.3}
+    .cta-section h2 .accent-text{color:var(--accent)}
+    .cta-section h2 em{font-style:italic;color:var(--text-muted)}
     .cta-section p{color:var(--text-secondary);font-size:1.1rem;margin-bottom:40px}
     .cta-section .hero-actions{justify-content:center}
-    footer{border-top:1px solid var(--border);padding:48px 0;text-align:center}
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:48px 0;text-align:center;background:var(--bg-warm)}
     .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:20px;flex-wrap:wrap}
-    .footer-links a{color:var(--text-muted);font-size:0.85rem}.footer-links a:hover{color:var(--text-primary)}
-    .footer-copy{font-size:0.8rem;color:var(--text-muted)}
+    .footer-links a{color:var(--text-muted);font-size:.85rem}.footer-links a:hover{color:var(--accent)}
+    .footer-copy{font-size:.8rem;color:var(--text-muted);line-height:1.8}
+    .footer-copy a{color:var(--text-secondary)}.footer-copy a:hover{color:var(--accent)}
+    .footer-copy+.footer-copy{margin-top:4px}
+    /* Responsive */
     @media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.features-grid{grid-template-columns:repeat(2,1fr)}.workflows-grid{grid-template-columns:1fr}.nav-links{display:none}}
     @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.hero{padding:120px 0 80px}.quickstart{padding:28px}section{padding:64px 0}}
-    .fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}
+    /* Scroll Animation */
+    .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}
   </style>
 </head>
 <body>
@@ -129,7 +156,7 @@
 <section class="hero">
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> <span data-en="Open Source · MIT License · Free Forever" data-zh="开源 · MIT 协议 · 永久免费">Open Source · MIT License · Free Forever</span></div>
-    <h1 data-en="AI Creates PPT<br><span class='gradient'>Like a Designer</span>" data-zh="AI 像设计师一样<br><span class='gradient'>创作 PPT</span>">AI Creates PPT<br><span class="gradient">Like a Designer</span></h1>
+    <h1 data-en="AI Creates PPT<br><span class='accent-text'>Like a Designer</span>" data-zh="AI 像设计师一样<br><span class='accent-text'>创作 PPT</span>">AI Creates PPT<br><span class="accent-text">Like a Designer</span></h1>
     <p class="hero-sub" data-en="One Skill for all PPT scenarios — create from scratch, technical diagrams, consulting templates, edit existing files. 100% local, 100% editable, zero subscription." data-zh="一个 Skill 覆盖所有 PPT 场景 — 从零创作、技术架构图、咨询模板、编辑已有文件。100% 本地运行，100% 可编辑，零订阅费用。">One Skill for all PPT scenarios — create from scratch, technical diagrams, consulting templates, edit existing files. 100% local, 100% editable, zero subscription.</p>
     <div class="hero-actions">
       <a href="https://github.com/mupoet/mu-ippt" class="btn btn-primary" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> <span data-en="Get Started" data-zh="立即使用">Get Started</span></a>
@@ -150,140 +177,140 @@
 <section id="philosophies">
   <div class="container">
     <div class="section-header fade-up">
-      <span class="section-label" data-en="Design Philosophies" data-zh="设计哲学">Design Philosophies</span>
+      <span class="section-label" data-en="🎨 Design Philosophies" data-zh="🎨 设计哲学">🎨 Design Philosophies</span>
       <h2 class="section-title" data-en="15 Schools of Visual Thinking" data-zh="15 大视觉思维流派">15 Schools of Visual Thinking</h2>
       <p class="section-desc" data-en="Not &quot;pick a template&quot; — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic." data-zh="不是「选模板」— AI 根据主题、受众和场景自动推荐最佳视觉风格。每种哲学都有独特的视觉基因、色彩令牌和排版逻辑。">Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic.</p>
     </div>
     <div class="philosophies-grid">
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#2d3436,#636e72)">
+      <div class="philosophy-card fade-up" style="--card-color:#636e72">
         <div class="philosophy-num">01</div>
         <div class="philosophy-name">Pentagram</div>
         <div class="philosophy-dna" data-en="Minimalist black &amp; white, Swiss-style information-first" data-zh="极简黑白，瑞士风格信息优先">Minimalist black &amp; white, Swiss-style information-first</div>
         <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#0984e3,#74b9ff)">
+      <div class="philosophy-card fade-up" style="--card-color:#0984e3">
         <div class="philosophy-num">02</div>
         <div class="philosophy-name">Fathom</div>
         <div class="philosophy-dna" data-en="Data storytelling, letting numbers speak for themselves" data-zh="数据叙事，让数字自己说话">Data storytelling, letting numbers speak for themselves</div>
         <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#d63031,#e17055)">
+      <div class="philosophy-card fade-up" style="--card-color:#d63031">
         <div class="philosophy-num">03</div>
         <div class="philosophy-name">Müller-Brockmann</div>
         <div class="philosophy-dna" data-en="Mathematical beauty from the father of grid systems" data-zh="网格系统之父的数学之美">Mathematical beauty from the father of grid systems</div>
         <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#636e72,#b2bec3)">
+      <div class="philosophy-card fade-up" style="--card-color:#95a5a6">
         <div class="philosophy-num">04</div>
         <div class="philosophy-name">Tufte</div>
         <div class="philosophy-dna" data-en="Above all else, show the data — maximum data-ink ratio" data-zh="首要原则：展示数据 — 最大化数据墨水比">Above all else, show the data — maximum data-ink ratio</div>
         <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#e84393,#fd79a8)">
+      <div class="philosophy-card fade-up" style="--card-color:#e84393">
         <div class="philosophy-num">05</div>
         <div class="philosophy-name">Field.io</div>
         <div class="philosophy-dna" data-en="Generative dynamics — computational aesthetics as art" data-zh="生成动力学 — 计算美学即艺术">Generative dynamics — computational aesthetics as art</div>
         <span class="philosophy-lineage" data-en="Kinetic Poetics" data-zh="动态诗学">Kinetic Poetics</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#fdcb6e,#e17055)">
+      <div class="philosophy-card fade-up" style="--card-color:#e17055">
         <div class="philosophy-num">06</div>
         <div class="philosophy-name">Sagmeister</div>
         <div class="philosophy-dna" data-en="Emotional maximalism, rule-breaking artistic expression" data-zh="情感极繁主义，打破规则的艺术表达">Emotional maximalism, rule-breaking artistic expression</div>
         <span class="philosophy-lineage" data-en="Kinetic Poetics" data-zh="动态诗学">Kinetic Poetics</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#2d3436,#000000)">
+      <div class="philosophy-card fade-up" style="--card-color:#2d3436">
         <div class="philosophy-num">07</div>
         <div class="philosophy-name">Build</div>
         <div class="philosophy-dna" data-en="Extreme minimalism — less, but better" data-zh="极致简约 — 少即是多">Extreme minimalism — less, but better</div>
         <span class="philosophy-lineage" data-en="Minimalism" data-zh="极简主义">Minimalism</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#dfe6e9,#b2bec3)">
+      <div class="philosophy-card fade-up" style="--card-color:#b2bec3">
         <div class="philosophy-num">08</div>
         <div class="philosophy-name">Notion</div>
         <div class="philosophy-dna" data-en="Functional minimalism — beautifully organized documents" data-zh="功能极简 — 优雅有序的文档">Functional minimalism — beautifully organized documents</div>
         <span class="philosophy-lineage" data-en="Minimalism" data-zh="极简主义">Minimalism</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#636e72,#2d3436)">
+      <div class="philosophy-card fade-up" style="--card-color:#636e72">
         <div class="philosophy-num">09</div>
         <div class="philosophy-name">Apple</div>
         <div class="philosophy-dna" data-en="Cinematic minimalism — spotlight on one product" data-zh="电影级极简 — 聚焦单一产品">Cinematic minimalism — spotlight on one product</div>
         <span class="philosophy-lineage" data-en="Minimalism" data-zh="极简主义">Minimalism</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#00cec9,#55efc4)">
+      <div class="philosophy-card fade-up" style="--card-color:#00cec9">
         <div class="philosophy-num">10</div>
         <div class="philosophy-name">Instrumental</div>
         <div class="philosophy-dna" data-en="Geometric precision — shapes as both structure and ornament" data-zh="几何精度 — 形状既是结构也是装饰">Geometric precision — shapes as both structure and ornament</div>
         <span class="philosophy-lineage" data-en="Experimental Avant-garde" data-zh="实验先锋">Experimental Avant-garde</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#6c5ce7,#a29bfe)">
+      <div class="philosophy-card fade-up" style="--card-color:#7a6a9a">
         <div class="philosophy-num">11</div>
         <div class="philosophy-name">Olschinsky</div>
         <div class="philosophy-dna" data-en="Digital collage — richness through layered complexity" data-zh="数字拼贴 — 层叠复杂性中的丰富">Digital collage — richness through layered complexity</div>
         <span class="philosophy-lineage" data-en="Experimental Avant-garde" data-zh="实验先锋">Experimental Avant-garde</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#fab1a0,#e17055)">
+      <div class="philosophy-card fade-up" style="--card-color:#e17055">
         <div class="philosophy-num">12</div>
         <div class="philosophy-name">Takram</div>
         <div class="philosophy-dna" data-en="Eastern design thinking — hand-drawn warmth meets precision" data-zh="东方设计思维 — 手绘温度与精确并存">Eastern design thinking — hand-drawn warmth meets precision</div>
         <span class="philosophy-lineage" data-en="Eastern Philosophy" data-zh="东方哲学">Eastern Philosophy</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#f5f5f5,#dfe6e9)">
+      <div class="philosophy-card fade-up" style="--card-color:#dfe6e9">
         <div class="philosophy-num">13</div>
         <div class="philosophy-name">Kenya Hara</div>
         <div class="philosophy-dna" data-en="Emptiness as fullness — the power of not showing" data-zh="空即是满 — 不展示的力量">Emptiness as fullness — the power of not showing</div>
         <span class="philosophy-lineage" data-en="Eastern Philosophy" data-zh="东方哲学">Eastern Philosophy</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:linear-gradient(135deg,#81ecec,#00cec9)">
+      <div class="philosophy-card fade-up" style="--card-color:#00cec9">
         <div class="philosophy-num">14</div>
         <div class="philosophy-name">Fukasawa</div>
         <div class="philosophy-dna" data-en="Without Thought — invisible craftsmanship, effortless design" data-zh="无意识设计 — 看不见的匠心，毫不费力的美">Without Thought — invisible craftsmanship, effortless design</div>
         <span class="philosophy-lineage" data-en="Eastern Philosophy" data-zh="东方哲学">Eastern Philosophy</span>
       </div>
-      <div class="philosophy-card fade-up" style="--card-accent:var(--gradient-1)">
+      <div class="philosophy-card fade-up" style="--card-color:var(--accent)">
         <div class="philosophy-num">+</div>
         <div class="philosophy-name" data-en="Selection Guide" data-zh="智能选型">Selection Guide</div>
         <div class="philosophy-dna" data-en="AI matches the best philosophy based on audience, topic, and context" data-zh="AI 根据受众、主题和场景自动匹配最佳哲学">AI matches the best philosophy based on audience, topic, and context</div>
-        <span class="philosophy-lineage" style="background:rgba(85,239,196,0.1);color:#55efc4;" data-en="Smart Routing" data-zh="智能路由">Smart Routing</span>
+        <span class="philosophy-lineage" style="background:rgba(90,138,106,0.1);color:var(--green);" data-en="Smart Routing" data-zh="智能路由">Smart Routing</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Workflows -->
-<section id="workflows" style="background:var(--bg-secondary);">
+<section id="workflows" style="background:var(--bg-warm);">
   <div class="container">
     <div class="section-header fade-up">
-      <span class="section-label" data-en="Workflows" data-zh="工作流">Workflows</span>
+      <span class="section-label" data-en="🔀 Workflows" data-zh="🔀 工作流">🔀 Workflows</span>
       <h2 class="section-title" data-en="Five Paths, One Destination" data-zh="五条路径，殊途同归">Five Paths, One Destination</h2>
       <p class="section-desc" data-en="AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need." data-zh="AI 分析你的需求，自动路由到最优工作流。只需说出你想要的。">AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need.</p>
     </div>
     <div class="workflows-grid">
       <div class="workflow-card fade-up">
-        <div class="workflow-id">0</div>
+        <div class="workflow-id" style="background:#c96442;">0</div>
         <h3 data-en="Smart Routing" data-zh="智能路由">Smart Routing</h3>
         <p data-en="AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically." data-zh="AI 分析多页需求，为每页规划最优方案，自动路由到最佳工作流。">AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically.</p>
         <div class="workflow-trigger"><span class="trigger-tag" data-en="make a PPT" data-zh="做个PPT">make a PPT</span><span class="trigger-tag" data-en="create a presentation" data-zh="做个演示文稿">create a presentation</span><span class="trigger-tag" data-en="turn this into PPT" data-zh="把这个做成PPT">turn this into PPT</span></div>
       </div>
       <div class="workflow-card fade-up">
-        <div class="workflow-id" style="background:var(--gradient-2);">A</div>
+        <div class="workflow-id" style="background:#d4756b;">A</div>
         <h3 data-en="Create from Scratch" data-zh="从零创作">Create from Scratch</h3>
         <p data-en="SVG vector layout with pixel-perfect control. Full design philosophy support, custom canvas formats, AI image generation." data-zh="SVG 矢量排版，像素级精控。完整设计哲学支持、自定义画布格式、AI 图片生成。">SVG vector layout with pixel-perfect control. Full design philosophy support, custom canvas formats, AI image generation.</p>
         <div class="workflow-trigger"><span class="trigger-tag" data-en="free layout" data-zh="自由排版">free layout</span><span class="trigger-tag" data-en="highly customized" data-zh="高度定制">highly customized</span><span class="trigger-tag" data-en="from scratch" data-zh="从零开始">from scratch</span></div>
       </div>
       <div class="workflow-card fade-up">
-        <div class="workflow-id" style="background:var(--gradient-3);">B</div>
+        <div class="workflow-id" style="background:#5a8a6a;">B</div>
         <h3 data-en="Technical Diagrams" data-zh="技术架构图">Technical Diagrams</h3>
         <p data-en="Architecture diagrams, flowcharts, UML, sequence diagrams, ER diagrams — all as single high-quality technical slides." data-zh="架构图、流程图、UML、时序图、ER 图 — 全部生成为单页高质量技术幻灯片。">Architecture diagrams, flowcharts, UML, sequence diagrams, ER diagrams — all as single high-quality technical slides.</p>
         <div class="workflow-trigger"><span class="trigger-tag" data-en="architecture diagram" data-zh="架构图">architecture diagram</span><span class="trigger-tag" data-en="flowchart" data-zh="流程图">flowchart</span><span class="trigger-tag" data-en="UML" data-zh="UML">UML</span></div>
       </div>
       <div class="workflow-card fade-up">
-        <div class="workflow-id" style="background:linear-gradient(135deg,#fdcb6e,#e17055);">C</div>
+        <div class="workflow-id" style="background:#d4923a;">C</div>
         <h3 data-en="Consulting Templates" data-zh="咨询模板">Consulting Templates</h3>
         <p data-en="40 McKinsey / BCG / Bain grade templates. SWOT, Porter's Five Forces, KPI dashboards, Gantt charts, org charts, and more." data-zh="40 套麦肯锡 / BCG / 贝恩级别模板。SWOT、波特五力、KPI 仪表盘、甘特图、组织架构图等。">40 McKinsey / BCG / Bain grade templates. SWOT, Porter's Five Forces, KPI dashboards, Gantt charts, org charts, and more.</p>
         <div class="workflow-trigger"><span class="trigger-tag" data-en="consulting template" data-zh="咨询模板">consulting template</span><span class="trigger-tag" data-en="KPI dashboard" data-zh="KPI 仪表盘">KPI dashboard</span><span class="trigger-tag" data-en="SWOT analysis" data-zh="SWOT 分析">SWOT analysis</span></div>
       </div>
       <div class="workflow-card fade-up">
-        <div class="workflow-id" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7);">D</div>
+        <div class="workflow-id" style="background:#7a6a9a;">D</div>
         <h3 data-en="Edit Existing PPT" data-zh="编辑已有 PPT">Edit Existing PPT</h3>
         <p data-en="Read existing .pptx files, unpack OOXML, precisely modify content, validate, and repack. Non-destructive editing." data-zh="读取已有 .pptx 文件，解包 OOXML，精确修改内容，校验并重新打包。无损编辑。">Read existing .pptx files, unpack OOXML, precisely modify content, validate, and repack. Non-destructive editing.</p>
         <div class="workflow-trigger"><span class="trigger-tag" data-en="edit PPT" data-zh="编辑PPT">edit PPT</span><span class="trigger-tag" data-en="modify slides" data-zh="修改幻灯片">modify slides</span><span class="trigger-tag" data-en="use this template" data-zh="用这个模板">use this template</span></div>
@@ -296,53 +323,53 @@
 <section id="features">
   <div class="container">
     <div class="section-header center fade-up">
-      <span class="section-label" data-en="Features" data-zh="核心能力">Features</span>
+      <span class="section-label" data-en="⚡ Features" data-zh="⚡ 核心能力">⚡ Features</span>
       <h2 class="section-title" data-en="Everything You Need" data-zh="一切你需要的">Everything You Need</h2>
       <p class="section-desc" data-en="Professional-grade capabilities, zero subscription, fully open source." data-zh="专业级能力，零订阅，完全开源。">Professional-grade capabilities, zero subscription, fully open source.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(108,92,231,0.15);">📊</div>
+        <div class="feature-icon">📊</div>
         <h3 data-en="119 Chart Types" data-zh="119 种图表类型">119 Chart Types</h3>
         <p data-en="From basic bar charts to Sankey diagrams, treemaps, waterfall charts, and KPI dashboards. All rendered as native vector shapes." data-zh="从基础柱状图到桑基图、矩阵树图、瀑布图和 KPI 仪表盘。全部渲染为原生矢量图形。">From basic bar charts to Sankey diagrams, treemaps, waterfall charts, and KPI dashboards. All rendered as native vector shapes.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(253,121,168,0.15);">🏛️</div>
+        <div class="feature-icon">🏛️</div>
         <h3 data-en="40 Consulting Templates" data-zh="40 套咨询模板">40 Consulting Templates</h3>
         <p data-en="McKinsey / BCG / Bain grade. SWOT, Porter's Five Forces, BCG Matrix, Value Chain, org charts, talent 9-box, and more." data-zh="麦肯锡 / BCG / 贝恩级别。SWOT、波特五力、BCG 矩阵、价值链、组织架构图、人才九宫格等。">McKinsey / BCG / Bain grade. SWOT, Porter's Five Forces, BCG Matrix, Value Chain, org charts, talent 9-box, and more.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(85,239,196,0.15);">🖼️</div>
+        <div class="feature-icon">🖼️</div>
         <h3 data-en="6,732 Vector Icons" data-zh="6,732 个矢量图标">6,732 Vector Icons</h3>
         <p data-en="All SVG format, lossless scaling. Covers tech, finance, medical, education, retail, and more. Built-in, no internet needed." data-zh="全部 SVG 格式，无损缩放。覆盖科技、金融、医疗、教育、零售等领域。内置离线使用。">All SVG format, lossless scaling. Covers tech, finance, medical, education, retail, and more. Built-in, no internet needed.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(116,185,255,0.15);">🔄</div>
+        <div class="feature-icon">🔄</div>
         <h3 data-en="Document to PPT" data-zh="文档转 PPT">Document to PPT</h3>
         <p data-en="Convert PDF, DOCX, Markdown, HTML, and EPUB into polished presentations. Preserves structure, auto-matches layouts." data-zh="将 PDF、DOCX、Markdown、HTML 和 EPUB 转为精美演示文稿。保留结构，自动匹配版式。">Convert PDF, DOCX, Markdown, HTML, and EPUB into polished presentations. Preserves structure, auto-matches layouts.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(253,203,110,0.15);">🤖</div>
+        <div class="feature-icon">🤖</div>
         <h3 data-en="AI Image Generation" data-zh="AI 图片生成">AI Image Generation</h3>
         <p data-en="Built-in OpenAI DALL-E 3 and Google Gemini Imagen support. Auto-generates images based on slide themes. Optional — works without API key." data-zh="内置 OpenAI DALL-E 3 和 Google Gemini Imagen。根据幻灯片主题自动生成图片。可选功能，无 API Key 也能用。">Built-in OpenAI DALL-E 3 and Google Gemini Imagen support. Auto-generates images based on slide themes. Optional — works without API key.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(162,155,254,0.15);">✏️</div>
+        <div class="feature-icon">✏️</div>
         <h3 data-en="Truly Editable" data-zh="真正可编辑">Truly Editable</h3>
         <p data-en="Real DrawingML shapes, not images. Every element can be clicked and edited in PowerPoint, Keynote, WPS, or Google Slides." data-zh="真正的 DrawingML 矢量图形，不是图片。每个元素都能在 PowerPoint、Keynote、WPS 或 Google Slides 中点击编辑。">Real DrawingML shapes, not images. Every element can be clicked and edited in PowerPoint, Keynote, WPS, or Google Slides.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(0,206,201,0.15);">📏</div>
+        <div class="feature-icon">📏</div>
         <h3 data-en="8 Canvas Formats" data-zh="8 种画布格式">8 Canvas Formats</h3>
         <p data-en="16:9, 4:3, 9:16 portrait, 1:1 square, A4 portrait/landscape, LinkedIn banner, and any custom pixel dimensions." data-zh="16:9、4:3、9:16 竖版、1:1 方形、A4 纵横版、LinkedIn 横幅，以及任意自定义像素尺寸。">16:9, 4:3, 9:16 portrait, 1:1 square, A4 portrait/landscape, LinkedIn banner, and any custom pixel dimensions.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(255,107,107,0.15);">🔒</div>
+        <div class="feature-icon">🔒</div>
         <h3 data-en="100% Local &amp; Private" data-zh="100% 本地 &amp; 隐私">100% Local &amp; Private</h3>
         <p data-en="All processing happens on your machine. No telemetry, no data collection. Only AI images call external APIs (can be disabled)." data-zh="所有处理都在本地完成。无遥测，无数据收集。仅 AI 图片生成调用外部 API（可关闭）。">All processing happens on your machine. No telemetry, no data collection. Only AI images call external APIs (can be disabled).</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon" style="background:rgba(129,236,236,0.15);">🆓</div>
+        <div class="feature-icon">🆓</div>
         <h3 data-en="Free &amp; Open Source" data-zh="免费 &amp; 开源">Free &amp; Open Source</h3>
         <p data-en="MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in." data-zh="MIT 协议。个人和商业项目均可自由使用。无订阅、无隐藏费用、无厂商锁定。">MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in.</p>
       </div>
@@ -351,10 +378,10 @@
 </section>
 
 <!-- Comparison -->
-<section id="comparison" style="background:var(--bg-secondary);">
+<section id="comparison" style="background:var(--bg-warm);">
   <div class="container">
     <div class="section-header center fade-up">
-      <span class="section-label" data-en="Comparison" data-zh="竞品对比">Comparison</span>
+      <span class="section-label" data-en="📊 Comparison" data-zh="📊 竞品对比">📊 Comparison</span>
       <h2 class="section-title" data-en="Why mu-ippt?" data-zh="为什么选 mu-ippt？">Why mu-ippt?</h2>
       <p class="section-desc" data-en="See how mu-ippt compares to popular alternatives." data-zh="看看 mu-ippt 与主流方案的对比。">See how mu-ippt compares to popular alternatives.</p>
     </div>
@@ -385,7 +412,7 @@
 <section id="quickstart">
   <div class="container">
     <div class="section-header center fade-up">
-      <span class="section-label" data-en="Quick Start" data-zh="快速开始">Quick Start</span>
+      <span class="section-label" data-en="🚀 Quick Start" data-zh="🚀 快速开始">🚀 Quick Start</span>
       <h2 class="section-title" data-en="Up and Running in 3 Steps" data-zh="3 步即刻上手">Up and Running in 3 Steps</h2>
     </div>
     <div class="quickstart fade-up">
@@ -418,7 +445,7 @@
 <!-- CTA -->
 <section class="cta-section">
   <div class="container">
-    <h2 data-en="Not <em>&quot;AI helps you pick a template&quot;</em><br><span class='gradient'>AI creates PPT like a designer.</span>" data-zh="不是「AI 帮你选模板」<br><span class='gradient'>而是 AI 像设计师一样创作 PPT。</span>">Not <em>"AI helps you pick a template"</em><br><span class="gradient">AI creates PPT like a designer.</span></h2>
+    <h2 data-en="Not <em>&quot;AI helps you pick a template&quot;</em><br><span class='accent-text'>AI creates PPT like a designer.</span>" data-zh="不是「AI 帮你选模板」<br><span class='accent-text'>而是 AI 像设计师一样创作 PPT。</span>">Not <em>"AI helps you pick a template"</em><br><span class="accent-text">AI creates PPT like a designer.</span></h2>
     <p data-en="Free, open source, and yours forever." data-zh="免费、开源，永远属于你。">Free, open source, and yours forever.</p>
     <div class="hero-actions">
       <a href="https://github.com/mupoet/mu-ippt" class="btn btn-primary" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> <span data-en="Star on GitHub" data-zh="去 GitHub 点星">Star on GitHub</span></a>
@@ -438,6 +465,7 @@
       <a href="mailto:muippt@agent.qq.com" data-en="Contact" data-zh="联系我们">Contact</a>
     </div>
     <p class="footer-copy" data-en="Made with ❤️ by <a href=&quot;https://github.com/mupoet&quot;>木先生iPPT</a> · MIT License · 2026" data-zh="由 <a href=&quot;https://github.com/mupoet&quot;>木先生iPPT</a> 用 ❤️ 打造 · MIT 协议 · 2026">Made with ❤️ by <a href="https://github.com/mupoet">木先生iPPT</a> · MIT License · 2026</p>
+    <p class="footer-copy" data-en="©️ 木先生iPPT Works · Further reading: <a href=&quot;https://item.m.jd.com/product/14547345.html&quot;>Illustrated Team Management</a>" data-zh="©️ 木先生iPPT作品 · 扩展阅读：<a href=&quot;https://item.m.jd.com/product/14547345.html&quot;>《图解团队管理》</a>">©️ 木先生iPPT作品 · 扩展阅读：<a href="https://item.m.jd.com/product/14547345.html">《图解团队管理》</a></p>
   </div>
 </footer>
 

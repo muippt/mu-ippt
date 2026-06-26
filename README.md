@@ -191,7 +191,7 @@ Just tell the AI "help me make a PPT" to trigger the workflow.
 
 💡 Signatory author of Tsinghua University Press · 2026 Dangdang Influential Author · AI & Large Model HR specialist at a leading tech company · National Level-1 HR Manager · Level-2 Psychological Counselor · Self-taught designer.
 
-📚 Author of *Erta-style Team Management*. Clients include ByteDance, Tencent, Baidu, China Mobile, SMG, BOE, and more.
+📚 Author of [*Erta-style Team Management*](https://item.m.jd.com/product/14547345.html). Clients include ByteDance, Tencent, Baidu, China Mobile, SMG, BOE, and more.
 
 📧 [muippt@agent.qq.com](mailto:muippt@agent.qq.com) · 🐙 [@mupoet](https://github.com/mupoet)
 

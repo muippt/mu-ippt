@@ -224,7 +224,7 @@ export GEMINI_API_KEY=AIzaXXX
 
 💡 清华大学出版社签约作家 / 2026当当影响力作家 / 某互联网大厂AI大模型业务HR砖家 / 一级人力资源管理师 / 二级心理咨询师 / 野生设计师。
 
-📚 著有《图解团队管理》，服务客户有字节、腾讯、百度、移动、SMG、BOE……
+📚 著有[《图解团队管理》](https://item.m.jd.com/product/14547345.html)，服务客户有字节、腾讯、百度、移动、SMG、BOE……
 
 📧 [muippt@agent.qq.com](mailto:muippt@agent.qq.com) · 🐙 [@mupoet](https://github.com/mupoet)
 

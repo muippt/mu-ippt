@@ -6,7 +6,7 @@
 
 1. 编写 vega-lite JSON（90% 场景）或 vega JSON（雷达/词云）
 2. 用 Markdown 代码块包裹（` ```vega-lite ` 或 ` ```vega `）
-3. 写入 `/tmp/vega_{timestamp}.md`，agent-browser 打开 Markdown Viewer 渲染
+3. 写入 `/tmp/vega_{timestamp}.md`，browser automation tool 打开 Markdown Viewer 渲染
 4. 截图 PNG → 嵌入幻灯片（同 infographic 引擎流程）
 
 ## 语法要点

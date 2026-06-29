@@ -9,7 +9,7 @@ visibility: public
 
 > **路径初始化**：本文件中所有 `${SKILL_DIR}` 均指 Skill 根目录。使用前须先执行：
 > ```bash
-> SKILL_DIR=~/.openclaw/skills/mu-ippt
+> SKILL_DIR=<AGENT_HOME>/skills/mu-ippt
 > ```
 
 ---
@@ -725,7 +725,7 @@ ls ${SKILL_DIR}/templates/icons/chunk/ | grep chart
 
 ## 已知局限
 
-- visual_verify 依赖 LibreOffice，容器环境需预装（降级：agent-browser 截图验证）
+- visual_verify 依赖 LibreOffice，容器环境需预装（降级：browser automation tool 截图验证）
 - AI 图片生成需配置对应后端 API Key（gemini/openai/qwen 等11种后端可选）
 - 超大 PPTX（>50页）可能超时，建议分批生成
 - SVG 技术图表复杂度受 python-pptx 限制
@@ -736,7 +736,7 @@ ls ${SKILL_DIR}/templates/icons/chunk/ | grep chart
 
 | 失败点 | 降级方案 |
 |--------|---------|
-| visual_verify.py（LibreOffice不可用） | agent-browser 截图验证 |
+| visual_verify.py（LibreOffice不可用） | browser automation tool 截图验证 |
 | AI 图片生成失败 | 纯色占位图+提示用户替换 |
 | source_to_md 转换失败 | 手动粘贴关键内容 |
 | SVG 质量检查失败 | 肉眼检查+用户确认 |

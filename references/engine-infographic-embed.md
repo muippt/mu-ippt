@@ -49,14 +49,14 @@
 
 ### Step 3：渲染截图
 
-使用 agent-browser 访问 Markdown Viewer 渲染并截图：
+使用 browser automation tool 访问 Markdown Viewer 渲染并截图：
 
 ```bash
 # 构造渲染 URL（infographic 模板通过 ?template= 参数指定）
 RENDER_URL="https://your-infographic-renderer.example.com/infographic?template=funnel&data=<urlencode(json)>"
 
 # 截图保存
-agent-browser screenshot "$RENDER_URL" --output /tmp/infographic-<page>.png --width 1200 --height 800
+browser automation tool screenshot "$RENDER_URL" --output /tmp/infographic-<page>.png --width 1200 --height 800
 ```
 
 ### Step 4：嵌入 SVG 页面
@@ -79,7 +79,7 @@ agent-browser screenshot "$RENDER_URL" --output /tmp/infographic-<page>.png --wi
 
 ## 注意事项
 
-- infographic 渲染需要 agent-browser（有网络依赖），超时重试最多 2 次
+- infographic 渲染需要 browser automation tool（有网络依赖），超时重试最多 2 次
 - 截图分辨率 ≥ 1200px 宽，否则文字模糊
 - 每页只嵌入一张 infographic，不要多图堆砌
 - 嵌入后该页不再手绘其他 SVG 元素（防止风格冲突）

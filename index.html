@@ -1,294 +1,456 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mu-ippt</title>
-  <meta name="description" content="AI-powered PPT creation skill that designs presentations from scratch like a professional designer.">
+  <title>mu-ippt — AI PPT Intelligent Creation Skill</title>
+  <meta name="description" content="One Skill for all PPT scenarios. 15 Design Philosophies · 119 Chart Types · 40 Consulting Templates · 6,732 Vector Icons. Free &amp; Open Source.">
+  <meta property="og:title" content="mu-ippt — AI PPT Intelligent Creation Skill">
+  <meta property="og:description" content="Not 'AI helps you pick a template' — it's 'AI creates PPT for you from scratch like a designer.'">
+  <meta property="og:url" content="https://mupoet.github.io/mu-ippt/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   <style>
-    /* ============================================
-       Style Preset: playful — 教育/社区项目
-       mu-ippt 是创意型 PPT 工具，playful 最匹配
-       ============================================ */
-    :root {
-      --color-primary: #8b5cf6;
-      --color-primary-hover: #7c3aed;
-      --color-bg: #fefce8;
-      --color-bg-alt: #fef9c3;
-      --color-text: #1c1917;
-      --color-text-muted: #78716c;
-      --color-border: #fde68a;
-      --font-heading: 'Nunito', 'Rounded Mplus 1c', system-ui, sans-serif;
-      --font-body: 'Nunito', system-ui, sans-serif;
-      --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
-      --radius-md: 1rem;
-      --shadow-md: 0 4px 14px rgb(139 92 246 / 0.15);
-      --container-max: 1200px;
-      --transition: 150ms ease;
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#faf9f7;--bg-warm:#f5f0eb;--bg-card:#fff;--bg-code:#f7f5f2;
+      --border:#e8e2db;--border-light:#f0ebe5;
+      --text:#2d2a26;--text-secondary:#6b6560;--text-muted:#9e9690;
+      --accent:#c96442;--accent-light:#e8a07a;--accent-bg:rgba(201,100,66,0.06);
+      --green:#5a8a6a;--blue:#5a7a9a;--purple:#7a6a9a;
+      --radius:12px;--radius-sm:8px;
+      --font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC',sans-serif;
+      --font-serif:'Georgia','Noto Serif SC',serif;
+      --font-mono:'SF Mono','Fira Code',monospace;
     }
-
-    [data-theme="dark"] {
-      --color-bg: #1c1917;
-      --color-bg-alt: #292524;
-      --color-text: #fef9c3;
-      --color-text-muted: #a8a29e;
-      --color-border: #44403c;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-body);
-      background: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.6;
-    }
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* --- Nav --- */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid var(--color-border);
-    }
-    nav .logo { font-weight: 700; font-size: 1.25rem; }
-    nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-    nav .nav-links a {
-      color: var(--color-text-muted);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    nav .nav-links a:hover { color: var(--color-text); }
-    .theme-toggle, .lang-toggle {
-      background: none; border: 1px solid var(--color-border);
-      border-radius: var(--radius-md); padding: 0.4rem 0.8rem;
-      cursor: pointer; color: var(--color-text); font-size: 0.875rem;
-    }
-
-    /* --- Hero --- */
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem;
-      background: var(--color-bg-alt);
-    }
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      border-radius: var(--radius-md);
-      margin-bottom: 2rem;
-    }
-    .hero h1 {
-      font-family: var(--font-heading);
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero .tagline {
-      font-size: 1.25rem;
-      color: var(--color-text-muted);
-      margin-bottom: 2rem;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero .cta {
-      display: inline-block;
-      background: var(--color-primary);
-      color: #fff;
-      padding: 0.75rem 2rem;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      font-weight: 600;
-      transition: background var(--transition);
-    }
-    .hero .cta:hover { background: var(--color-primary-hover); }
-    .hero .stats {
-      margin-top: 2rem;
-      font-size: 0.95rem;
-      color: var(--color-text-muted);
-    }
-
-    /* --- Features Grid --- */
-    .features {
-      padding: 5rem 2rem;
-    }
-    .features h2 {
-      text-align: center;
-      font-family: var(--font-heading);
-      margin-bottom: 3rem;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .feature-card {
-      background: var(--color-bg-alt);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-    }
-    .feature-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .feature-card h3 { margin-bottom: 0.75rem; font-family: var(--font-heading); }
-    .feature-card p { color: var(--color-text-muted); }
-
-    /* --- Quick Start --- */
-    .quickstart {
-      padding: 5rem 2rem;
-      background: var(--color-bg-alt);
-    }
-    .quickstart h2 {
-      text-align: center;
-      font-family: var(--font-heading);
-      margin-bottom: 2rem;
-    }
-    .quickstart pre {
-      background: #1e293b;
-      color: #e2e8f0;
-      padding: 1.5rem;
-      border-radius: var(--radius-md);
-      overflow-x: auto;
-      font-family: var(--font-mono);
-      max-width: 720px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      font-size: 0.875rem;
-    }
-    footer a {
-      color: var(--color-text-muted);
-      text-decoration: underline;
-      transition: color var(--transition);
-    }
-    footer a:hover { color: var(--color-text); }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none;transition:color .25s}a:hover{color:var(--accent-light)}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    /* Nav */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,247,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-light);transition:background .25s}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+    .nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{color:var(--text-secondary);font-size:.875rem;font-weight:500;transition:color .25s}.nav-links a:hover{color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:12px}
+    .lang-switch{display:inline-flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;font-size:.8rem;cursor:pointer;user-select:none}
+    .lang-switch span{padding:6px 12px;transition:all .25s;color:var(--text-muted)}
+    .lang-switch span.active{background:var(--accent);color:#fff}
+    .lang-switch span:hover:not(.active){color:var(--text);background:var(--bg-warm)}
+    .nav-cta{padding:8px 20px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:600;background:var(--accent);color:#fff;transition:all .25s}
+    .nav-cta:hover{background:var(--accent-light);color:#fff;transform:translateY(-1px)}
+    /* Hero */
+    .hero{position:relative;padding:160px 0 120px;text-align:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:24px;background:var(--accent-bg);border:1px solid var(--border);font-size:.8rem;color:var(--accent);font-weight:500;margin-bottom:32px}
+    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero h1{font-family:var(--font-serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px;color:var(--text)}
+    .hero h1 .accent-text{color:var(--accent)}
+    .hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-secondary);max-width:640px;margin:0 auto 48px;line-height:1.7}
+    .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius);font-size:1rem;font-weight:600;transition:all .25s;cursor:pointer;border:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);color:#fff;box-shadow:0 4px 16px rgba(201,100,66,0.15)}
+    .btn-secondary{background:var(--bg-card);color:var(--text);border:1px solid var(--border)}
+    .btn-secondary:hover{border-color:var(--accent);transform:translateY(-2px);color:var(--accent);box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin:80px auto 0;max-width:960px;border:1px solid var(--border)}
+    .stat{background:var(--bg-card);padding:32px 16px;text-align:center;transition:background .25s}.stat:hover{background:var(--bg-warm)}
+    .stat-num{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--accent);line-height:1.2}
+    .stat-label{font-size:.75rem;color:var(--text-muted);margin-top:6px;letter-spacing:.08em}
+    /* Sections */
+    section{padding:100px 0}
+    .section-label{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:16px}
+    .section-title{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:16px;color:var(--text)}
+    .section-desc{font-size:1.1rem;color:var(--text-secondary);max-width:600px;line-height:1.7}
+    .section-header{margin-bottom:64px}.section-header.center{text-align:center}.section-header.center .section-desc{margin:0 auto}
+    /* Philosophy Cards */
+    .philosophies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .philosophy-card{padding:28px 24px;border-radius:var(--radius-sm);background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--card-color,var(--accent));transition:all .25s}
+    .philosophy-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06);border-color:var(--border)}
+    .philosophy-card:hover{border-left-color:var(--card-color,var(--accent))}
+    .philosophy-num{font-size:.7rem;color:var(--text-muted);font-weight:600;letter-spacing:.1em;margin-bottom:12px}
+    .philosophy-name{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .philosophy-dna{font-size:.8rem;color:var(--text-secondary);line-height:1.5}
+    .philosophy-lineage{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:4px;font-size:.65rem;font-weight:600;letter-spacing:.06em;background:var(--accent-bg);color:var(--accent)}
+    /* Workflow Cards */
+    .workflows-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+    .workflow-card{padding:32px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all .25s}
+    .workflow-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+    .workflow-id{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;color:#fff;font-size:.9rem;font-weight:700;margin-bottom:16px}
+    .workflow-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .workflow-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.6}
+    .workflow-trigger{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+    .trigger-tag{padding:3px 10px;border-radius:4px;font-size:.7rem;background:var(--bg-warm);color:var(--text-muted);border:1px solid var(--border-light)}
+    /* Feature Cards */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature-card{padding:36px 28px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all .25s}
+    .feature-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+    .feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;background:var(--bg-warm)}
+    .feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .feature-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.6}
+    /* Comparison Table */
+    .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+    .comparison-table th,.comparison-table td{padding:16px 20px;text-align:left;font-size:.9rem;border-bottom:1px solid var(--border-light)}
+    .comparison-table thead th{background:var(--bg-card);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary)}
+    .comparison-table thead th:nth-child(2){color:var(--accent)}
+    .comparison-table tbody tr{background:var(--bg-card);transition:background .25s}.comparison-table tbody tr:hover{background:var(--bg-warm)}
+    .comparison-table tbody tr:last-child td{border-bottom:none}
+    .comparison-table td:first-child{font-weight:600;color:var(--text)}.comparison-table td:nth-child(2){color:var(--accent);font-weight:600}
+    .check{color:var(--green);font-weight:700}.cross{color:var(--text-muted)}
+    .comparison-wrapper{overflow-x:auto}
+    /* CTA */
+    .cta-section{text-align:center;padding:120px 0}
+    .cta-section h2{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px;letter-spacing:-.02em;color:var(--text);line-height:1.3}
+    .cta-section h2 .accent-text{color:var(--accent)}
+    .cta-section h2 em{font-style:italic;color:var(--text-muted)}
+    .cta-section p{color:var(--text-secondary);font-size:1.1rem;margin-bottom:40px}
+    .cta-section .hero-actions{justify-content:center}
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:48px 0;text-align:center;background:var(--bg-warm)}
+    .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:20px;flex-wrap:wrap}
+    .footer-links a{color:var(--text-muted);font-size:.85rem}.footer-links a:hover{color:var(--accent)}
+    .footer-copy{font-size:.8rem;color:var(--text-muted);line-height:1.8}
+    .footer-copy a{color:var(--text-secondary)}.footer-copy a:hover{color:var(--accent)}
+    .footer-copy+.footer-copy{margin-top:4px}
+    /* Responsive */
+    @media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.features-grid{grid-template-columns:repeat(2,1fr)}.workflows-grid{grid-template-columns:1fr}.nav-links{display:none}}
+    @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.hero{padding:120px 0 80px}section{padding:64px 0}}
+    /* Scroll Animation */
+    .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <span class="logo">mu-ippt</span>
-    <div class="nav-links">
-      <a href="#features" data-en="Features" data-zh="功能特性">Features</a>
-      <a href="#quickstart" data-en="Quick Start" data-zh="快速开始">Quick Start</a>
-      <a href="https://github.com/mupoet/mu-ippt" data-en="GitHub" data-zh="GitHub">GitHub</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
-      <button class="lang-toggle" onclick="toggleLang()">中/EN</button>
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">🎨 <span>mu-ippt</span></div>
+    <ul class="nav-links">
+      <li><a href="#philosophies" data-en="Design Philosophies" data-zh="设计哲学">Design Philosophies</a></li>
+      <li><a href="#workflows" data-en="Workflows" data-zh="工作流">Workflows</a></li>
+      <li><a href="#features" data-en="Features" data-zh="核心能力">Features</a></li>
+      <li><a href="#comparison" data-en="Compare" data-zh="竞品对比">Compare</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switch" id="langSwitch">
+        <span data-lang="en" class="active">EN</span>
+        <span data-lang="zh">中文</span>
+      </div>
+      <a href="https://github.com/mupoet/mu-ippt" class="nav-cta" target="_blank">GitHub →</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <img src="assets/default-banner.png" alt="mu-ippt Banner">
-      <h1 data-en="mu-ippt" data-zh="mu-ippt">mu-ippt</h1>
-      <p class="tagline" data-en="AI-powered PPT creation — designs presentations from scratch like a professional designer, so you don't need to be one." data-zh="AI 驱动的 PPT 智能创作——像设计师一样从零为你创作演示文稿，让没有设计基础的人也能做出专业幻灯片。">AI-powered PPT creation — designs presentations from scratch like a professional designer, so you don't need to be one.</p>
-      <a class="cta" href="#quickstart" data-en="Get Started" data-zh="立即开始">Get Started</a>
-      <p class="stats" data-en="🎨 15 Design Philosophies · 📊 119 Chart Types · 🏛️ 40 Consulting Templates · 🖼️ 6,732 Icons" data-zh="🎨 15 种设计哲学 · 📊 119 种图表 · 🏛️ 40 个咨询模板 · 🖼️ 6,732 个图标">🎨 15 Design Philosophies · 📊 119 Chart Types · 🏛️ 40 Consulting Templates · 🖼️ 6,732 Icons</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> <span data-en="✨ Open Source · MIT License · Free Forever" data-zh="✨ 开源 · MIT 协议 · 永久免费">✨ Open Source · MIT License · Free Forever</span></div>
+    <h1 data-en="AI Creates PPT<br><span class='accent-text'>Like a Designer</span> 🎯" data-zh="AI 像设计师一样<br><span class='accent-text'>创作 PPT</span> 🎯">AI Creates PPT<br><span class="accent-text">Like a Designer</span> 🎯</h1>
+    <p class="hero-sub" data-en="One Skill for all PPT scenarios — create from scratch, technical diagrams, consulting templates, edit existing files. 100% local, 100% editable, zero subscription." data-zh="一个 Skill 覆盖所有 PPT 场景 — 从零创作、技术架构图、咨询模板、编辑已有文件。100% 本地运行，100% 可编辑，零订阅费用。">One Skill for all PPT scenarios — create from scratch, technical diagrams, consulting templates, edit existing files. 100% local, 100% editable, zero subscription.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/mupoet/mu-ippt" class="btn btn-primary" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> <span data-en="Get Started" data-zh="立即使用">Get Started</span></a>
+      <a href="./examples/design-philosophies/muippt-design-philosophies_202606.pptx" class="btn btn-secondary" download><span data-en="↓ Download Example PPTX" data-zh="↓ 下载示例 PPTX">↓ Download Example PPTX</span></a>
     </div>
-  </section>
+    <div class="stats fade-up">
+      <div class="stat"><div class="stat-num">15</div><div class="stat-label" data-en="🎨 Design Philosophies" data-zh="🎨 设计哲学">🎨 Design Philosophies</div></div>
+      <div class="stat"><div class="stat-num">119</div><div class="stat-label" data-en="📊 Chart Types" data-zh="📊 图表类型">📊 Chart Types</div></div>
+      <div class="stat"><div class="stat-num">40</div><div class="stat-label" data-en="🏛️ Consulting Templates" data-zh="🏛️ 咨询模板">🏛️ Consulting Templates</div></div>
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label" data-en="📐 Layout Templates" data-zh="📐 版式模板">📐 Layout Templates</div></div>
+      <div class="stat"><div class="stat-num">6,732</div><div class="stat-label" data-en="🖼️ Vector Icons" data-zh="🖼️ 矢量图标">🖼️ Vector Icons</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label" data-en="📏 Canvas Formats" data-zh="📏 画布格式">📏 Canvas Formats</div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- Features -->
-  <section class="features" id="features">
-    <div class="container">
-      <h2 data-en="Why mu-ippt?" data-zh="为什么选择 mu-ippt？">Why mu-ippt?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="icon">🎨</div>
-          <h3 data-en="15 Design Philosophies" data-zh="15 种设计哲学流派">15 Design Philosophies</h3>
-          <p data-en="AI recommends the best visual style — Pentagram, Fathom, Ive, Rams, Zaha, Vignelli and more. Not picking templates, but designing with intent." data-zh="AI 智能推荐最佳视觉风格——Pentagram、Fathom、Ive、Rams、Zaha、Vignelli 等。不是选模板，而是有意识地设计。">AI recommends the best visual style — Pentagram, Fathom, Ive, Rams, Zaha, Vignelli and more. Not picking templates, but designing with intent.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">📊</div>
-          <h3 data-en="119 Chart Types" data-zh="119 种图表类型">119 Chart Types</h3>
-          <p data-en="From bar charts to Sankey diagrams, from architecture diagrams to UML — every visualization you need, built in." data-zh="从柱状图到桑基图，从架构图到 UML——你需要的所有可视化，全部内置。">From bar charts to Sankey diagrams, from architecture diagrams to UML — every visualization you need, built in.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">🏛️</div>
-          <h3 data-en="40 Consulting Templates" data-zh="40 个咨询级模板">40 Consulting Templates</h3>
-          <p data-en="McKinsey / BCG / Bain level: SWOT, Porter's Five Forces, KPI Dashboard, Gantt Timeline, Org Chart, and more." data-zh="对标 McKinsey / BCG / Bain：SWOT、波特五力、KPI 仪表盘、甘特时间线、组织架构图等。">McKinsey / BCG / Bain level: SWOT, Porter's Five Forces, KPI Dashboard, Gantt Timeline, Org Chart, and more.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">🔒</div>
-          <h3 data-en="100% Local & Free" data-zh="100% 本地运行，完全免费">100% Local & Free</h3>
-          <p data-en="All processing on your machine. No cloud, no subscription, no telemetry. MIT licensed, truly open source." data-zh="所有处理在本机完成。无云端、无订阅、无遥测。MIT 开源协议，真正的开源。">All processing on your machine. No cloud, no subscription, no telemetry. MIT licensed, truly open source.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">🔄</div>
-          <h3 data-en="5 Format Conversion" data-zh="5 种格式转 PPT">5 Format Conversion</h3>
-          <p data-en="PDF, DOCX, Markdown, HTML, EPUB → PPT. Intelligent content splitting with auto layout matching." data-zh="PDF、DOCX、Markdown、HTML、EPUB → PPT。智能内容拆分，自动匹配布局。">PDF, DOCX, Markdown, HTML, EPUB → PPT. Intelligent content splitting with auto layout matching.</p>
-        </div>
+<!-- Design Philosophies -->
+<section id="philosophies">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label" data-en="🎨 Design Philosophies" data-zh="🎨 设计哲学">🎨 Design Philosophies</span>
+      <h2 class="section-title" data-en="15 Schools of Visual Thinking 🖌️" data-zh="15 大视觉思维流派 🖌️">15 Schools of Visual Thinking 🖌️</h2>
+      <p class="section-desc" data-en="Not &quot;pick a template&quot; — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic." data-zh="不是「选模板」— AI 根据主题、受众和场景自动推荐最佳视觉风格。每种哲学都有独特的视觉基因、色彩令牌和排版逻辑。">Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic.</p>
+    </div>
+    <div class="philosophies-grid">
+      <div class="philosophy-card fade-up" style="--card-color:#636e72">
+        <div class="philosophy-num">01</div>
+        <div class="philosophy-name">Pentagram</div>
+        <div class="philosophy-dna" data-en="Minimalist black &amp; white, Swiss-style information-first" data-zh="极简黑白，瑞士风格信息优先">Minimalist black &amp; white, Swiss-style information-first</div>
+        <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#0984e3">
+        <div class="philosophy-num">02</div>
+        <div class="philosophy-name">Fathom</div>
+        <div class="philosophy-dna" data-en="Data storytelling, letting numbers speak for themselves" data-zh="数据叙事，让数字自己说话">Data storytelling, letting numbers speak for themselves</div>
+        <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#d63031">
+        <div class="philosophy-num">03</div>
+        <div class="philosophy-name">Müller-Brockmann</div>
+        <div class="philosophy-dna" data-en="Mathematical beauty from the father of grid systems" data-zh="网格系统之父的数学之美">Mathematical beauty from the father of grid systems</div>
+        <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#95a5a6">
+        <div class="philosophy-num">04</div>
+        <div class="philosophy-name">Tufte</div>
+        <div class="philosophy-dna" data-en="Above all else, show the data — maximum data-ink ratio" data-zh="首要原则：展示数据 — 最大化数据墨水比">Above all else, show the data — maximum data-ink ratio</div>
+        <span class="philosophy-lineage" data-en="Information Architecture" data-zh="信息架构">Information Architecture</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#e84393">
+        <div class="philosophy-num">05</div>
+        <div class="philosophy-name">Field.io</div>
+        <div class="philosophy-dna" data-en="Generative dynamics — computational aesthetics as art" data-zh="生成动力学 — 计算美学即艺术">Generative dynamics — computational aesthetics as art</div>
+        <span class="philosophy-lineage" data-en="Kinetic Poetics" data-zh="动态诗学">Kinetic Poetics</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#e17055">
+        <div class="philosophy-num">06</div>
+        <div class="philosophy-name">Sagmeister</div>
+        <div class="philosophy-dna" data-en="Emotional maximalism, rule-breaking artistic expression" data-zh="情感极繁主义，打破规则的艺术表达">Emotional maximalism, rule-breaking artistic expression</div>
+        <span class="philosophy-lineage" data-en="Kinetic Poetics" data-zh="动态诗学">Kinetic Poetics</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#2d3436">
+        <div class="philosophy-num">07</div>
+        <div class="philosophy-name">Build</div>
+        <div class="philosophy-dna" data-en="Extreme minimalism — less, but better" data-zh="极致简约 — 少即是多">Extreme minimalism — less, but better</div>
+        <span class="philosophy-lineage" data-en="Minimalism" data-zh="极简主义">Minimalism</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#b2bec3">
+        <div class="philosophy-num">08</div>
+        <div class="philosophy-name">Notion</div>
+        <div class="philosophy-dna" data-en="Functional minimalism — beautifully organized documents" data-zh="功能极简 — 优雅有序的文档">Functional minimalism — beautifully organized documents</div>
+        <span class="philosophy-lineage" data-en="Minimalism" data-zh="极简主义">Minimalism</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#636e72">
+        <div class="philosophy-num">09</div>
+        <div class="philosophy-name">Apple</div>
+        <div class="philosophy-dna" data-en="Cinematic minimalism — spotlight on one product" data-zh="电影级极简 — 聚焦单一产品">Cinematic minimalism — spotlight on one product</div>
+        <span class="philosophy-lineage" data-en="Minimalism" data-zh="极简主义">Minimalism</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#00cec9">
+        <div class="philosophy-num">10</div>
+        <div class="philosophy-name">Instrumental</div>
+        <div class="philosophy-dna" data-en="Geometric precision — shapes as both structure and ornament" data-zh="几何精度 — 形状既是结构也是装饰">Geometric precision — shapes as both structure and ornament</div>
+        <span class="philosophy-lineage" data-en="Experimental Avant-garde" data-zh="实验先锋">Experimental Avant-garde</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#7a6a9a">
+        <div class="philosophy-num">11</div>
+        <div class="philosophy-name">Olschinsky</div>
+        <div class="philosophy-dna" data-en="Digital collage — richness through layered complexity" data-zh="数字拼贴 — 层叠复杂性中的丰富">Digital collage — richness through layered complexity</div>
+        <span class="philosophy-lineage" data-en="Experimental Avant-garde" data-zh="实验先锋">Experimental Avant-garde</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#e17055">
+        <div class="philosophy-num">12</div>
+        <div class="philosophy-name">Takram</div>
+        <div class="philosophy-dna" data-en="Eastern design thinking — hand-drawn warmth meets precision" data-zh="东方设计思维 — 手绘温度与精确并存">Eastern design thinking — hand-drawn warmth meets precision</div>
+        <span class="philosophy-lineage" data-en="Eastern Philosophy" data-zh="东方哲学">Eastern Philosophy</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#dfe6e9">
+        <div class="philosophy-num">13</div>
+        <div class="philosophy-name">Kenya Hara</div>
+        <div class="philosophy-dna" data-en="Emptiness as fullness — the power of not showing" data-zh="空即是满 — 不展示的力量">Emptiness as fullness — the power of not showing</div>
+        <span class="philosophy-lineage" data-en="Eastern Philosophy" data-zh="东方哲学">Eastern Philosophy</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:#00cec9">
+        <div class="philosophy-num">14</div>
+        <div class="philosophy-name">Fukasawa</div>
+        <div class="philosophy-dna" data-en="Without Thought — invisible craftsmanship, effortless design" data-zh="无意识设计 — 看不见的匠心，毫不费力的美">Without Thought — invisible craftsmanship, effortless design</div>
+        <span class="philosophy-lineage" data-en="Eastern Philosophy" data-zh="东方哲学">Eastern Philosophy</span>
+      </div>
+      <div class="philosophy-card fade-up" style="--card-color:var(--accent)">
+        <div class="philosophy-num">+</div>
+        <div class="philosophy-name" data-en="Selection Guide" data-zh="智能选型">Selection Guide</div>
+        <div class="philosophy-dna" data-en="AI matches the best philosophy based on audience, topic, and context" data-zh="AI 根据受众、主题和场景自动匹配最佳哲学">AI matches the best philosophy based on audience, topic, and context</div>
+        <span class="philosophy-lineage" style="background:rgba(90,138,106,0.1);color:var(--green);" data-en="Smart Routing" data-zh="智能路由">Smart Routing</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Quick Start -->
-  <section class="quickstart" id="quickstart">
-    <div class="container">
-      <h2 data-en="Quick Start" data-zh="快速开始">Quick Start</h2>
-      <pre><code># Step 1: Install
-pip install -r requirements.txt
-
-# Step 2: (Optional) AI Image Generation
-export OPENAI_API_KEY=sk-xxx
-
-# Step 3: Tell your AI agent
-"Help me make a PPT"</code></pre>
+<!-- Workflows -->
+<section id="workflows" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label" data-en="🔀 Workflows" data-zh="🔀 工作流">🔀 Workflows</span>
+      <h2 class="section-title" data-en="Five Paths, One Destination 🛤️" data-zh="五条路径，殊途同归 🛤️">Five Paths, One Destination 🛤️</h2>
+      <p class="section-desc" data-en="AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need." data-zh="AI 分析你的需求，自动路由到最优工作流。只需说出你想要的。">AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need.</p>
     </div>
-  </section>
+    <div class="workflows-grid">
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background:#c96442;">0</div>
+        <h3 data-en="🧭 Smart Routing" data-zh="🧭 智能路由">🧭 Smart Routing</h3>
+        <p data-en="AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically." data-zh="AI 分析多页需求，为每页规划最优方案，自动路由到最佳工作流。">AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically.</p>
+        <div class="workflow-trigger"><span class="trigger-tag" data-en="make a PPT" data-zh="做个PPT">make a PPT</span><span class="trigger-tag" data-en="create a presentation" data-zh="做个演示文稿">create a presentation</span><span class="trigger-tag" data-en="turn this into PPT" data-zh="把这个做成PPT">turn this into PPT</span></div>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background:#d4756b;">A</div>
+        <h3 data-en="✨ Create from Scratch" data-zh="✨ 从零创作">✨ Create from Scratch</h3>
+        <p data-en="SVG vector layout with pixel-perfect control. Full design philosophy support, custom canvas formats, AI image generation." data-zh="SVG 矢量排版，像素级精控。完整设计哲学支持、自定义画布格式、AI 图片生成。">SVG vector layout with pixel-perfect control. Full design philosophy support, custom canvas formats, AI image generation.</p>
+        <div class="workflow-trigger"><span class="trigger-tag" data-en="free layout" data-zh="自由排版">free layout</span><span class="trigger-tag" data-en="highly customized" data-zh="高度定制">highly customized</span><span class="trigger-tag" data-en="from scratch" data-zh="从零开始">from scratch</span></div>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background:#5a8a6a;">B</div>
+        <h3 data-en="🏗️ Technical Diagrams" data-zh="🏗️ 技术架构图">🏗️ Technical Diagrams</h3>
+        <p data-en="Architecture diagrams, flowcharts, UML, sequence diagrams, ER diagrams — all as single high-quality technical slides." data-zh="架构图、流程图、UML、时序图、ER 图 — 全部生成为单页高质量技术幻灯片。">Architecture diagrams, flowcharts, UML, sequence diagrams, ER diagrams — all as single high-quality technical slides.</p>
+        <div class="workflow-trigger"><span class="trigger-tag" data-en="architecture diagram" data-zh="架构图">architecture diagram</span><span class="trigger-tag" data-en="flowchart" data-zh="流程图">flowchart</span><span class="trigger-tag" data-en="UML" data-zh="UML">UML</span></div>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background:#d4923a;">C</div>
+        <h3 data-en="📋 Consulting Templates" data-zh="📋 咨询模板">📋 Consulting Templates</h3>
+        <p data-en="40 McKinsey / BCG / Bain grade templates. SWOT, Porter's Five Forces, KPI dashboards, Gantt charts, org charts, and more." data-zh="40 套麦肯锡 / BCG / 贝恩级别模板。SWOT、波特五力、KPI 仪表盘、甘特图、组织架构图等。">40 McKinsey / BCG / Bain grade templates. SWOT, Porter's Five Forces, KPI dashboards, Gantt charts, org charts, and more.</p>
+        <div class="workflow-trigger"><span class="trigger-tag" data-en="consulting template" data-zh="咨询模板">consulting template</span><span class="trigger-tag" data-en="KPI dashboard" data-zh="KPI 仪表盘">KPI dashboard</span><span class="trigger-tag" data-en="SWOT analysis" data-zh="SWOT 分析">SWOT analysis</span></div>
+      </div>
+      <div class="workflow-card fade-up">
+        <div class="workflow-id" style="background:#7a6a9a;">D</div>
+        <h3 data-en="✏️ Edit Existing PPT" data-zh="✏️ 编辑已有 PPT">✏️ Edit Existing PPT</h3>
+        <p data-en="Read existing .pptx files, unpack OOXML, precisely modify content, validate, and repack. Non-destructive editing." data-zh="读取已有 .pptx 文件，解包 OOXML，精确修改内容，校验并重新打包。无损编辑。">Read existing .pptx files, unpack OOXML, precisely modify content, validate, and repack. Non-destructive editing.</p>
+        <div class="workflow-trigger"><span class="trigger-tag" data-en="edit PPT" data-zh="编辑PPT">edit PPT</span><span class="trigger-tag" data-en="modify slides" data-zh="修改幻灯片">modify slides</span><span class="trigger-tag" data-en="use this template" data-zh="用这个模板">use this template</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer — 署名行，不设独立 Author 区块 -->
-  <footer>
-    <p>
-      ©️ <a href="https://github.com/mupoet">木先生iPPT</a> ·
-      📚 扩展阅读 <a href="https://item.m.jd.com/product/14547345.html">《图解团队管理》</a> ·
-      💡 <a href="https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA">微信公众号</a> /
-      <a href="https://xhslink.com/m/ESxtgUNMdl">小红书</a>：muippt
-    </p>
-  </footer>
+<!-- Features -->
+<section id="features">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <span class="section-label" data-en="⚡ Features" data-zh="⚡ 核心能力">⚡ Features</span>
+      <h2 class="section-title" data-en="Everything You Need 💪" data-zh="一切你需要的 💪">Everything You Need 💪</h2>
+      <p class="section-desc" data-en="Professional-grade capabilities, zero subscription, fully open source." data-zh="专业级能力，零订阅，完全开源。">Professional-grade capabilities, zero subscription, fully open source.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📊</div>
+        <h3 data-en="119 Chart Types" data-zh="119 种图表类型">119 Chart Types</h3>
+        <p data-en="From basic bar charts to Sankey diagrams, treemaps, waterfall charts, and KPI dashboards. All rendered as native vector shapes." data-zh="从基础柱状图到桑基图、矩阵树图、瀑布图和 KPI 仪表盘。全部渲染为原生矢量图形。">From basic bar charts to Sankey diagrams, treemaps, waterfall charts, and KPI dashboards. All rendered as native vector shapes.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🏛️</div>
+        <h3 data-en="40 Consulting Templates" data-zh="40 套咨询模板">40 Consulting Templates</h3>
+        <p data-en="McKinsey / BCG / Bain grade. SWOT, Porter's Five Forces, BCG Matrix, Value Chain, org charts, talent 9-box, and more." data-zh="麦肯锡 / BCG / 贝恩级别。SWOT、波特五力、BCG 矩阵、价值链、组织架构图、人才九宫格等。">McKinsey / BCG / Bain grade. SWOT, Porter's Five Forces, BCG Matrix, Value Chain, org charts, talent 9-box, and more.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🖼️</div>
+        <h3 data-en="6,732 Vector Icons" data-zh="6,732 个矢量图标">6,732 Vector Icons</h3>
+        <p data-en="All SVG format, lossless scaling. Covers tech, finance, medical, education, retail, and more. Built-in, no internet needed." data-zh="全部 SVG 格式，无损缩放。覆盖科技、金融、医疗、教育、零售等领域。内置离线使用。">All SVG format, lossless scaling. Covers tech, finance, medical, education, retail, and more. Built-in, no internet needed.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🔄</div>
+        <h3 data-en="Document to PPT" data-zh="文档转 PPT">Document to PPT</h3>
+        <p data-en="Convert PDF, DOCX, Markdown, HTML, and EPUB into polished presentations. Preserves structure, auto-matches layouts." data-zh="将 PDF、DOCX、Markdown、HTML 和 EPUB 转为精美演示文稿。保留结构，自动匹配版式。">Convert PDF, DOCX, Markdown, HTML, and EPUB into polished presentations. Preserves structure, auto-matches layouts.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🤖</div>
+        <h3 data-en="AI Image Generation" data-zh="AI 图片生成">AI Image Generation</h3>
+        <p data-en="Built-in OpenAI DALL-E 3 and Google Gemini Imagen support. Auto-generates images based on slide themes. Optional — works without API key." data-zh="内置 OpenAI DALL-E 3 和 Google Gemini Imagen。根据幻灯片主题自动生成图片。可选功能，无 API Key 也能用。">Built-in OpenAI DALL-E 3 and Google Gemini Imagen support. Auto-generates images based on slide themes. Optional — works without API key.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">✏️</div>
+        <h3 data-en="Truly Editable" data-zh="真正可编辑">Truly Editable</h3>
+        <p data-en="Real DrawingML shapes, not images. Every element can be clicked and edited in PowerPoint, Keynote, WPS, or Google Slides." data-zh="真正的 DrawingML 矢量图形，不是图片。每个元素都能在 PowerPoint、Keynote、WPS 或 Google Slides 中点击编辑。">Real DrawingML shapes, not images. Every element can be clicked and edited in PowerPoint, Keynote, WPS, or Google Slides.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📏</div>
+        <h3 data-en="8 Canvas Formats" data-zh="8 种画布格式">8 Canvas Formats</h3>
+        <p data-en="16:9, 4:3, 9:16 portrait, 1:1 square, A4 portrait/landscape, LinkedIn banner, and any custom pixel dimensions." data-zh="16:9、4:3、9:16 竖版、1:1 方形、A4 纵横版、LinkedIn 横幅，以及任意自定义像素尺寸。">16:9, 4:3, 9:16 portrait, 1:1 square, A4 portrait/landscape, LinkedIn banner, and any custom pixel dimensions.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🔒</div>
+        <h3 data-en="100% Local &amp; Private" data-zh="100% 本地 &amp; 隐私">100% Local &amp; Private</h3>
+        <p data-en="All processing happens on your machine. No telemetry, no data collection. Only AI images call external APIs (can be disabled)." data-zh="所有处理都在本地完成。无遥测，无数据收集。仅 AI 图片生成调用外部 API（可关闭）。">All processing happens on your machine. No telemetry, no data collection. Only AI images call external APIs (can be disabled).</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🆓</div>
+        <h3 data-en="Free &amp; Open Source" data-zh="免费 &amp; 开源">Free &amp; Open Source</h3>
+        <p data-en="MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in." data-zh="MIT 协议。个人和商业项目均可自由使用。无订阅、无隐藏费用、无厂商锁定。">MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    /* --- Dark/Light Toggle --- */
-    function toggleTheme() {
-      const html = document.documentElement;
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    }
-    (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved) document.documentElement.setAttribute('data-theme', saved);
-    })();
+<!-- Comparison -->
+<section id="comparison" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <span class="section-label" data-en="📊 Comparison" data-zh="📊 竞品对比">📊 Comparison</span>
+      <h2 class="section-title" data-en="Why mu-ippt? 🏆" data-zh="为什么选 mu-ippt？🏆">Why mu-ippt? 🏆</h2>
+      <p class="section-desc" data-en="See how mu-ippt compares to popular alternatives." data-zh="看看 mu-ippt 与主流方案的对比。">See how mu-ippt compares to popular alternatives.</p>
+    </div>
+    <div class="comparison-wrapper fade-up">
+      <table class="comparison-table">
+        <thead>
+          <tr><th data-en="Dimension" data-zh="维度">Dimension</th><th>mu-ippt</th><th>Gamma</th><th>Beautiful.ai</th><th>Canva / iSlide</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-en="Design Philosophy AI" data-zh="设计哲学 AI">Design Philosophy AI</td><td><span class="check" data-en="✓ 15 schools" data-zh="✓ 15 流派">✓ 15 schools</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Chart Types" data-zh="图表类型">Chart Types</td><td><span class="check">119</span></td><td>~20</td><td>~30</td><td><span data-en="Varies" data-zh="不定">Varies</span></td></tr>
+          <tr><td data-en="Consulting Templates" data-zh="咨询模板">Consulting Templates</td><td><span class="check">40</span></td><td><span class="cross">✗</span></td><td><span data-en="Limited" data-zh="有限">Limited</span></td><td><span data-en="Limited" data-zh="有限">Limited</span></td></tr>
+          <tr><td data-en="Edit Existing PPT" data-zh="编辑已有 PPT">Edit Existing PPT</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Local Execution" data-zh="本地运行">Local Execution</td><td><span class="check">✓</span></td><td><span class="cross" data-en="✗ Cloud" data-zh="✗ 云端">✗ Cloud</span></td><td><span class="cross" data-en="✗ Cloud" data-zh="✗ 云端">✗ Cloud</span></td><td><span class="cross" data-en="✗ Cloud" data-zh="✗ 云端">✗ Cloud</span></td></tr>
+          <tr><td data-en="Document → PPT" data-zh="文档 → PPT">Document → PPT</td><td><span class="check" data-en="5 formats" data-zh="5 种格式">5 formats</span></td><td><span data-en="Partial" data-zh="部分">Partial</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Vector Icons" data-zh="矢量图标">Vector Icons</td><td><span class="check">6,732</span></td><td><span class="cross">✗</span></td><td><span data-en="Limited" data-zh="有限">Limited</span></td><td><span data-en="Limited" data-zh="有限">Limited</span></td></tr>
+          <tr><td data-en="Custom Canvas" data-zh="自定义画布">Custom Canvas</td><td><span class="check" data-en="8 formats" data-zh="8 种格式">8 formats</span></td><td><span data-en="16:9 only" data-zh="仅 16:9">16:9 only</span></td><td><span data-en="Limited" data-zh="有限">Limited</span></td><td><span data-en="Some" data-zh="部分">Some</span></td></tr>
+          <tr><td data-en="Open Source" data-zh="开源">Open Source</td><td><span class="check">✓ MIT</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Offline Capable" data-zh="离线可用">Offline Capable</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Cost" data-zh="费用">Cost</td><td><span class="check" data-en="Free" data-zh="免费">Free</span></td><td>$8–40/mo</td><td>$12–40/mo</td><td><span data-en="Free–Paid" data-zh="免费–付费">Free–Paid</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-    /* --- Language Toggle (EN/ZH) --- */
-    function toggleLang() {
-      const current = localStorage.getItem('lang') || 'en';
-      const next = current === 'en' ? 'zh' : 'en';
-      localStorage.setItem('lang', next);
-      applyLang(next);
-    }
-    function applyLang(lang) {
-      document.querySelectorAll('[data-en][data-zh]').forEach(el => {
-        el.textContent = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
-      });
-    }
-    (function() {
-      const saved = localStorage.getItem('lang');
-      if (saved) applyLang(saved);
-    })();
-  </script>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2 data-en="Not <em>&quot;AI helps you pick a template&quot;</em><br><span class='accent-text'>AI creates PPT like a designer.</span>" data-zh="不是「AI 帮你选模板」<br><span class='accent-text'>而是 AI 像设计师一样创作 PPT。</span>">Not <em>"AI helps you pick a template"</em><br><span class="accent-text">AI creates PPT like a designer.</span></h2>
+    <p data-en="Free, open source, and yours forever." data-zh="免费、开源，永远属于你。">Free, open source, and yours forever.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/mupoet/mu-ippt" class="btn btn-primary" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> <span data-en="Star on GitHub" data-zh="去 GitHub 点星">Star on GitHub</span></a>
+      <a href="./examples/design-philosophies/muippt-design-philosophies_202606.pptx" class="btn btn-secondary" download><span data-en="↓ Download Example PPTX" data-zh="↓ 下载示例 PPTX">↓ Download Example PPTX</span></a>
+    </div>
+  </div>
+</section>
 
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/mupoet/mu-ippt" target="_blank">GitHub</a>
+      <a href="https://github.com/mupoet/mu-ippt/discussions" target="_blank" data-en="Discussions" data-zh="讨论区">Discussions</a>
+      <a href="https://github.com/mupoet/mu-ippt/issues" target="_blank" data-en="Issues" data-zh="问题反馈">Issues</a>
+      <a href="./docs/faq.md" data-en="FAQ" data-zh="常见问题">FAQ</a>
+      <a href="mailto:muippt@agent.qq.com" data-en="Contact" data-zh="联系我们">Contact</a>
+    </div>
+    <p class="footer-copy" data-en="©️ <a href=&quot;https://github.com/mupoet&quot;>木先生iPPT</a> Made with ❤️ · Further reading: <a href=&quot;https://item.m.jd.com/product/14547345.html&quot;>Illustrated Team Management</a>" data-zh="©️ <a href=&quot;https://github.com/mupoet&quot;>木先生iPPT</a> 用 ❤️ 打造 · 扩展阅读：<a href=&quot;https://item.m.jd.com/product/14547345.html&quot;>《图解团队管理》</a>">©️ <a href="https://github.com/mupoet">木先生iPPT</a> 用 ❤️ 打造 · 扩展阅读：<a href="https://item.m.jd.com/product/14547345.html">《图解团队管理》</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var cl=(navigator.language||navigator.userLanguage||'en').toLowerCase().startsWith('zh')?'zh':'en';
+  var s=localStorage.getItem('mu-ippt-lang');
+  if(s==='en'||s==='zh') cl=s;
+  function apply(l){
+    cl=l;localStorage.setItem('mu-ippt-lang',l);
+    document.documentElement.lang=l==='zh'?'zh-CN':'en';
+    document.querySelectorAll('[data-'+l+']').forEach(function(e){
+      var v=e.getAttribute('data-'+l);if(v!==null)e.innerHTML=v;
+    });
+    document.querySelectorAll('.lang-switch span').forEach(function(s){
+      s.classList.toggle('active',s.getAttribute('data-lang')===l);
+    });
+  }
+  apply(cl);
+  document.getElementById('langSwitch').addEventListener('click',function(e){
+    var t=e.target.closest('[data-lang]');if(!t)return;
+    var l=t.getAttribute('data-lang');if(l!==cl) apply(l);
+  });
+})();
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(e){obs.observe(e);});
+</script>
 </body>
 </html>

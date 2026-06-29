@@ -76,7 +76,8 @@
     .philosophy-dna{font-size:.8rem;color:var(--text-secondary);line-height:1.5}
     .philosophy-lineage{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:4px;font-size:.65rem;font-weight:600;letter-spacing:.06em;background:var(--accent-bg);color:var(--accent)}
     /* Workflow Cards */
-    .workflows-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+    .workflows-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .workflow-router{grid-column:1/-1}
     .workflow-card{padding:32px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:all .25s}
     .workflow-card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
     .workflow-id{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;color:#fff;font-size:.9rem;font-weight:700;margin-bottom:16px}
@@ -116,7 +117,7 @@
     .footer-copy a{color:var(--text-secondary)}.footer-copy a:hover{color:var(--accent)}
     .footer-copy+.footer-copy{margin-top:4px}
     /* Responsive */
-    @media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.features-grid{grid-template-columns:repeat(2,1fr)}.workflows-grid{grid-template-columns:1fr}.nav-links{display:none}}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.features-grid{grid-template-columns:repeat(2,1fr)}.workflows-grid{grid-template-columns:1fr}.workflow-router{grid-column:auto}.nav-links{display:none}}
     @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.hero{padding:120px 0 80px}section{padding:64px 0}}
     /* Scroll Animation */
     .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}
@@ -263,7 +264,7 @@
       <p class="section-desc" data-en="AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need." data-zh="AI 分析你的需求，自动路由到最优工作流。只需说出你想要的。">AI analyzes your requirement and automatically routes to the optimal workflow. Just say what you need.</p>
     </div>
     <div class="workflows-grid">
-      <div class="workflow-card fade-up">
+      <div class="workflow-card workflow-router fade-up">
         <div class="workflow-id" style="background:#c96442;">0</div>
         <h3 data-en="🧭 Smart Routing" data-zh="🧭 智能路由">🧭 Smart Routing</h3>
         <p data-en="AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically." data-zh="AI 分析多页需求，为每页规划最优方案，自动路由到最佳工作流。">AI analyzes multi-page requirements, plans the optimal approach per page, and routes to the best workflow automatically.</p>

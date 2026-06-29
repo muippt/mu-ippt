@@ -114,7 +114,6 @@ Not just 16:9 — covering all output scenarios:
 | Editable Output | ✅ SVG vector, every element re-editable | ❌ Cloud-locked | ❌ Cloud-locked | Partially | ❌ Image collage, not editable |
 | Design Philosophy AI | ✅ 14 schools smart matching | ❌ | ❌ | ❌ Manual browsing | ❌ |
 | Chart Types | 119 | ~20 | ~30 | Template-dependent | ❌ Screenshots only |
-| Consulting Templates | 40 | ❌ | Limited | Few, inconsistent | ❌ |
 | Edit Existing PPT | ✅ | ❌ | ❌ | ❌ Download new only | ❌ |
 | AI Images | ✅ DALL-E 3 / Gemini | ✅ Built-in | ❌ | ❌ Find yourself | ✅ Built-in |
 | Document → PPT | ✅ 5 formats | Partial | ❌ | ❌ | ❌ |

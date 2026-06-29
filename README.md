@@ -1,114 +1,24 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/default-banner.png" />
+  <source media="(prefers-color-scheme: light)" srcset="./assets/default-banner.png" />
+  <img alt="mu-ippt banner" src="./assets/default-banner.png" width="100%" />
+</picture>
+
 # mu-ippt · AI PPT Intelligent Creation Skill v1.0
+
+> One Skill for all PPT scenarios: **Create from scratch** · **Technical diagrams** · **Consulting report templates** · **Edit existing PPT** — outputs truly editable .pptx, not image collages
+
+> 🎨 **14 Design Philosophies** · 📊 **119 Chart Types** · 📐 **20 Layout Templates** · 🏛️ **40 Consulting Templates** · 🖼️ **6,732 Vector Icons** · 📏 **8 Canvas Formats**
+
+**English** | [中文](./README_CN.md) | [🌐 Landing Page](https://mupoet.github.io/mu-ippt/)
 
 [![Version](https://img.shields.io/badge/version-v1.0-blue.svg)](https://github.com/mupoet/mu-ippt/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/mupoet/mu-ippt.svg)](https://github.com/mupoet/mu-ippt/stargazers)
 
-English | [中文](./README_CN.md)
-
-<p align="center">
-  <a href="./examples/"><strong>Examples</strong></a> ·
-  <a href="./docs/faq.md"><strong>FAQ</strong></a> ·
-  <a href="mailto:muippt@agent.qq.com"><strong>Contact</strong></a>
-</p>
-
-> One Skill for all PPT scenarios: **Create from scratch** · **Technical diagrams** · **Consulting report templates** · **Edit existing PPT**
-
-> 🎨 **15 Design Philosophies** · 📊 **119 Chart Types** · 📐 **20 Layout Templates** · 🏛️ **40 Consulting Templates** · 🖼️ **6,732 Vector Icons** · 📏 **8 Canvas Formats**
-
 ---
 
-## ✨ Core Highlights
-
-### 🎨 15 Design Philosophy Schools
-
-Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic:
-
-| School | Visual DNA |
-|--------|-----------|
-| Pentagram | Minimalist black & white, Swiss-style information-first |
-| Fathom | Data storytelling, letting numbers speak for themselves |
-| Sagmeister | Experimental avant-garde, rule-breaking artistic expression |
-| Fukasawa | MUJI-style restraint and white space |
-| Ive | Apple-inspired precision industrial aesthetics |
-| Rams | Less-is-more Bauhaus classics |
-| Zaha | Parametric curves with futuristic architectural feel |
-| Bierut | Elegant graphic narrative from the New York school |
-| Koolhaas | Bold color-clashing Dutch avant-garde |
-| Tokujin | Japanese ultimate material perception aesthetics |
-| Eames | Mid-century modernist warm geometry |
-| Muller-Brockmann | Mathematical beauty from the father of grid systems |
-| Erik Spiekermann | German typographic engineering precision |
-| Massimo Vignelli | Timeless order from the NYC subway designer |
-
-### 📊 119 Chart Types
-
-Covering all common and professional chart scenarios: basic charts (bar, line, pie, radar, scatter, bubble, area), advanced charts (waterfall, Sankey, sunburst, treemap, heatmap, box plot), business charts (funnel, Gantt, KPI dashboard, org chart, issue tree), technical diagrams (architecture, sequence, flowchart, UML class, state machine, ER, deployment), and data charts (trend comparison, multi-axis, stacked, grouped, error bar charts).
-
-### 🏛️ 40 Consulting-Grade Templates
-
-Benchmarked against McKinsey / BCG / Bain level business reporting templates: strategy (SWOT, Porter's Five Forces, BCG Matrix, Value Chain, Blue Ocean Canvas), operations (Gantt timeline, milestone roadmap, RACI matrix, swimlane flowchart), finance (KPI dashboard, revenue waterfall, cost structure breakdown, ROI analysis), organization (org chart, talent 9-box, capability radar, HRBP diagnostic model), and growth (funnel conversion, user journey map, growth flywheel, NPS tracking panel).
-
-### 📐 20 Layout Templates
-
-Pre-designed professional page structures — AI automatically matches the best layout: title page, title + subtitle, title + body, two-column comparison, three-column parallel, 4-grid, 6-grid, image-text split, full-image background + text overlay, timeline, data dashboard, quote page, team intro, product showcase, screenshot demo, Q&A page, thank-you page, and more.
-
-### 🖼️ 6,732 Vector Icons
-
-All SVG vector format, lossless scaling, fully built into the Skill — no internet download required. Covers general (arrows, symbols, gestures, people, devices, UI elements), industry-specific (tech, finance, medical, education, retail, manufacturing, government), and functional (data/charts, team/collaboration, process/workflow, security/compliance) categories.
-
-### 📏 8 Canvas Formats
-
-| Format | Use Case |
-|--------|----------|
-| 16:9 Widescreen | Default, projection/large screen |
-| 4:3 Classic | Legacy device compatible |
-| 9:16 Portrait | Mobile display / short video covers |
-| 1:1 Square | Social media / Xiaohongshu |
-| A4 Portrait | Printed documents / reports |
-| A4 Landscape | Brochures / booklets |
-| LinkedIn Banner | 1584×396 |
-| Custom Size | Any pixel dimensions |
-
-### 🤖 AI Image Generation
-
-Built-in support for two major image generation engines: OpenAI DALL-E 3 (default, high-quality realistic/illustration style) and Google Gemini Imagen (alternative, diverse styles). Automatically generates images based on page themes. Can be disabled — skip AI image generation entirely without configuring an API key.
-
-### 🔄 Document to PPT Conversion
-
-| Format | Description |
-|--------|-------------|
-| PDF | Extracts text and structure, intelligently splits into multi-page PPT |
-| DOCX/Word | Preserves heading hierarchy, auto-matches layouts |
-| Markdown | Splits by headings, auto-highlights code blocks |
-| HTML/Web | Extracts body content, removes noise before conversion |
-| EPUB | Splits by chapters, great for book note sharing |
-
----
-
-## 🚀 Five Workflows
-
-| Workflow | Scenario | Trigger Words |
-|----------|----------|---------------|
-| Workflow 0 | Multi-page smart routing — AI analyzes requirements, plans optimal approach per page | "make a PPT", "create a presentation", "turn this document into PPT" |
-| Workflow A | Create multi-page PPT from scratch — SVG vector layout, pixel-perfect control | (after Workflow 0 routing) "free layout", "highly customized" |
-| Workflow B | Single technical diagram — architecture/flowchart/UML/sequence/ER diagram | "draw an architecture diagram", "draw a flowchart" |
-| Workflow C | Consulting report templates — 40 professional templates, native Office shapes | "consulting report template", "KPI dashboard", "Gantt chart template" |
-| Workflow D | Edit existing PPT — read existing files, precisely modify specified content | "edit PPT", "modify PPT", "use this template to make a PPT" |
-
----
-
-## 🎯 Design Philosophies Example
-
-> 📥 **[Download the showcase PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx)** — 31 slides demonstrating all 15 design philosophies across 6 design lineages.
-
-Each philosophy includes Visual DNA, color tokens, typography logic, and a real generated sample slide. Open in PowerPoint, Keynote, or Google Slides to explore.
-
-Browse all examples in the [examples directory](./examples/).
-
----
-
-## 💡 Usage Examples
+### 💡 Usage Examples
 
 - 📈 **Management Report**: "Turn this weekly report into a 10-page PPT with deep blue data narrative style"
 - 🏗️ **Tech Sharing**: "Draw a microservices architecture diagram with deployment topology, embed in PPT"
@@ -121,10 +31,125 @@ Browse all examples in the [examples directory](./examples/).
 
 ---
 
-## ⚙️ Technical Specs
+### ✨ Core Highlights
+
+#### 🎨 14 Design Philosophy Schools
+
+Not "pick a template" — the AI recommends the best visual style based on your topic, audience, and context. Each philosophy has unique Visual DNA, color tokens, and typography logic:
+
+| # | School | Visual DNA |
+|---|--------|-----------|
+| 1 | Pentagram | Minimalist black & white, Swiss-style information-first |
+| 2 | Fathom | Data storytelling, letting numbers speak for themselves |
+| 3 | Sagmeister | Experimental avant-garde, rule-breaking artistic expression |
+| 4 | Fukasawa | MUJI-style restraint and white space |
+| 5 | Ive | Apple-inspired precision industrial aesthetics |
+| 6 | Rams | Less-is-more Bauhaus classics |
+| 7 | Zaha | Parametric curves with futuristic architectural feel |
+| 8 | Bierut | Elegant graphic narrative from the New York school |
+| 9 | Koolhaas | Bold color-clashing Dutch avant-garde |
+| 10 | Tokujin | Japanese ultimate material perception aesthetics |
+| 11 | Eames | Mid-century modernist warm geometry |
+| 12 | Muller-Brockmann | Mathematical beauty from the father of grid systems |
+| 13 | Erik Spiekermann | German typographic engineering precision |
+| 14 | Massimo Vignelli | Timeless order from the NYC subway designer |
+| + | Smart Selection | AI auto-matches the best philosophy based on audience, topic, and context |
+
+📥 [Download the showcase PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx) — 31 slides demonstrating all design philosophies.
+
+#### 📊 119 Chart Types
+
+Covering all common and professional chart scenarios:
+
+- **Basic**: Bar, line, pie, radar, scatter, bubble, area
+- **Advanced**: Waterfall, Sankey, sunburst, treemap, heatmap, box plot
+- **Business**: Funnel, Gantt, KPI dashboard, org chart, issue tree
+- **Technical**: Architecture, sequence, flowchart, UML class, state machine, ER, deployment
+- **Data**: Trend comparison, multi-axis, stacked, grouped, error bar charts
+
+#### 🏛️ 40 Consulting-Grade Templates
+
+Benchmarked against McKinsey / BCG / Bain level business reporting templates:
+
+- **Strategy**: SWOT, Porter's Five Forces, BCG Matrix, Value Chain, Blue Ocean Canvas
+- **Operations**: Gantt timeline, milestone roadmap, RACI matrix, swimlane flowchart
+- **Finance**: KPI dashboard, revenue waterfall, cost structure breakdown, ROI analysis
+- **Organization**: Org chart, talent 9-box, capability radar, HRBP diagnostic model
+- **Growth**: Funnel conversion, user journey map, growth flywheel, NPS tracking panel
+
+#### 📐 20 Layout Templates
+
+Pre-designed professional page structures — AI automatically matches the best layout:
+
+Title page, title + subtitle, title + body, two-column comparison, three-column parallel, 4-grid, 6-grid, image-text split, full-image background + text overlay, timeline, data dashboard, quote page, team intro, product showcase, screenshot demo, Q&A page, thank-you page, and more.
+
+#### 🎨 26 Color Schemes
+
+12 design-style palettes + 14 industry-specific palettes:
+
+- **Style**: Minimalist gray, tech blue, natural green, warm orange, premium gold, academic indigo
+- **Industry**: Finance blue, medical white, education orange, tech gradient purple, consumer pink, government red, energy green, creative art clash
+
+#### 🖼️ 6,732 Vector Icons
+
+All SVG vector format, lossless scaling, fully built into the Skill — no internet download required:
+
+- **General**: Arrows, symbols, gestures, people, devices, UI elements
+- **Industry**: Tech, finance, medical, education, retail, manufacturing, government
+- **Functional**: Data/charts, team/collaboration, process/workflow, security/compliance
+
+#### 📏 8 Canvas Formats
+
+Not just 16:9 — covers all output scenarios:
+
+| Format | Use Case |
+|--------|----------|
+| 16:9 Widescreen | Default, projection/large screen |
+| 4:3 Classic | Legacy device compatible |
+| 9:16 Portrait | Mobile display / short video covers |
+| 1:1 Square | Social media / Xiaohongshu |
+| A4 Portrait | Printed documents / reports |
+| A4 Landscape | Brochures / booklets |
+| LinkedIn Banner | 1584×396 |
+| Custom Size | Any pixel dimensions |
+
+---
+
+### 📌 Comparison with Alternatives
+
+| Dimension | mu-ippt | Gamma | Beautiful.ai | AI Image PPT (ChatGPT etc.) | Template Sites (Canva / iSlide etc.) |
+|-----------|---------|-------|-------------|------------------------------|--------------------------------------|
+| **Editable output** | ✅ SVG vector, fully editable | ✅ Online editor | ✅ Online editor | ❌ Image-based, not editable | ✅ Download & edit |
+| Design philosophy | ✅ 14 schools, AI-matched | ❌ None | ❌ None | ❌ None | ❌ Manual browsing |
+| Chart types | 119 | ~20 | ~30 | ❌ None | Template-dependent |
+| Edit existing PPT | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported | ❌ Download new only |
+| AI image generation | ✅ DALL-E 3 / Gemini | ✅ Built-in | ❌ None | ✅ All AI-rendered | ❌ Find your own |
+| Document to PPT | ✅ 5 formats | Partial | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Custom canvas | ✅ 8 formats | ❌ 16:9 only | ❌ Limited | ❌ Fixed size | Limited |
+| Vector icon library | 6,732 | ❌ None | Limited | ❌ None | Limited |
+| Quality checks | ✅ Auto-verification | ❌ None | ❌ None | ❌ None | ❌ Manual review |
+| Open source | ✅ MIT | ❌ Closed | ❌ Closed | ❌ Closed | ❌ Platform lock-in |
+| Cost | Free | $8-40/mo | $12-40/mo | $10-30/mo | Free-Paid |
+
+---
+
+### 🚀 Five Workflows
+
+| Workflow | Scenario | Trigger Words |
+|----------|----------|---------------|
+| Workflow 0 | Multi-page smart routing — AI analyzes requirements, plans optimal approach per page, outputs plan for confirmation | "make a PPT", "create a presentation", "turn this document into PPT" |
+| Workflow A | Create multi-page PPT from scratch — SVG vector layout, pixel-perfect control, independent per-page design | (after Workflow 0 routing) "free layout", "highly customized" |
+| Workflow B | Single technical diagram — architecture/flowchart/UML/sequence/ER, PlantUML + SVG dual-engine rendering | "draw an architecture diagram", "draw a flowchart" |
+| Workflow C | Consulting report templates — 40 professional templates, native Office shapes, best compatibility | "consulting report template", "KPI dashboard", "Gantt chart template" |
+| Workflow D | Edit existing PPT — read existing files, precisely modify specified content, preserve original design | "edit PPT", "modify PPT", "use this template to make a PPT" |
+
+---
+
+### ⚙️ Technical Specs
 
 | Item | Description |
 |------|-------------|
+| Runtime | OpenClaw framework (native support, compatible with all OpenClaw deployments) |
 | Python Version | 3.9+ |
 | Core Dependencies | python-pptx / svglib / reportlab / PyMuPDF / mammoth |
 | Image AI | OpenAI DALL-E 3 (default) / Google Gemini Imagen (optional) |
@@ -135,7 +160,7 @@ Browse all examples in the [examples directory](./examples/).
 
 ---
 
-## 🛠️ Quick Start
+### 🛠️ Quick Start
 
 **Step 1: Install**
 
@@ -146,8 +171,9 @@ pip install -r requirements.txt
 **Step 2: Configure AI Image Generation (Optional)**
 
 ```bash
-# Choose one — skip this step to use all chart and template features without AI images
+# Choose one — skip this step to use all features without AI images
 export OPENAI_API_KEY=sk-xxx
+# or
 export GEMINI_API_KEY=AIzaXXX
 ```
 
@@ -159,65 +185,17 @@ Just tell the AI "help me make a PPT" to trigger the workflow.
 
 ---
 
-## 📌 Comparison with Alternatives
+### 🔒 Security & Privacy
 
-### mu-ippt vs Gamma
-
-| Dimension | mu-ippt | Gamma |
-|-----------|---------|-------|
-| Design philosophy recommendation | ✅ 14 schools, AI-matched | ❌ None |
-| Chart types | 119 | ~20 |
-| Consulting-grade templates | 40 | ❌ None |
-| Edit existing PPT | ✅ Supported | ❌ Not supported |
-| Local execution | ✅ Data stays on your machine | ❌ Cloud processing |
-| AI image generation | ✅ DALL-E 3 / Gemini | ✅ Built-in |
-| Document to PPT | ✅ 5 formats | Partial |
-| Custom canvas | ✅ 8 formats | ❌ 16:9 only |
-| Vector icon library | 6,732 | ❌ None |
-| Quality checks | ✅ Auto-verification | ❌ None |
-| Open source | ✅ MIT | ❌ Closed source |
-| Offline capable | ✅ | ❌ |
-| Cost | Free | $8-40/month |
+- 100% local execution — all data processing happens on your machine
+- Only AI image generation calls external APIs (can be completely disabled by not configuring a key)
+- No telemetry, no data collection, no usage tracking
+- No dependency on any cloud service or subscription
+- MIT License — free to modify and distribute
 
 ---
 
-## 🔒 Security & Privacy
-
-100% local execution — all data processing happens on your machine. Only AI image generation calls external APIs (can be completely disabled by not configuring a key). No telemetry, no data collection, no usage tracking. No dependency on any cloud service or subscription.
-
----
-
-## 👤 Author
-
-🎓 Signatory Author of Tsinghua University Press / 2026 Dangdang Influential Author / AI & Large Model Business HR Specialist at a Leading Tech Company / National Level-1 HR Manager / Level-2 Psychological Counselor / Self-taught Designer
-
-📚 Author of [*Visual Team Management*](https://item.m.jd.com/product/14547345.html). Clients include ByteDance, Tencent, Baidu, China Mobile, SMG, BOE…
-
-💡 [WeChat Official Account](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [Xiaohongshu](https://xhslink.com/m/ESxtgUNMdl): muippt
-
----
-
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get involved.
-
-## 📄 License & Acknowledgments
-
-[MIT](LICENSE) © 2026 mupoet
-
-Based on ppt-master by Hugo He · Design philosophy system inspired by huashu-design by alchaincyf · [SVG Repo](https://www.svgrepo.com/) · [Tabler Icons](https://github.com/tabler/tabler-icons) · [Robin Williams](https://en.wikipedia.org/wiki/Robin_Williams_(author)) (CRAP principles) · McKinsey, BCG, Bain
-
-> Note: Much of this project was co-created with AI assistance. If you believe your work has been used without proper attribution, please open an issue.
-
-## 💬 Contact & Collaboration
-
-- 💬 **Questions & sharing** — [GitHub Discussions](https://github.com/mupoet/mu-ippt/discussions)
-- 🐛 **Bug reports & feature requests** — [GitHub Issues](https://github.com/mupoet/mu-ippt/issues)
-- 📧 **Business & consulting inquiries** — [muippt@agent.qq.com](mailto:muippt@agent.qq.com)
-
----
-
-## ⭐ Star History
+### ⭐ Star History
 
 If this project helps you, please give it a ⭐!
 
@@ -229,12 +207,24 @@ If this project helps you, please give it a ⭐!
  </picture>
 </a>
 
----
-
-> One line summary: Not "AI helps you pick a template" — it's "AI creates PPT for you from scratch like a designer."
+> One line summary: Not "AI helps you pick a template", and definitely not image-based fakes — it's "AI creates truly editable PPT for you from scratch like a designer."
 
 ---
 
-Made with ❤️ by [木先生iPPT](https://github.com/mupoet)
+### 👤 About the Author
 
-[⬆ Back to Top](#mu-ippt--ai-ppt-intelligent-creation-skill-v10)
+🎓 Signatory Author of Tsinghua University Press / 2026 Dangdang Influential Author / AI & Large Model Business HR Specialist at a Leading Tech Company / National Level-1 HR Manager / Level-2 Psychological Counselor / Self-taught Designer
+
+📚 Author of [*Visual Team Management*](https://item.m.jd.com/product/14547345.html). Clients include ByteDance, Tencent, Baidu, China Mobile, SMG, BOE…
+
+💡 [WeChat Official Account](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [Xiaohongshu](https://xhslink.com/m/ESxtgUNMdl): muippt
+
+---
+
+### 📄 License & Acknowledgments
+
+[MIT](LICENSE) © 2026 [木先生iPPT](https://github.com/mupoet)
+
+Inspired by ppt-master by Hugo He · huashu-design by alchaincyf · [SVG Repo](https://www.svgrepo.com/) · [Tabler Icons](https://github.com/tabler/tabler-icons) · [Robin Williams](https://en.wikipedia.org/wiki/Robin_Williams_(author)) (CRAP principles) · McKinsey, BCG, Bain
+
+> Note: Much of this project was co-created with AI assistance. If you believe your work has been used without proper attribution, please open an issue.

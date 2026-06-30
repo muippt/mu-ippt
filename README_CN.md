@@ -1,24 +1,25 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/default-banner.png" />
-  <source media="(prefers-color-scheme: light)" srcset="./assets/default-banner.png" />
-  <img alt="mu-ippt banner" src="./assets/default-banner.png" width="100%" />
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/default-banner.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/default-banner.png">
+    <img alt="mu-ippt" src="assets/default-banner.png" width="100%">
+  </picture>
+</p>
 
-# mu-ippt · AI PPT 智能创作 Skill v1.0
+# mu-ippt
 
-> 一个 Skill 搞定所有 PPT 场景：**从零生成** · **技术图表** · **咨询汇报模板** · **编辑已有PPT** — 输出真正可编辑的 .pptx，不是图片拼贴
+> AI 驱动的 PPT 智能创作工具——像设计师一样从零为你创作**真正可编辑的**演示文稿，不是截图拼贴，每个元素都能二次修改。
 
-> 🎨 **14 种设计哲学流派** · 📊 **119 种图表** · 📐 **20 套布局模板** · 🏛️ **40 个咨询模板** · 🖼️ **6,732 个矢量图标** · 📏 **8 种画布格式**
+[English](README.md) | **中文** | [🌐 在线主页](https://mupoet.github.io/mu-ippt/)
 
-[English](./README.md) | **中文** | [🌐 在线主页](https://mupoet.github.io/mu-ippt/)
+[![微信公众号](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA)
+[![小红书](https://img.shields.io/badge/muippt-FF2442?logo=xiaohongshu&logoColor=white)](https://xhslink.com/m/ESxtgUNMdl)
+[![书籍](https://img.shields.io/badge/书籍-图解团队管理-BBDDE5?logo=bookstack&logoColor=white)](https://item.m.jd.com/product/14547345.html)
+[![License](https://img.shields.io/github/license/mupoet/mu-ippt)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/mupoet/mu-ippt)](https://github.com/mupoet/mu-ippt/stargazers)
+[![Version](https://img.shields.io/github/v/release/mupoet/mu-ippt)](https://github.com/mupoet/mu-ippt/releases)
 
-[![Version](https://img.shields.io/badge/version-v1.0-blue.svg)](https://github.com/mupoet/mu-ippt/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mupoet/mu-ippt.svg)](https://github.com/mupoet/mu-ippt/stargazers)
-
----
-
-### 💡 使用场景示例
+## 💡 使用场景示例
 
 - 📈 **管理汇报**："把这份周报变成10页PPT，用深蓝数据叙事风"
 - 🏗️ **技术分享**："画一个微服务架构图，加上部署拓扑，嵌入PPT"
@@ -29,11 +30,9 @@
 - 📱 **社交内容**："做一张9:16的产品介绍图，适合发朋友圈"
 - 📖 **文档转PPT**："把这份10页PDF变成演示文稿"
 
----
+## ✨ 核心亮点
 
-### ✨ 核心亮点
-
-#### 🎨 14 种设计哲学流派
+### 🎨 14 种设计哲学流派
 
 不是"模板选一个"，而是 AI 根据你的主题、受众和场景，推荐最匹配的视觉风格。每种哲学都有独特的 Visual DNA、色彩 Token 和排版逻辑：
 
@@ -50,14 +49,14 @@
 | 9 | Koolhaas | 大胆撞色的荷兰前卫风 |
 | 10 | Tokujin | 日本极致材质感知美学 |
 | 11 | Eames | 中世纪现代主义温暖几何 |
-| 12 | Muller-Brockmann | 网格系统教父的数学之美 |
+| 12 | Müller-Brockmann | 网格系统教父的数学之美 |
 | 13 | Erik Spiekermann | 德式字体排印的工程精度 |
 | 14 | Massimo Vignelli | 纽约地铁设计师的永恒秩序感 |
 | + | 智能选型 | AI 根据受众、主题和场景自动匹配最佳哲学 |
 
-📥 [下载设计哲学展示 PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx) — 31 页幻灯片，展示全部设计哲学流派。
+> 📥 **[下载设计哲学展示 PPTX](./examples/design-philosophies/muippt-design-philosophies_202606.pptx)** — 31 页幻灯片，展示全部设计哲学。
 
-#### 📊 119 种图表类型
+### 📊 119 种图表类型
 
 覆盖所有常见和专业图表场景：
 
@@ -67,7 +66,7 @@
 - **技术**：架构图、时序图、流程图、UML 类图、状态机、ER 图、部署图
 - **数据**：趋势对比、多轴图、堆叠图、分组图、带误差线图表
 
-#### 🏛️ 40 个咨询级专业模板
+### 🏛️ 40 个咨询级专业模板
 
 对标 McKinsey / BCG / Bain 级别的商业汇报模板：
 
@@ -77,20 +76,18 @@
 - **组织**：组织架构图、人才九宫格、能力雷达、HRBP 诊断模型
 - **增长**：漏斗转化、用户旅程地图、增长飞轮、NPS 追踪面板
 
-#### 📐 20 套布局模板
+### 📐 20 套布局模板
 
-预设专业级页面结构，AI 自动匹配最合适的布局：
+预设专业级页面结构，AI 自动匹配最合适的布局：纯标题页、标题+副标题、标题+正文、双栏对比、三栏并列、四宫格、六宫格、图文左右分栏、全图背景+文字叠加、时间线、数据仪表盘、引用金句页、团队介绍、产品展示、截图演示、Q&A 页、致谢页等。
 
-纯标题页、标题+副标题、标题+正文、双栏对比、三栏并列、四宫格、六宫格、图文左右分栏、全图背景+文字叠加、时间线、数据仪表盘、引用金句页、团队介绍、产品展示、截图演示、Q&A 页、致谢页等
-
-#### 🎨 26 套配色方案
+### 🎨 26 套配色方案
 
 12 种设计风格配色 + 14 种行业专属配色：
 
 - **风格类**：极简灰、科技蓝、自然绿、暖阳橙、高端金、学术靛
 - **行业类**：金融稳重蓝、医疗洁净白、教育活力橙、科技渐变紫、消费时尚粉、政务庄重红、能源环保绿、文创艺术撞色
 
-#### 🖼️ 6,732 个矢量图标
+### 🖼️ 6,732 个矢量图标
 
 全部为 SVG 矢量格式，无损缩放，全部内置在 Skill 中，无需联网下载：
 
@@ -98,7 +95,7 @@
 - **行业**：科技/互联网、金融/银行、医疗/健康、教育/学术、零售/电商、制造/工业、政务/公共服务
 - **功能**：数据/图表、团队/协作、流程/工作流、安全/合规
 
-#### 📏 8 种画布格式
+### 📏 8 种画布格式
 
 不只是 16:9，覆盖所有场景的输出尺寸：
 
@@ -113,39 +110,33 @@
 | LinkedIn 横幅 | 1584×396 |
 | 自定义尺寸 | 任意像素 |
 
----
+## 📌 与同类工具对比
 
-### 📌 与同类工具对比
+| 维度 | mu-ippt | Gamma | Beautiful.ai | Canva / iSlide / 稻壳 | AI 图片型PPT（ChatGPT/Kimi 等） |
+|------|---------|-------|-------------|----------------------|-------------------------------|
+| 输出可编辑 | ✅ SVG矢量，每个元素可二次编辑 | ❌ 云端锁定 | ❌ 云端锁定 | 部分可编辑 | ❌ 图片拼贴，不可编辑 |
+| 设计哲学推荐 | ✅ 14种流派智能匹配 | ❌ | ❌ | ❌ 手动翻找 | ❌ |
+| 图表类型 | 119种 | 约20种 | 约30种 | 看模板，需手动改数据 | ❌ 仅截图 |
+| 编辑已有PPT | ✅ | ❌ | ❌ | ❌ 只能下载新模板 | ❌ |
+| AI 配图 | ✅ DALL-E 3 / Gemini | ✅ 内置 | ❌ | ❌ 需自己找图 | ✅ 内置 |
+| 文档转PPT | ✅ 5种格式 | 部分支持 | ❌ | ❌ | ❌ |
+| 自定义画布 | ✅ 8种 | ❌ 仅16:9 | 有限 | 有限 | ❌ |
+| 矢量图标库 | 6,732个 | ❌ | 有限 | 平台依赖 | ❌ |
+| 质量自检 | ✅ 自动验证 | ❌ | ❌ | ❌ 全靠肉眼 | ❌ |
+| 开源可控 | ✅ MIT | ❌ 闭源 | ❌ 闭源 | ❌ 平台依赖 | ❌ 闭源 |
+| 费用 | 免费 | $8-40/月 | $12-40/月 | 免费-付费 | 免费-付费 |
 
-| 维度 | mu-ippt | Gamma | Beautiful.ai | AI生成图片PPT（ChatGPT等） | 模板网站（Canva / 稻壳等） |
-|------|---------|-------|-------------|---------------------------|---------------------------|
-| **是否可编辑** | ✅ SVG 矢量可编辑 | ✅ 在线编辑 | ✅ 在线编辑 | ❌ 图片不可编辑 | ✅ 下载后编辑 |
-| 设计哲学推荐 | ✅ 14种流派智能匹配 | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 手动翻找 |
-| 图表类型 | 119种 | 约20种 | 约30种 | ❌ 无 | 看模板 |
-| 编辑已有PPT | ✅ 支持 | ❌ 不支持 | ❌ 不支持 | ❌ 不支持 | ❌ 只能下载新模板 |
-| AI 配图 | ✅ DALL-E 3 / Gemini | ✅ 内置 | ❌ 无 | ✅ 全图AI生成 | ❌ 需自己找图 |
-| 文档转PPT | ✅ 5种格式 | 部分支持 | ❌ 不支持 | ❌ 不支持 | ❌ 不支持 |
-| 自定义画布 | ✅ 8种 | ❌ 仅16:9 | ❌ 有限 | ❌ 固定尺寸 | 有限 |
-| 矢量图标库 | 6,732个 | ❌ 无 | 有限 | ❌ 无 | 有限 |
-| 质量自检 | ✅ 自动验证 | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 全靠肉眼 |
-| 开源可控 | ✅ MIT | ❌ 闭源 | ❌ 闭源 | ❌ 闭源 | ❌ 平台依赖 |
-| 费用 | 免费 | $8-40/月 | $12-40/月 | $10-30/月 | 免费-付费 |
-
----
-
-### 🚀 五大工作流
+## 🚀 五大工作流
 
 | 工作流 | 场景 | 触发词 |
 |--------|------|--------|
-| 工作流 0 | 多页需求智能路由 — AI 分析需求，自动规划每页最优方案，输出页面规划表供确认后再执行 | 做PPT、做汇报、生成演示文稿、把这个文档变成PPT |
-| 工作流 A | 从零生成多页 PPT — SVG 矢量排版，像素级精确控制，每页独立设计，支持高度定制化 | （工作流0路由后）自由排版、高度定制 |
-| 工作流 B | 单张技术图表 — 架构图/流程图/UML/时序图/ER图，PlantUML + SVG 双引擎渲染 | 画架构图、画流程图、画UML、画时序图 |
-| 工作流 C | 咨询汇报模板 — 40个专业模板即选即用，原生 Office 形状，兼容性最佳 | 咨询汇报模板、咨询PPT、KPI仪表盘、甘特图模板 |
-| 工作流 D | 编辑已有 PPT — 读取现有文件，精确修改指定内容，保留原有设计 | 改PPT、修改PPT、用这个模板做PPT |
+| **0** | 多页需求智能路由——AI 分析需求，自动规划每页最优方案，输出页面规划表供确认后再执行 | "做PPT"、"做汇报"、"把这个文档变成PPT" |
+| **A** | 从零生成多页 PPT——SVG 矢量排版，像素级精确控制，每页独立设计，支持高度定制化 | "自由排版"、"高度定制"、"从零开始" |
+| **B** | 单张技术图表——架构图/流程图/UML/时序图/ER图，PlantUML + SVG 双引擎渲染 | "画架构图"、"画流程图"、"画UML" |
+| **C** | 咨询汇报模板——40个专业模板即选即用，原生 Office 形状，兼容性最佳 | "咨询模板"、"KPI仪表盘"、"甘特图模板" |
+| **D** | 编辑已有 PPT——读取现有文件，精确修改指定内容，保留原有设计 | "改PPT"、"修改第3页"、"用这个模板" |
 
----
-
-### ⚙️ 技术规格
+## ⚙️ 技术规格
 
 | 项目 | 说明 |
 |------|------|
@@ -158,9 +149,7 @@
 | 图表引擎 | SVG 原生渲染 + PlantUML（UML/架构/时序） |
 | 包大小 | 14MB（含全部模板、图标、配色方案） |
 
----
-
-### 🛠️ 快速开始
+## 🛠️ 快速开始
 
 **第一步：安装**
 
@@ -183,9 +172,7 @@ export GEMINI_API_KEY=AIzaXXX
 
 > 💡 不配置 API Key 也能正常使用全部图表和模板功能，仅 AI 配图功能需要。
 
----
-
-### 🔒 安全与隐私
+## 🔒 安全与隐私
 
 - 100% 本地运行，所有数据处理在本机完成
 - 仅 AI 配图功能调用外部 API（可通过不配置 Key 完全关闭）
@@ -193,25 +180,15 @@ export GEMINI_API_KEY=AIzaXXX
 - 不依赖任何云端服务或订阅
 - MIT License 开源友好，可自由修改和分发
 
----
-
-### ⭐ Star 趋势
+## Star 趋势
 
 如果这个项目对你有帮助，请给一个 ⭐！
 
-<a href="https://star-history.com/#mupoet/mu-ippt&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
- </picture>
-</a>
+[![Star History Chart](https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date)](https://star-history.com/#mupoet/mu-ippt&Date)
 
-> 一句话总结：不是"AI帮你选模板"，更不是生成图片假装PPT——是"AI像设计师一样从零为你创作真正可编辑的PPT"。
+> 一句话总结：不是"AI帮你选模板"，是"AI像设计师一样从零为你创作**真正可编辑的**PPT"。
 
----
-
-### 👤 作者简介
+## 作者
 
 🎓 清华大学出版社签约作家 / 2026当当影响力作家 / 某互联网大厂 AI 大模型业务 HR 砖家 / 一级人力资源管理师 / 二级心理咨询师 / 野生设计师
 
@@ -219,12 +196,10 @@ export GEMINI_API_KEY=AIzaXXX
 
 💡 [微信公众号](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [小红书](https://xhslink.com/m/ESxtgUNMdl)：muippt
 
----
+## 许可证与致谢
 
-### 📄 许可证与致谢
+[MIT](LICENSE) © 2026 木先生iPPT
 
-[MIT](LICENSE) © 2026 [木先生iPPT](https://github.com/mupoet)
+参考过 ppt-master by Hugo He · huashu-design by alchaincyf · [SVG Repo](https://www.svgrepo.com/) · [Tabler Icons](https://github.com/tabler/tabler-icons) · [Robin Williams](https://en.wikipedia.org/wiki/Robin_Williams_(author))（CRAP 原则）· McKinsey、BCG、Bain 相关项目。
 
-项目对标学习 ppt-master by Hugo He · huashu-design by alchaincyf · [SVG Repo](https://www.svgrepo.com/) · [Tabler Icons](https://github.com/tabler/tabler-icons) · [Robin Williams](https://en.wikipedia.org/wiki/Robin_Williams_(author))（CRAP 设计原则）· 麦肯锡、BCG、贝恩
-
-> 声明：本项目大量内容由 AI 协同创作完成。如果您发现您的作品被使用但未获得适当署名，请提交 Issue。
+> 声明：本项目大量内容由 AI 协同创作。如发现您的作品被使用但未获适当署名，请提交 Issue。

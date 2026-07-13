@@ -140,7 +140,7 @@
 
 | 项目 | 说明 |
 |------|------|
-| 运行环境 | OpenClaw 框架（原生支持，兼容所有 OpenClaw 部署方式） |
+| 运行环境 | 任意支持 Skills/prompts 的 AI Agent 框架（如 Claude Code、Cursor、Windsurf） |
 | Python 版本 | 3.9+ |
 | 核心依赖 | python-pptx / svglib / reportlab / PyMuPDF / mammoth |
 | 图片 AI | OpenAI DALL-E 3（默认）/ Google Gemini Imagen（可选） |

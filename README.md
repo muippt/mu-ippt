@@ -140,7 +140,7 @@ Not just 16:9 — covering all output scenarios:
 
 | Item | Description |
 |------|------------|
-| Runtime | OpenClaw framework (native support, compatible with all OpenClaw deployments) |
+| Runtime | Any AI agent framework that supports Skills/prompts (e.g. Claude Code, Cursor, Windsurf) |
 | Python | 3.9+ |
 | Core Dependencies | python-pptx / svglib / reportlab / PyMuPDF / mammoth |
 | Image AI | OpenAI DALL-E 3 (default) / Google Gemini Imagen (optional) |

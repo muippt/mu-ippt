@@ -174,10 +174,10 @@ Tell your AI agent "help me make a PPT" to trigger the workflow.
 
 ## 🔒 Security & Privacy
 
-- 100% local execution, all data processing happens on your machine
+- All scripts execute locally — the Skill itself does not upload files to any third-party service
+- When used via an AI Agent, conversation content is processed by the LLM provider — please be mindful of sensitive data
 - Only AI image generation calls external APIs (can be fully disabled by not configuring API keys)
 - No telemetry, no data collection, no usage tracking
-- No dependency on any cloud service or subscription
 - MIT License, free to modify and distribute
 
 ## Star History

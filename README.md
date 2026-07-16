@@ -184,17 +184,23 @@ Tell your AI agent "help me make a PPT" to trigger the workflow.
 
 If this project helps you, please give it a ⭐!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date)](https://star-history.com/#mupoet/mu-ippt&Date)
+<a href="https://star-history.com/#mupoet/mu-ippt&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
+ </picture>
+</a>
 
 > In one line: Not "AI helps you pick a template" — it's "AI creates **truly editable** PPT for you from scratch like a designer."
 
 ## Author
 
-🎓 清华大学出版社签约作家 / 2026当当影响力作家 / 某互联网大厂 AI 大模型业务 HR 砖家 / 一级人力资源管理师 / 二级心理咨询师 / 野生设计师
+🎓 Published author with Tsinghua University Press / 2026 Dangdang Influential Author / AI & LLM HR specialist at a leading tech company / National Level-1 HR Manager / Level-2 Psychological Counselor / Self-taught designer
 
-📚 著有[《图解团队管理》](https://item.m.jd.com/product/14547345.html)，服务客户有字节跳动、腾讯、百度、中国移动、SMG、BOE…
+📚 Author of [*Visual Team Management*](https://item.m.jd.com/product/14547345.html), serving clients including ByteDance, Tencent, Baidu, China Mobile, SMG, BOE…
 
-💡 [微信公众号](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [小红书](https://xhslink.com/m/ESxtgUNMdl)：muippt
+💡 [WeChat](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [Xiaohongshu](https://xhslink.com/m/ESxtgUNMdl): muippt
 
 ## License & Acknowledgments
 

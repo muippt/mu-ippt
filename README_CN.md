@@ -184,7 +184,13 @@ export GEMINI_API_KEY=AIzaXXX
 
 如果这个项目对你有帮助，请给一个 ⭐！
 
-[![Star History Chart](https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date)](https://star-history.com/#mupoet/mu-ippt&Date)
+<a href="https://star-history.com/#mupoet/mu-ippt&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
+ </picture>
+</a>
 
 > 一句话总结：不是"AI帮你选模板"，是"AI像设计师一样从零为你创作**真正可编辑的**PPT"。
 

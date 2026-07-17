@@ -15,9 +15,9 @@
 [![WeChat](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA)
 [![Xiaohongshu](https://img.shields.io/badge/muippt-FF2442?logo=xiaohongshu&logoColor=white)](https://xhslink.com/m/ESxtgUNMdl)
 [![Book](https://img.shields.io/badge/Book-Visual%20Team%20Management-BBDDE5?logo=bookstack&logoColor=white)](https://item.m.jd.com/product/14547345.html)
-[![License](https://img.shields.io/github/license/MUIPPT/mu-ippt)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/MUIPPT/mu-ippt)](https://github.com/MUIPPT/mu-ippt/releases)
-[![Stars](https://img.shields.io/github/stars/MUIPPT/mu-ippt)](https://github.com/MUIPPT/mu-ippt/stargazers)
+[![License](https://img.shields.io/github/license/muippt/mu-ippt)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/muippt/mu-ippt)](https://github.com/muippt/mu-ippt/releases)
+[![Stars](https://img.shields.io/github/stars/muippt/mu-ippt)](https://github.com/muippt/mu-ippt/stargazers)
 
 ## 💡 Usage Examples
 
@@ -184,11 +184,11 @@ Tell your AI agent "help me make a PPT" to trigger the workflow.
 
 If this project helps you, please give it a ⭐!
 
-<a href="https://star-history.com/#MUIPPT/mu-ippt&Date">
+<a href="https://star-history.com/#muippt/mu-ippt&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=MUIPPT/mu-ippt&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=MUIPPT/mu-ippt&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=MUIPPT/mu-ippt&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date" />
  </picture>
 </a>
 

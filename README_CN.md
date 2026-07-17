@@ -10,14 +10,14 @@
 
 > AI 驱动的 PPT 智能创作工具——像设计师一样从零为你创作**真正可编辑的**演示文稿，不是截图拼贴，每个元素都能二次修改。
 
-[English](README.md) | **中文** | [🌐 在线主页](https://mupoet.github.io/mu-ippt/)
+[English](README.md) | **中文** | [🌐 在线主页](https://muippt.github.io/mu-ippt/)
 
 [![微信公众号](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA)
 [![小红书](https://img.shields.io/badge/muippt-FF2442?logo=xiaohongshu&logoColor=white)](https://xhslink.com/m/ESxtgUNMdl)
 [![书籍](https://img.shields.io/badge/书籍-图解团队管理-BBDDE5?logo=bookstack&logoColor=white)](https://item.m.jd.com/product/14547345.html)
-[![License](https://img.shields.io/github/license/mupoet/mu-ippt)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/mupoet/mu-ippt)](https://github.com/mupoet/mu-ippt/releases)
-[![Stars](https://img.shields.io/github/stars/mupoet/mu-ippt)](https://github.com/mupoet/mu-ippt/stargazers)
+[![License](https://img.shields.io/github/license/MUIPPT/mu-ippt)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/MUIPPT/mu-ippt)](https://github.com/MUIPPT/mu-ippt/releases)
+[![Stars](https://img.shields.io/github/stars/MUIPPT/mu-ippt)](https://github.com/MUIPPT/mu-ippt/stargazers)
 
 ## 💡 使用场景示例
 
@@ -184,11 +184,11 @@ export GEMINI_API_KEY=AIzaXXX
 
 如果这个项目对你有帮助，请给一个 ⭐！
 
-<a href="https://star-history.com/#mupoet/mu-ippt&Date">
+<a href="https://star-history.com/#MUIPPT/mu-ippt&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mupoet/mu-ippt&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=MUIPPT/mu-ippt&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=MUIPPT/mu-ippt&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=MUIPPT/mu-ippt&type=Date" />
  </picture>
 </a>
 

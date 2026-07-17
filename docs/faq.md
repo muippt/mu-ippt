@@ -44,8 +44,8 @@ Yes, mu-ippt is open source under the MIT license. You can use it freely for per
 
 ### How do I report bugs or request features?
 
-- Bug reports & feature requests: [GitHub Issues](https://github.com/mupoet/mu-ippt/issues)
-- Questions & discussions: [GitHub Discussions](https://github.com/mupoet/mu-ippt/discussions)
+- Bug reports & feature requests: [GitHub Issues](https://github.com/MUIPPT/mu-ippt/issues)
+- Questions & discussions: [GitHub Discussions](https://github.com/MUIPPT/mu-ippt/discussions)
 - Business inquiries: muippt@agent.qq.com
 
 ---
@@ -90,6 +90,6 @@ mu-ippt 包含 20 套布局模板、40 个咨询汇报模板、119 种图表类�
 
 ### 如何反馈问题或提建议？
 
-- Bug 反馈与功能建议：[GitHub Issues](https://github.com/mupoet/mu-ippt/issues)
-- 提问与交流：[GitHub Discussions](https://github.com/mupoet/mu-ippt/discussions)
+- Bug 反馈与功能建议：[GitHub Issues](https://github.com/MUIPPT/mu-ippt/issues)
+- 提问与交流：[GitHub Discussions](https://github.com/MUIPPT/mu-ippt/discussions)
 - 商务合作：muippt@agent.qq.com

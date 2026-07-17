@@ -23,7 +23,7 @@ Thank you for your interest in contributing! This guide will help you get starte
 ### Setup
 
 ```bash
-git clone https://github.com/mupoet/mu-ippt.git
+git clone https://github.com/MUIPPT/mu-ippt.git
 cd mu-ippt
 pip install -r requirements.txt
 ```
@@ -46,7 +46,7 @@ If your contribution involves SVG files, follow the technical constraints docume
 
 ## Reporting Bugs
 
-Open an issue on [GitHub Issues](https://github.com/mupoet/mu-ippt/issues) and include:
+Open an issue on [GitHub Issues](https://github.com/MUIPPT/mu-ippt/issues) and include:
 
 - A clear description of the problem
 - Steps to reproduce

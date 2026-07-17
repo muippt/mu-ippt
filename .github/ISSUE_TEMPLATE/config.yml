@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: FAQ
-    url: https://github.com/mupoet/mu-ippt/blob/main/docs/faq.md
+    url: https://github.com/MUIPPT/mu-ippt/blob/main/docs/faq.md
     about: Check known solutions before opening an issue
   - name: Discussions
-    url: https://github.com/mupoet/mu-ippt/discussions
+    url: https://github.com/MUIPPT/mu-ippt/discussions
     about: Ask questions or share your work

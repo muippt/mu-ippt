@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-# mu-ippt
+# 🎨 mu-ippt ｜ PPT智能设计师
 
 > AI-powered PPT creation skill that designs **truly editable** presentations from scratch like a professional designer — not screenshot collages, every element can be re-edited.
 

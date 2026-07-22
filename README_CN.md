@@ -123,6 +123,10 @@
 | 自定义画布 | ✅ 8种 | ❌ 仅16:9 | 有限 | 有限 | ❌ |
 | 矢量图标库 | 6,732个 | ❌ | 有限 | 平台依赖 | ❌ |
 | 质量自检 | ✅ 自动验证 | ❌ | ❌ | ❌ 全靠肉眼 | ❌ |
+| 逐页渲染预览 | ✅ SVG→PNG 即时自检 | ❌ | ❌ | ❌ | ❌ |
+| 元素级编辑 | ✅ 路径寻址 inspect & edit | ❌ | ❌ | 部分可编辑 | ❌ |
+| 交互式预览 | ✅ 可点击 HTML 形状选择 | ❌ | ❌ | ❌ | ❌ |
+| 单二进制分发 | ✅ 零依赖 `curl \| bash` | ❌ 仅云端 | ❌ 仅云端 | ❌ | ❌ |
 | 开源可控 | ✅ MIT | ❌ 闭源 | ❌ 闭源 | ❌ 平台依赖 | ❌ 闭源 |
 | 费用 | 免费 | $8-40/月 | $12-40/月 | 免费-付费 | 免费-付费 |
 
@@ -148,13 +152,33 @@
 | 输入支持 | PDF / DOCX / HTML / EPUB / Markdown |
 | 图表引擎 | SVG 原生渲染 + PlantUML（UML/架构/时序） |
 | 包大小 | 14MB（含全部模板、图标、配色方案） |
+| v1.2.0 新增 | 逐页SVG预览 · 元素级PPTX检查/编辑 · 交互式HTML预览 · 单二进制打包 |
+
+## 🆕 v1.2.0 新功能
+
+借鉴 [OfficeCLI](https://github.com/iOfficeAI/OfficeCLI) 的设计理念，mu-ippt v1.2.0 新增五大能力：
+
+**P0：逐页渲染预览** — 每页 SVG 生成后立即渲染为 PNG，AI 可以"看见"每一页并自检，形成 render→look→fix 闭环，在问题扩大前即时修正。
+
+**P1：元素级检查** — `pptx_inspect.py` 提供类 XPath 路径寻址（`/slide[1]/shape[2]`）和类 CSS 选择器查询（`shape[fill=FF0000]`），支持 `outline`、`stats`、`issues` 三种视图模式，JSON 结构化输出便于 AI 解析。
+
+**P2：轻量级编辑 CLI** — `pptx_edit.py` 支持对已生成 PPTX 做手术刀式修改，无需重走 SVG→后处理全流程：`set` 属性、`find-replace` 文本、`recolor` 色系、`add/remove/move-slide` 页面操作。
+
+**P3：交互式预览** — `interactive_preview.py` 生成自包含 HTML 页面，支持点击形状查看详细信息（路径/名称/文本/位置），左侧缩略图导航，键盘翻页。
+
+**P4：单二进制打包** — `build_binary.sh` 使用 PyInstaller 将整个工具链打包为一个约 50MB 的可执行文件，`curl | bash` 一行安装，任何 AI Agent 都能立刻使用。
 
 ## 🛠️ 快速开始
 
 **第一步：安装**
 
 ```bash
+# 方式 A：标准安装（需 Python 3.9+）
 pip install -r requirements.txt
+
+# 方式 B：单二进制安装（零依赖，v1.2.0+）
+bash scripts/build_binary.sh
+# 产物：dist/mu-ippt（支持 inspect/edit/preview/verify/interactive/create/export）
 ```
 
 **第二步：配置 AI 配图（可选）**

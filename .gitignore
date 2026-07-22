@@ -169,3 +169,7 @@ PERSONAL_NOTES.md
 # Use cloud sync (iCloud/Dropbox) for backup and multi-device access
 projects/*
 !projects/README.md
+
+# Single-binary build artifacts (scripts/build_binary.sh)
+.build_binary_work/
+*.spec

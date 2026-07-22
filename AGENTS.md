@@ -53,6 +53,30 @@ python3 skills/mu-ippt/scripts/finalize_svg.py <project_path>
 python3 skills/mu-ippt/scripts/svg_to_pptx.py <project_path> -s final
 # Output: exports/<project_name>_<timestamp>.pptx + exports/<project_name>_<timestamp>_svg.pptx
 # Use --only native or --only legacy to generate just one version
+
+# v1.2.0: Per-page SVG render preview (P0 — render→look→fix loop)
+python3 skills/mu-ippt/scripts/svg_preview.py <svg_file> [--output <png>] [--width 1280] [--height 720]
+python3 skills/mu-ippt/scripts/svg_preview.py <directory> --batch   # render all SVGs in a directory
+
+# v1.2.0: Element-level PPTX inspection (P1 — path-based query + JSON output)
+python3 skills/mu-ippt/scripts/pptx_inspect.py <pptx> '/slide[1]'              # list all shapes on slide 1
+python3 skills/mu-ippt/scripts/pptx_inspect.py <pptx> '/slide[1]/shape[2]'    # inspect specific shape
+python3 skills/mu-ippt/scripts/pptx_inspect.py <pptx> --query 'shape[fill=FF0000]'  # query by attribute
+python3 skills/mu-ippt/scripts/pptx_inspect.py <pptx> outline|stats|issues    # view modes
+python3 skills/mu-ippt/scripts/pptx_inspect.py <pptx> '/slide[1]' --json      # structured JSON output
+
+# v1.2.0: Lightweight post-edit CLI (P2 — no need to rerun full SVG pipeline)
+python3 skills/mu-ippt/scripts/pptx_edit.py set <pptx> '/slide[1]/shape[2]' --prop text=新标题 --prop color=FF0000
+python3 skills/mu-ippt/scripts/pptx_edit.py find-replace <pptx> --find "旧文本" --replace "新文本" [--regex] [--slide N]
+python3 skills/mu-ippt/scripts/pptx_edit.py recolor <pptx> --bg 0D0D2B --primary 00FF88 --accent FF6B35 [--dry-run]
+python3 skills/mu-ippt/scripts/pptx_edit.py add-slide|remove-slide|move-slide <pptx> [args]
+
+# v1.2.0: Interactive HTML preview (P3 — clickable shape selection)
+python3 skills/mu-ippt/scripts/interactive_preview.py <pptx> [--output <html>] [--port 8080]
+
+# v1.2.0: Single binary packaging (P4 — zero-dependency distribution)
+bash skills/mu-ippt/scripts/build_binary.sh [--clean] [--name mu-ippt]
+# Result: dist/mu-ippt (subcommands: inspect/edit/preview/verify/interactive/create/export)
 ```
 
 ## Core Directories
@@ -98,3 +122,16 @@ python3 skills/mu-ippt/scripts/svg_to_pptx.py <project_path> -s final
 - **NEVER** export directly from `svg_output/` — MUST export from `svg_final/` (use `-s final`)
 - Do NOT add extra flags like `--only` to the post-processing commands
 - **NEVER** run the three post-processing steps in a single code block or single shell invocation
+
+## Documentation Sync Rule (MANDATORY)
+
+When the project version is bumped or features are added/changed, the following files MUST be updated in the same commit before pushing:
+
+1. `SKILL.md` — version number in frontmatter
+2. `CLAUDE.md` & `AGENTS.md` — new commands in Common Commands section
+3. `README.md` & `README_CN.md` — comparison table rows, What's New section, feature descriptions
+4. `index.html` (GitHub Pages) — comparison table rows, feature cards, version badges
+5. Python scripts — `__version__` variable in each script
+6. Shell scripts — `VERSION=` variable
+
+**NEVER push to `main` without verifying all above files reflect the current version.** GitHub Pages auto-deploys on push, so a stale `index.html` goes live immediately.

@@ -148,7 +148,8 @@
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge"><span class="dot"></span> <span data-en="✨ Open Source · MIT License · Free Forever" data-zh="✨ 开源 · MIT 协议 · 永久免费">✨ Open Source · MIT License · Free Forever</span></div>
+    <div class="hero-badge"><span class="dot"></span> <span data-en="🆕 v1.2.0 — Render Preview · Element Editing · Single Binary" data-zh="🆕 v1.2.0 — 逐页预览 · 元素编辑 · 单文件分发">🆕 v1.2.0 — Render Preview · Element Editing · Single Binary</span></div>
+    <div class="hero-badge" style="margin-top:12px"><span class="dot"></span> <span data-en="✨ Open Source · MIT License · Free Forever" data-zh="✨ 开源 · MIT 协议 · 永久免费">✨ Open Source · MIT License · Free Forever</span></div>
     <h1 data-en="AI Creates <span class='accent-text'>Truly Editable</span><br>PPT Like a Designer 🎯" data-zh="AI 像设计师一样<br>创作<span class='accent-text'>真正可编辑的</span> PPT 🎯">AI Creates <span class="accent-text">Truly Editable</span><br>PPT Like a Designer 🎯</h1>
     <p class="hero-sub" data-en="AI-powered PPT creation — designs truly editable presentations from scratch like a designer. Not screenshot collages, every element can be re-edited. Local execution, zero subscription." data-zh="AI 驱动的 PPT 智能创作工具——像设计师一样从零为你创作真正可编辑的演示文稿，不是截图拼贴，每个元素都能二次修改。">AI-powered PPT creation — designs truly editable presentations from scratch like a designer. Not screenshot collages, every element can be re-edited. Local execution, zero subscription.</p>
     <div class="hero-actions">
@@ -352,6 +353,21 @@
         <h3 data-en="Free &amp; Open Source" data-zh="免费 &amp; 开源">Free &amp; Open Source</h3>
         <p data-en="MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in." data-zh="MIT 协议。个人和商业项目均可自由使用。无订阅、无隐藏费用、无厂商锁定。">MIT License. Use freely for personal and commercial projects. No subscription, no hidden costs, no vendor lock-in.</p>
       </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">👁️</div>
+        <h3 data-en="Per-page Render Preview" data-zh="逐页渲染预览">Per-page Render Preview</h3>
+        <p data-en="SVG→PNG instant rendering with a render→look→fix loop. Catch layout issues before exporting. Supports single file and batch mode." data-zh="SVG→PNG 即时渲染，渲染→查看→修复循环。导出前发现布局问题。支持单文件和批量模式。">SVG→PNG instant rendering with a render→look→fix loop. Catch layout issues before exporting. Supports single file and batch mode.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🔬</div>
+        <h3 data-en="Element-level Editing" data-zh="元素级编辑">Element-level Editing</h3>
+        <p data-en="Path-based inspection (/slide[N]/shape[M]), CSS-like selectors, find-and-replace, recolor, add/remove/move slides. Interactive HTML preview with clickable shapes." data-zh="路径定位检视（/slide[N]/shape[M]），CSS 选择器，查找替换，重新着色，增删移幻灯片。可点击交互式 HTML 预览。">Path-based inspection (/slide[N]/shape[M]), CSS-like selectors, find-and-replace, recolor, add/remove/move slides. Interactive HTML preview with clickable shapes.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">📦</div>
+        <h3 data-en="Single Binary Distribution" data-zh="单文件分发">Single Binary Distribution</h3>
+        <p data-en="PyInstaller-packaged zero-dependency binary. One command to install — no Python, no pip, no dependencies needed. curl | bash and go." data-zh="PyInstaller 打包的零依赖单文件。一条命令安装——无需 Python、无需 pip、无依赖。curl | bash 即用。">PyInstaller-packaged zero-dependency binary. One command to install — no Python, no pip, no dependencies needed. curl | bash and go.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -447,6 +463,38 @@
             <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
             <td><span class="cross" data-en="✗ Manual inspection" data-zh="✗ 人工检查">✗ Manual</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td data-en="Per-page Render Preview" data-zh="逐页渲染预览">Per-page Render Preview</td>
+            <td><span class="check" data-en="✓ SVG→PNG instant self-check" data-zh="✓ SVG→PNG 即时自检">✓ SVG→PNG self-check</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td data-en="Element-level Editing" data-zh="元素级编辑">Element-level Editing</td>
+            <td><span class="check" data-en="✓ Path-based inspect & edit" data-zh="✓ 路径定位检视与编辑">✓ Path-based inspect & edit</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span data-en="Partially" data-zh="部分">Partially</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td data-en="Interactive Preview" data-zh="交互式预览">Interactive Preview</td>
+            <td><span class="check" data-en="✓ Clickable HTML shape selection" data-zh="✓ 可点击 HTML 形状选择">✓ Clickable HTML preview</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td data-en="Single Binary Distribution" data-zh="单文件分发">Single Binary Distribution</td>
+            <td><span class="check" data-en="✓ Zero-dependency curl | bash" data-zh="✓ 零依赖 curl | bash">✓ Zero-dependency</span></td>
+            <td><span class="cross" data-en="✗ Cloud-only" data-zh="✗ 仅云端">✗ Cloud-only</span></td>
+            <td><span class="cross" data-en="✗ Cloud-only" data-zh="✗ 仅云端">✗ Cloud-only</span></td>
+            <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
           </tr>
           <tr>

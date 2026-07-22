@@ -1,6 +1,6 @@
 ---
 name: mu-ippt
-version: 1.1.0
+version: 1.2.0
 description: "PPT生成与编辑，覆盖四大场景（从零生成/技术图表/咨询模板/编辑已有）。触发词：做PPT、画架构图、改PPT、咨询PPT、汇报PPT。不适用：纯图片生成"
 visibility: public
 ---
@@ -53,127 +53,23 @@ visibility: public
 > **触发条件**：用户提出多页完整 PPT 需求（含 2 页以上、且非单张技术图表、非直接编辑已有文件）
 > **目标**：在动手之前，帮用户规划每页走哪个工作流，输出「页面规划表」供确认
 
-### Step 1：理解需求
-
-收集以下信息（可一次问完）：
-- 主题/用途（汇报/培训/融资/管理复盘等）
-- 大概页数
-- 受众类型（高管/内部团队/客户/大会等）
-- 风格偏好（如有，见下方设计哲学速查）
-- 是否有已有 PPT 文件需要复用
-
-### Step 1.5：设计哲学推荐 ⛔ BLOCKING
-
-**必须**根据主题和受众，从 `references/design-philosophies.md` 的 14 种哲学流派中推荐 3 种，以「设计哲学名 + Visual DNA 一句话 + 最佳用途」格式展示，供用户选择。**禁止用「A/B/C/D商务风/简约风」等普通词汇代替设计哲学推荐。**
-
-**推荐逻辑**（优先级依次）：
-1. 用户明确说了风格 → 映射到最匹配的哲学，同时给1个备选
-2. 有受众信息 → 参照 `design-philosophies.md §按受众选择` 速查表
-3. 有内容类型 → 参照 `design-philosophies.md §按内容类型选择` 速查表
-4. 都没有 → 默认推荐 Fathom(02) + Pentagram(01) + Fukasawa(14)
-
-**推荐格式**：每个哲学 = 名称 + Visual DNA一句话 + 色彩token + 最佳用途；末尾加「🧠 木老师倾向：」说明推荐理由。等待用户确认后进入 Step 2。
-
-> 💡 用户风格模糊时，用 [references/directions.md](references/directions.md) 的6个快捷方向包快速推荐；哲学与图表类型适配见 [references/style-diagram-matrix.md](references/style-diagram-matrix.md)。
-
-### Step 2：生成页面规划表 ⛔ BLOCKING
-
-根据用户需求和已选设计哲学，为每一页/每一类页面推荐最合适的工作流：
-
-| 页面 | 内容描述 | 推荐工作流 | 理由 |
-|------|---------|-----------|------|
-| 封面 | 标题+副标题 | **A**（SVG自由排版）| 高度定制，视觉冲击 |
-| KPI仪表盘 | 4个核心指标 | **C**（咨询模板）| 原生形状，专业排版 |
-| 甘特图 | 项目排期 | **C**（咨询模板）| gantt_timeline 模板最稳 |
-| 组织架构 | 团队关系 | **C**（咨询模板）| org_chart 模板专业 |
-| 自定义图表 | 数据趋势 | **A**（SVG自由排版）| 需定制配色和样式 |
-| 结语 | 联系方式+致谢 | **A**（SVG自由排版）| 与封面风格一致 |
-
-**推荐方案**（含 A/B/C/D 选项说明）：
-
-- **方案A（全SVG）**：所有页用工作流A生成，风格高度统一，适合定制化强的场景；耗时较长
-- **方案B（全咨询模板）**：所有页用工作流C生成，专业咨询级质感，适合管理汇报；模板限制较多
-- **方案C（混合，推荐）**：创意页/封面/自定义页 → 工作流A；数据页/图表页/时间线 → 工作流C，两者最终合并为一个PPTX
-- **方案D（编辑现有）**：基于用户提供的模板文件，走工作流D改内容；保留原有视觉风格
-
-**等待用户确认选择方案 + 页面规划表**，确认后再分别执行对应工作流。
-
-### Step 3：执行
-
-- 单一工作流（A/B/C/D）→ 直接进入对应工作流
-- 混合方案 → 先执行工作流A的页面，再执行工作流C的页面，用 `rearrange.py` 合并，**最后必须运行 color_unify 后处理统一色系**
-
-```bash
-# Step 1：合并（工作流A输出 + 工作流C输出）
-python3 ${SKILL_DIR}/scripts/pptx_editing/rearrange.py part_a.pptx combined.pptx 0,1,2
-
-# Step 2：⛔ BLOCKING — 色系统一（将工作流C默认麦肯锡色替换为设计哲学色板）
-# --bg/--primary/--accent 从工作流0 Step 1.5 确认的色板中取值
-python3 ${SKILL_DIR}/scripts/pptx_editing/color_unify.py \
-  combined.pptx final.pptx \
-  --bg 0D0D2B --primary 00FF88 --accent FF6B35
-```
-
-### Anti-Pattern（工作流 0）
-
-- ❌ 禁止在用户确认页面规划表之前就开始生成任何 PPTX 内容
-- ❌ 禁止只给一个方案让用户「要/不要」，必须给 A/B/C/D 四个选项
-- ❌ 禁止在规划表中混淆工作流B（单张技术图表）和工作流A
-- ❌ 禁止用「简约风/商务风/科技风/大气风」等普通词汇代替设计哲学推荐——必须用 design-philosophies.md 中的具名哲学（如 Fathom、Field.io、Pentagram）
-- ❌ 禁止跳过 Step 1.5 直接进入 Step 2——设计哲学未确认不得出规划表
-- ❌ **混合方案禁止以原始默认配色交付**——工作流C模板内置麦肯锡配色（#2E9BD6/#0A1F3D等），合并后必须用 color_unify 后处理替换为用户选定色板，未统一色系 = 未完成任务
+> 📖 **完整 Step 1-3 + Anti-Pattern（含设计哲学推荐 + 页面规划表 + 混合方案合并）**：read `${SKILL_DIR}/references/workflow-0-detail.md`
 
 ---
 
-## 风格体系（26 套配色）
+## 资产体系
 
-> 🎨 **12 种设计风格 + 14 种行业配色**。用户未指定时走设计哲学推荐流程。
-> 📖 完整配色表：`${SKILL_DIR}/references/style-color-layout-tables.md`
+> 📖 完整配色表 / 图表分类表 / 模板详情表：`${SKILL_DIR}/references/style-color-layout-tables.md`
 
-**设计风格快速路由**：
+| 类别 | 数量 | 快速路由 |
+|------|------|---------|
+| 配色 | 26套（12设计风格+14行业） | 未指定→设计哲学推荐流程；正式→corporate/consulting；技术→dark/blueprint；极简→notion/flat |
+| 图表 | ~79种（27技术+52商务） | 技术图表→工作流B；商务图表→工作流A；索引见 `templates/charts/charts_index.json` |
+| 布局模板 | 20套（品牌9/通用3/场景4/政务3/特殊1） | 高管→exhibit/mckinsey；技术→anthropic；政务→government；索引见 `templates/layouts/layouts_index.json` |
+| 图标库 | 6,732个（chunk 640/tabler-filled 1,053/tabler-outline 5,039） | **默认 chunk**；一个演示文稿只用一个图标库 |
+| 画布 | 8种 | 默认 ppt169；社交竖版→xiaohongshu；印刷→a4 |
 
-```
-用户没指定 → 走设计哲学推荐流程（Fathom/Pentagram/Fukasawa）
-正式/高管/投资人 → corporate / consulting
-数据/分析/报告 → consulting
-酷/技术/暗色 → dark / blueprint / tech
-简洁/极简 → notion / flat
-产品/发布 → glass
-培训/课件 → general
-学术/论文 → academic
-政府/党政 → government
-```
-
-**行业配色**（`--industry` 参数）：金融→finance | 医疗→healthcare | 科技→technology | 教育→education | 零售→retail | 物流→logistics | 制造→manufacturing | 能源→energy | 地产→realestate | 媒体→media | 法律→legal | 农业→agriculture | 旅游→tourism | 汽车→automotive
-
----
-
-## 图表体系（~79 种）
-
-- **技术图表 27 种**（工作流B）：架构/流程/UML/AI-Agent 等，引擎来自 svg-to-ppt
-- **商务图表 52 种**（工作流A）：比较/趋势/组成/指标/分析/项目/战略/信息图
-
-> 📖 完整分类表：`${SKILL_DIR}/references/style-color-layout-tables.md`
-> 📖 图表索引（含函数名）：`cat ${SKILL_DIR}/templates/charts/charts_index.json | python3 -m json.tool`
-
----
-
-## 布局模板体系（20 套）
-
-共 5 类：品牌（9）/ 通用（3）/ 场景（4）/ 政务（3）/ 特殊（1）
-
-**场景快速路由**：战略/高管→exhibit/mckinsey | 通用商务→科技蓝商务/smart_red | 技术→anthropic/google_style | 政务→government_red/government_blue | 学术答辩→academic_defense | 金融→招商银行 | 工程→中国电建系列 | 极客→pixel_retro
-
-> 📖 完整模板详情表：`${SKILL_DIR}/references/style-color-layout-tables.md`
-
-### 关键说明
-
-- 模板索引文件：`${SKILL_DIR}/templates/layouts/layouts_index.json`
-- 每个模板目录包含：`design_spec.md`（设计规范）+ 标准页面 SVG（cover/toc/chapter/content/ending）
-
-### 品牌素材
-
-> 📖 各布局模板自带的 PNG 素材清单（22 个品牌 PNG + 2 个脚本素材）：`${SKILL_DIR}/references/brand-assets.md`
+> 📖 品牌素材清单：`${SKILL_DIR}/references/brand-assets.md`
 
 ---
 
@@ -191,40 +87,7 @@ pip install python-pptx lxml Pillow numpy requests beautifulsoup4 svglib reportl
 
 ### 文件完整性验证
 
-> ⚠️ **所有引用文件均随 ZIP 包分发**。安装后执行以下命令验证完整性：
-
-```bash
-# 验证核心文件（子SKILL.md + 策略师 + 执行器参考文档）
-for f in \
-  "${SKILL_DIR}/SKILL.md" \
-  "${SKILL_DIR}/references/strategist.md" \
-  "${SKILL_DIR}/references/executor-base.md" \
-  "${SKILL_DIR}/references/executor-general.md" \
-  "${SKILL_DIR}/references/executor-consultant.md" \
-  "${SKILL_DIR}/references/executor-consultant-top.md" \
-  "${SKILL_DIR}/references/canvas-formats.md" \
-  "${SKILL_DIR}/references/shared-standards.md"; do
-  [ -f "$f" ] && echo "✅ $(basename $f)" || echo "❌ MISSING: $f"
-done
-
-# 验证核心脚本
-for f in \
-  "${SKILL_DIR}/scripts_ppt/project_manager.py" \
-  "${SKILL_DIR}/scripts_ppt/finalize_svg.py" \
-  "${SKILL_DIR}/scripts_ppt/svg_to_pptx.py" \
-  "${SKILL_DIR}/scripts_ppt/svg_quality_checker.py" \
-  "${SKILL_DIR}/scripts_ppt/image_gen.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/ooxml/unpack.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/ooxml/validate.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/ooxml/pack.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/rearrange.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/inventory.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/replace.py" \
-  "${SKILL_DIR}/scripts/pptx_editing/thumbnail.py" \
-  "${SKILL_DIR}/scripts/visual_verify.py"; do
-  [ -f "$f" ] && echo "✅ $(basename $f)" || echo "❌ MISSING: $f"
-done
-```
+> 📖 安装后验证脚本：read `${SKILL_DIR}/references/file-validation.md`
 
 ### 完整 7 步流程
 
@@ -235,7 +98,7 @@ done
 | **Step 3** | 模板选择 ⛔ BLOCKING（见下） | `${SKILL_DIR}/templates/layouts/` |
 | **Step 4** | 策略师八大确认 ⛔ BLOCKING（见下） | `${SKILL_DIR}/references/strategist.md` |
 | **Step 5** | AI 配图（条件触发） | `${SKILL_DIR}/scripts_ppt/image_gen.py` |
-| **Step 6** | 执行器逐页生成 SVG | `${SKILL_DIR}/references/executor-*.md` |
+| **Step 6** | 执行器逐页生成 SVG + 逐页渲染预览 | `${SKILL_DIR}/references/executor-*.md` + `${SKILL_DIR}/scripts/svg_preview.py` |
 | **Step 7** | 后处理 + 导出 PPTX | `${SKILL_DIR}/scripts_ppt/finalize_svg.py` + `svg_to_pptx.py` |
 
 #### Step 3 详细：模板选择 ⛔ BLOCKING
@@ -277,6 +140,7 @@ done
 3. **主 Agent 端到端** — SVG 生成不能委托给子 Agent
 4. **逐页顺序生成** — 禁止分批/并行生成页面
 5. **设计哲学推荐** — 八大确认中配色走设计哲学推荐流程
+6. **逐页渲染预览（推荐）** — Step 6 中建议每 3 页用 svg_preview.py 渲染预览自检，发现问题及时修复；短 PPT（≤5页）可逐页检查
 
 ### AI 配图
 
@@ -288,6 +152,20 @@ python3 ${SKILL_DIR}/scripts_ppt/image_gen.py "prompt" --aspect_ratio 16:9 --ima
 
 > 📖 图片生成完整规范（11种后端+参数+水印移除）：[references/image-generator.md](references/image-generator.md)
 > 📖 图片布局规范（强制执行）：[references/image-layout-spec.md](references/image-layout-spec.md)
+
+### 逐页渲染预览（Step 6 内嵌，推荐）
+
+> 建议每 3 页渲染一次预览自检；短 PPT（≤5页）可逐页检查。
+
+```bash
+# 渲染 SVG 为 PNG
+python3 ${SKILL_DIR}/scripts/svg_preview.py <page_N.svg> --output <preview_dir>/page_N.png
+
+# 用 open 命令预览（macOS）
+open <preview_dir>/page_N.png
+```
+
+检查要点：文字溢出/截断、元素重叠、配色与设计哲学一致性、对齐问题。发现问题及时修复 SVG 再重新渲染。
 
 ### 视觉验证（生成后自动执行）
 
@@ -302,6 +180,7 @@ python3 ${SKILL_DIR}/scripts/visual_verify.py <output.pptx> --output-dir <review
 - [ ] 页数与策略师规划一致
 - [ ] 配色与用户确认的风格一致，全篇无混用
 - [ ] 图标库全篇统一，未混用不同图标库
+- [ ] svg_preview.py 已按推荐频率渲染预览，布局/配色无异常
 - [ ] visual_verify.py 已执行，无文字溢出/元素重叠/对齐问题
 - [ ] AI 配图已嵌入且尺寸正确（若有）
 - [ ] 画布格式与用户要求一致（默认 ppt169）
@@ -316,87 +195,15 @@ python3 ${SKILL_DIR}/scripts/visual_verify.py <output.pptx> --output-dir <review
 
 ## 工作流 B：生成单张技术图表
 
-> **来源**：mu-svg-to-ppt 的 27 种技术图表模板 + 7 种风格
-> **特色**：一张图一页 PPT，右键转换为形状后每个元素可编辑
-
-### 适用场景
-
-- "帮我画个微服务架构图"
-- "画一张 RAG 流程图到 PPT"
-- "做个类图，包含 User、Order、Product"
-- "画个时序图，用 consulting 风格"
-
-### 生成流程
-
-#### Step 1：确定图表类型和风格
-
-> **入口条件**：用户描述了需要生成的技术图表内容
-> **出口条件**：图表类型（27 种之一）和风格（默认 consulting）已确定
-
-从 27 种技术图表中选择（见上方图表体系），默认 `consulting` 风格。
-
-#### Step 2：生成 SVG
-
-> **入口条件**：Step 1 已确定图表类型和风格
-> **出口条件**：SVG 代码已生成，viewBox 和占位符使用正确
-
-根据用户描述 + 风格占位符系统生成 SVG 代码：
-
-> 📖 Vega 数据图表引擎（柱状图/折线图/散点图等）：[references/engine-vega.md](references/engine-vega.md)
-> 📖 信息图嵌入引擎（漏斗图/时间线/SWOT/KPI卡片）：[references/engine-infographic-embed.md](references/engine-infographic-embed.md)
-
-- `viewBox="0 0 900 500"`（16:9 宽屏比例）
-- 使用占位符：`{{BG_COLOR}}`、`{{TEXT_COLOR}}`、`{{ACCENT_COLOR}}` 等
-- 参考模板目录：`${SKILL_DIR}/templates/charts/`
-
-**风格占位符系统（12 个）**：
-
-| 占位符 | 默认值 | 说明 |
-|--------|---------|------|
-| `{{BG_COLOR}}` | `#FFFFFF` | 背景色 |
-| `{{TEXT_COLOR}}` | `#333333` | 正文色 |
-| `{{ACCENT_COLOR}}` | `#FFD100` | 强调色 |
-| `{{ACCENT_LIGHT}}` | `#FFF9E0` | 浅强调 |
-| `{{SECONDARY_COLOR}}` | `#FFC300` | 辅助色 |
-| `{{BORDER_COLOR}}` | `#E0E0E0` | 边框色 |
-| `{{TITLE_COLOR}}` | `#222222` | 标题色 |
-| `{{SUBTITLE_COLOR}}` | `#666666` | 副标题色 |
-| `{{SUCCESS_COLOR}}` | `#52C41A` | 成功/正面 |
-| `{{WARNING_COLOR}}` | `#FAAD14` | 警告 |
-| `{{ERROR_COLOR}}` | `#FF4D4F` | 错误/负面 |
-| `{{INFO_COLOR}}` | `#1890FF` | 信息 |
-
-#### Step 3：替换占位符 + 嵌入 PPT
-
-> **入口条件**：Step 2 已生成 SVG 代码
-> **出口条件**：占位符已替换为目标风格色值，SVG 已嵌入 PPTX 文件
-
-将占位符替换为目标风格色值，然后将 SVG 嵌入 PPTX：
-
-```bash
-# 方法一：用 PPT Master 引擎（DrawingML，元素级可编辑）
-# 将 SVG 保存到项目目录后用 svg_to_pptx.py 导出
-
-# 方法二：SVG 直接嵌入（Office 2019+ 右键转形状）
-# 用 python-pptx 将 SVG 作为图片嵌入
-```
-
-#### Step 4：视觉验证 ⛔ BLOCKING
-
-> **入口条件**：Step 3 已生成 PPTX 文件
-> **出口条件**：visual_verify.py 已执行，截图已生成，无文字溢出/元素重叠
-
-```bash
-python3 ${SKILL_DIR}/scripts/visual_verify.py <output.pptx> -o <review_dir>
-```
-
-审查截图确认无明显问题后才可交付。**此步骤为强制门控，不可跳过。**
+> 27 种技术图表 + 12 个风格占位符，一张图一页 PPT，右键转形状后元素可编辑
+> 📖 **完整 Step 1-4（含占位符表 + 嵌入方法 + 语义形状规范）**：read `${SKILL_DIR}/references/workflow-b-detail.md`
 
 ### Pre-Delivery Checklist（工作流 B）
 
 - [ ] 图表类型与用户需求匹配
 - [ ] 风格配色统一，占位符全部替换完毕
 - [ ] SVG viewBox 尺寸正确（默认 900×500）
+- [ ] svg_preview.py 已渲染预览，布局无异常
 - [ ] visual_verify.py 已执行，无文字溢出/元素重叠
 - [ ] PPTX 文件已发送给用户
 
@@ -465,155 +272,9 @@ python3 workflow_d.py --demo --output /tmp/demo.pptx
 
 > **来源**：pptx 内置 Skill 的 OOXML 工具链
 > **适用**：修改已有 PPT 内容、基于模板生成新 PPT
->
-> ⚠️ **以下脚本文件均随 ZIP 包分发**，位于 `scripts/pptx_editing/` 目录下。安装后可通过上方「文件完整性验证」命令确认。
+> **场景**：场景一（解包→编辑XML→验证→确认→打包→视觉验证）+ 场景二（分析模板→排列→替换→视觉验证）
 
-### 场景一：修改已有 PPT
-
-#### Step 1：解包
-
-> **入口条件**：用户已提供待修改的 PPTX 文件
-> **出口条件**：PPTX 已解包为 XML 目录结构
-
-```bash
-python3 ${SKILL_DIR}/scripts/pptx_editing/ooxml/unpack.py <input.pptx> <output_dir>
-```
-
-#### Step 2：编辑 XML
-
-> **入口条件**：Step 1 解包完成，XML 目录已生成
-> **出口条件**：目标 XML 文件已修改，修改内容与用户需求一致
-
-直接编辑 `ppt/slides/slide{N}.xml` 等 XML 文件。
-
-关键文件结构：
-- `ppt/presentation.xml` — 主元数据
-- `ppt/slides/slide{N}.xml` — 各页内容
-- `ppt/notesSlides/notesSlide{N}.xml` — 演讲备注
-- `ppt/theme/` — 主题配色
-- `ppt/media/` — 图片媒体
-
-#### Step 3：验证
-
-> **入口条件**：Step 2 编辑完成
-> **出口条件**：XML 验证通过，无合规性错误
-
-```bash
-cd ${SKILL_DIR}/scripts/pptx_editing/ooxml
-python3 validate.py <output_dir> --original <input.pptx>
-```
-
-#### Step 4：用户确认 ⛔ BLOCKING（Confirmation Gate）
-
-> **入口条件**：Step 3 验证通过
-> **出口条件**：用户确认修改内容无误，同意打包
-
-向用户展示修改摘要（修改了哪些页面、哪些元素、具体改动内容），等待用户明确确认后再打包。**此步骤为强制门控，不可跳过。**
-
-#### Step 5：打包
-
-> **入口条件**：Step 4 用户已确认
-> **出口条件**：PPTX 文件已生成
-
-```bash
-python3 ${SKILL_DIR}/scripts/pptx_editing/ooxml/pack.py <output_dir> <output.pptx>
-```
-
-#### Step 6：视觉验证 ⛔ BLOCKING
-
-> **入口条件**：Step 5 打包完成
-> **出口条件**：visual_verify.py 已执行，截图已生成，无明显问题
-
-```bash
-python3 ${SKILL_DIR}/scripts/visual_verify.py <output.pptx> -o <review_dir>
-```
-
-审查截图确认无文字溢出、元素重叠、对齐问题。**此步骤为强制门控，不可跳过。**
-
-### 场景二：基于模板生成新 PPT
-
-#### Step 1：分析模板
-
-> **入口条件**：用户已提供模板 PPTX 文件
-> **出口条件**：模板文本已提取，缩略图已生成，页面结构已分析
-
-```bash
-# 提取文本
-python3 -m markitdown template.pptx > template-content.md
-
-# 生成缩略图
-python3 ${SKILL_DIR}/scripts/pptx_editing/thumbnail.py template.pptx
-```
-
-#### Step 2：排列页面
-
-> **入口条件**：Step 1 模板分析完成
-> **出口条件**：页面已按需求重新排列，working.pptx 已生成
-
-根据分析结果选择要用的页面，重新排列：
-
-```bash
-python3 ${SKILL_DIR}/scripts/pptx_editing/rearrange.py template.pptx working.pptx 0,3,3,7,12
-```
-
-> 页面索引从 0 开始，同一索引可重复使用（复制该页）。
-
-#### Step 3：提取文本清单
-
-> **入口条件**：Step 2 页面排列完成
-> **出口条件**：text-inventory.json 已生成，包含所有 shape 文本结构
-
-```bash
-python3 ${SKILL_DIR}/scripts/pptx_editing/inventory.py working.pptx text-inventory.json
-```
-
-#### Step 4：准备替换内容
-
-> **入口条件**：Step 3 文本清单已生成
-> **出口条件**：replacement-text.json 已准备，覆盖所有需替换的 shape
-
-根据 `text-inventory.json` 中的 shape 结构准备 `replacement-text.json`：
-
-```json
-{
-  "slide-0": {
-    "shape-0": {
-      "paragraphs": [
-        {"text": "新标题", "bold": true, "alignment": "CENTER"}
-      ]
-    }
-  }
-}
-```
-
-> ⚠️ 未在 JSON 中提供 `paragraphs` 的 shape 会被自动清空文本。
-
-#### Step 5：用户确认 ⛔ BLOCKING（Confirmation Gate）
-
-> **入口条件**：Step 4 替换内容已准备
-> **出口条件**：用户确认替换内容无误，同意执行
-
-向用户展示替换计划摘要（哪些页面的哪些 shape 将被替换为什么内容），等待用户明确确认后再执行替换。**此步骤为强制门控，不可跳过。**
-
-#### Step 6：应用替换
-
-> **入口条件**：Step 5 用户已确认
-> **出口条件**：output.pptx 已生成
-
-```bash
-python3 ${SKILL_DIR}/scripts/pptx_editing/replace.py working.pptx replacement-text.json output.pptx
-```
-
-#### Step 7：视觉验证 ⛔ BLOCKING
-
-> **入口条件**：Step 6 替换完成，PPTX 已生成
-> **出口条件**：visual_verify.py 已执行，截图已生成，无明显问题
-
-```bash
-python3 ${SKILL_DIR}/scripts/visual_verify.py <output.pptx> -o <review_dir>
-```
-
-审查截图确认无文字溢出、元素重叠、对齐问题。**此步骤为强制门控，不可跳过。**
+> 📖 **完整 Step-by-Step（含 Step 0 元素级检查 + 两场景全步骤）**：read `${SKILL_DIR}/references/workflow-d-detail.md`
 
 ### Pre-Delivery Checklist（工作流 D）
 
@@ -622,26 +283,8 @@ python3 ${SKILL_DIR}/scripts/visual_verify.py <output.pptx> -o <review_dir>
 - [ ] 用户已确认修改摘要（Confirmation Gate 已通过）
 - [ ] visual_verify.py 已执行，无文字溢出/元素重叠/对齐问题
 - [ ] 原始 PPTX 未被覆盖（输出为新文件）
+- [ ] （可选）interactive_preview.py 已生成交互式预览页面
 - [ ] PPTX 文件已发送给用户
-
----
-
-## 图标库（6,732 个 SVG 图标）
-
-三个图标库，MIT 许可：
-
-| 库 | 风格 | 数量 | 推荐场景 |
-|----|------|------|---------|
-| `chunk` | 填充 · 方正 | 640 | **默认**，大多数场景 |
-| `tabler-filled` | 填充 · 圆润 | 1,053 | 柔和/温暖设计 |
-| `tabler-outline` | 描边 · 线条 | 5,039 | 轻量/极简风格 |
-
-**搜索图标**：
-```bash
-ls ${SKILL_DIR}/templates/icons/chunk/ | grep chart
-```
-
-> ⚠️ 一个演示文稿只用一个图标库，禁止混用。
 
 ---
 
@@ -681,54 +324,42 @@ ls ${SKILL_DIR}/templates/icons/chunk/ | grep chart
 | 脚本 | 用途 |
 |------|------|
 | `visual_verify.py` | PPTX→PDF→JPEG 视觉验证 |
+| `svg_preview.py` | **P0** SVG→PNG 逐页渲染预览（render→look→fix 闭环） |
+| `pptx_inspect.py` | **P1** 元素级查询/寻址（路径式 `/slide[N]/shape[M]` + CSS-like 选择器 + JSON 输出 + issues/stats/outline 视图） |
+| `pptx_edit.py` | **P2** 轻量级 post-edit CLI（set/find-replace/recolor/add-slide/remove-slide/move-slide） |
+| `interactive_preview.py` | **P3** 交互式 HTML 预览（可点击 shape 选择 + 信息面板 + 缩略图导航） |
+| `build_binary.sh` | **P4** PyInstaller 单二进制打包（`mu-ippt inspect/edit/preview/verify` 一行安装） |
+
+---
+
+## 元素级编辑工具（工作流 D 增强，v1.2.0）
+
+> 📖 **完整 CLI 文档**（inspect/edit/interactive/binary 用法）：read `${SKILL_DIR}/references/element-editing-tools.md`
+
+| 工具 | 一句话用途 |
+|------|-----------|
+| `pptx_inspect.py` | 路径式查询 `/slide[N]/shape[M]` + 选择器 + outline/stats/issues 视图 |
+| `pptx_edit.py` | set/find-replace/recolor/add-slide/remove-slide/move-slide 六大子命令 |
+| `interactive_preview.py` | 生成可点击 HTML 预览页面，支持 shape 选择 + 缩略图导航 |
+| `build_binary.sh` | PyInstaller 单二进制打包，`mu-ippt inspect/edit/preview/verify` 一行安装 |
 
 ---
 
 ## Anti-Pattern 清单
 
-> 以下为三个工作流的禁止行为，违反任何一条视为执行失败。
-
-### 工作流 A（从零生成）
-
-- ❌ 禁止并行或分批生成 SVG 页面，必须逐页顺序生成
-- ❌ 禁止跳过 ⛔ BLOCKING 步骤（模板选择、策略师八大确认）
-- ❌ 禁止将 SVG 生成委托给子 Agent，主 Agent 必须端到端执行
-- ❌ 禁止在一份演示文稿中混用多个图标库
-- ❌ 禁止在一份演示文稿中混用多套配色方案
-- ❌ ✅ IRON LAW: visual_verify 必须通过
-- ❌ 禁止忽略策略师确认的设计规格书，执行器必须严格遵循
-
-### 工作流 B（技术图表）
-
-- ❌ 禁止不确定图表类型就直接生成 SVG
-- ❌ 禁止手动硬编码色值替代占位符系统
-- ❌ 禁止混用不同风格的占位符色值
-- ❌ 禁止修改 viewBox 比例而不告知用户
-- ❌ ✅ IRON LAW: visual_verify 必须通过
-
-### 工作流 C（咨询汇报模板）
-
-- ❌ 禁止修改 scripts/consulting_pptx/ 源码，只调用不改动
-- ❌ 禁止硬编码 token/key/凭据到任何文件
-- ❌ 禁止在不确认模板 ID 有效的情况下直接生成（先 `--list` 查询）
-- ❌ 禁止跳过 Step 1 确认门控直接生成（必须等用户确认模板组合）
-
-### 工作流 D（编辑已有 PPT）
-
-- ❌ 禁止不经用户确认就执行打包（Confirmation Gate 不可跳过）
-- ❌ 禁止覆盖用户的原始 PPTX 文件，必须输出为新文件
-- ❌ ✅ IRON LAW: visual_verify 必须通过
-- ❌ 禁止跳过 XML 验证步骤（场景一）
-- ❌ 禁止遗漏 replacement-text.json 中的 shape 导致内容被意外清空
+> 📖 **四个工作流全部禁止行为**：read `${SKILL_DIR}/references/anti-patterns.md`
 
 ---
 
 ## 已知局限
 
 - visual_verify 依赖 LibreOffice，容器环境需预装（降级：browser automation tool 截图验证）
+- svg_preview 依赖 svglib/reportlab，降级链：cairosvg → rsvg-convert → 跳过
+- interactive_preview 三级降级：复用 visual_verify JPEG → LibreOffice 渲染 → python-pptx + Pillow 占位框
 - AI 图片生成需配置对应后端 API Key（gemini/openai/qwen 等11种后端可选）
 - 超大 PPTX（>50页）可能超时，建议分批生成
 - SVG 技术图表复杂度受 python-pptx 限制
+- build_binary.sh 需要 PyInstaller（脚本自动安装），输出约 50MB 单文件
 
 ---
 
@@ -736,7 +367,9 @@ ls ${SKILL_DIR}/templates/icons/chunk/ | grep chart
 
 | 失败点 | 降级方案 |
 |--------|---------|
+| svg_preview.py（svglib不可用） | cairosvg → rsvg-convert → 跳过预览（事后 visual_verify 兜底） |
 | visual_verify.py（LibreOffice不可用） | browser automation tool 截图验证 |
+| interactive_preview.py（LibreOffice不可用） | python-pptx + Pillow 占位框渲染 |
 | AI 图片生成失败 | 纯色占位图+提示用户替换 |
 | source_to_md 转换失败 | 手动粘贴关键内容 |
 | SVG 质量检查失败 | 肉眼检查+用户确认 |

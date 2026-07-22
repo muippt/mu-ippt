@@ -123,6 +123,10 @@ Not just 16:9 — covering all output scenarios:
 | Custom Canvas | ✅ 8 formats | ❌ 16:9 only | Limited | Limited | ❌ |
 | Vector Icons | 6,732 | ❌ | Limited | Platform-dependent | ❌ |
 | Quality Checks | ✅ Auto-verify | ❌ | ❌ | ❌ Manual inspection | ❌ |
+| Per-page Render Preview | ✅ SVG→PNG instant self-check | ❌ | ❌ | ❌ | ❌ |
+| Element-level Editing | ✅ Path-based inspect & edit | ❌ | ❌ | Partially | ❌ |
+| Interactive Preview | ✅ Clickable HTML shape selection | ❌ | ❌ | ❌ | ❌ |
+| Single Binary Distribution | ✅ Zero-dependency `curl \| bash` | ❌ Cloud-only | ❌ Cloud-only | ❌ | ❌ |
 | Open Source | ✅ MIT | ❌ Closed | ❌ Closed | ❌ Platform-dependent | ❌ Closed |
 | Cost | Free | $8-40/mo | $12-40/mo | Free–Paid | Free–Paid |
 
@@ -148,13 +152,33 @@ Not just 16:9 — covering all output scenarios:
 | Input Support | PDF / DOCX / HTML / EPUB / Markdown |
 | Chart Engine | SVG native rendering + PlantUML (UML/architecture/sequence) |
 | Package Size | 14MB (includes all templates, icons, color schemes) |
+| v1.2.0 New | Per-page SVG preview · Element-level PPTX inspect/edit · Interactive HTML preview · Single binary packaging |
+
+## 🆕 What's New in v1.2.0
+
+Inspired by [OfficeCLI](https://github.com/iOfficeAI/OfficeCLI)'s design patterns, mu-ippt v1.2.0 adds five new capabilities:
+
+**P0: Per-page Render Preview** — Every SVG page is rendered to PNG immediately after generation. The AI can "see" each slide and self-correct before moving on, creating a render→look→fix loop that catches layout issues early.
+
+**P1: Element-level Inspection** — `pptx_inspect.py` provides XPath-like path addressing (`/slide[1]/shape[2]`) and CSS-like query selectors (`shape[fill=FF0000]`), plus `outline`, `stats`, and `issues` view modes. Structured JSON output for AI parsing.
+
+**P2: Lightweight Post-edit CLI** — `pptx_edit.py` enables surgical PPTX modifications without rerunning the full SVG pipeline: `set` properties, `find-replace` text, `recolor` themes, `add/remove/move-slide`.
+
+**P3: Interactive HTML Preview** — `interactive_preview.py` generates a self-contained HTML page with clickable shape overlays. Click any shape to see its path, name, text, and position — no more "which shape on slide 3?" guessing.
+
+**P4: Single Binary Distribution** — `build_binary.sh` uses PyInstaller to package the entire toolkit into one ~50MB executable. `curl | bash` to install, any AI agent can use it immediately.
 
 ## 🛠️ Quick Start
 
 **Step 1: Install**
 
 ```bash
+# Option A: Standard install (Python 3.9+ required)
 pip install -r requirements.txt
+
+# Option B: Single binary (zero dependencies, v1.2.0+)
+bash scripts/build_binary.sh
+# Result: dist/mu-ippt (use: mu-ippt inspect/edit/preview/verify/interactive/create/export)
 ```
 
 **Step 2: Configure AI Image Generation (Optional)**

@@ -12,9 +12,10 @@
 
 [English](README.md) | **中文** | [🌐 在线主页](https://muippt.github.io/mu-ippt/)
 
-[![微信公众号](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA)
+[![微信公众号](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/YLtXENt_7WzO2DgJCFUtPA)
 [![小红书](https://img.shields.io/badge/muippt-FF2442?logo=xiaohongshu&logoColor=white)](https://xhslink.com/m/ESxtgUNMdl)
 [![书籍](https://img.shields.io/badge/书籍-图解团队管理-BBDDE5?logo=bookstack&logoColor=white)](https://item.m.jd.com/product/14547345.html)
+[![mu-skill集合](https://img.shields.io/badge/mu--skill%E9%9B%86%E5%90%88-9E95B7?logo=simpleicons&logoColor=white)](https://muippt.github.io/mu-skill-hub/)
 [![License](https://img.shields.io/github/license/muippt/mu-ippt)](LICENSE)
 [![Version](https://img.shields.io/github/v/release/muippt/mu-ippt)](https://github.com/muippt/mu-ippt/releases)
 [![Stars](https://img.shields.io/github/stars/muippt/mu-ippt)](https://github.com/muippt/mu-ippt/stargazers)
@@ -224,7 +225,7 @@ export GEMINI_API_KEY=AIzaXXX
 
 📚 著有[《图解团队管理》](https://item.m.jd.com/product/14547345.html)，服务客户有字节跳动、腾讯、百度、中国移动、SMG、BOE…
 
-💡 [微信公众号](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [小红书](https://xhslink.com/m/ESxtgUNMdl)：muippt
+💡 [微信公众号](https://mp.weixin.qq.com/s/YLtXENt_7WzO2DgJCFUtPA) / [小红书](https://xhslink.com/m/ESxtgUNMdl)：muippt
 
 ## 许可证与致谢
 

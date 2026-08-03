@@ -12,9 +12,10 @@
 
 **English** | [中文](README_CN.md) | [🌐 Landing Page](https://muippt.github.io/mu-ippt/)
 
-[![WeChat](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA)
+[![WeChat](https://img.shields.io/badge/muippt-07C160?logo=wechat&logoColor=white)](https://mp.weixin.qq.com/s/YLtXENt_7WzO2DgJCFUtPA)
 [![Xiaohongshu](https://img.shields.io/badge/muippt-FF2442?logo=xiaohongshu&logoColor=white)](https://xhslink.com/m/ESxtgUNMdl)
 [![Book](https://img.shields.io/badge/Book-Visual%20Team%20Management-BBDDE5?logo=bookstack&logoColor=white)](https://item.m.jd.com/product/14547345.html)
+[![mu-skillhub](https://img.shields.io/badge/mu--skillhub-9E95B7?logo=simpleicons&logoColor=white)](https://muippt.github.io/mu-skill-hub/)
 [![License](https://img.shields.io/github/license/muippt/mu-ippt)](LICENSE)
 [![Version](https://img.shields.io/github/v/release/muippt/mu-ippt)](https://github.com/muippt/mu-ippt/releases)
 [![Stars](https://img.shields.io/github/stars/muippt/mu-ippt)](https://github.com/muippt/mu-ippt/stargazers)
@@ -224,7 +225,7 @@ If this project helps you, please give it a ⭐!
 
 📚 Author of [*Visual Team Management*](https://item.m.jd.com/product/14547345.html), serving clients including ByteDance, Tencent, Baidu, China Mobile, SMG, BOE…
 
-💡 [WeChat](https://mp.weixin.qq.com/s/v1JSZvlN5fvbOOHvkvXEtA) / [Xiaohongshu](https://xhslink.com/m/ESxtgUNMdl): muippt
+💡 [WeChat](https://mp.weixin.qq.com/s/YLtXENt_7WzO2DgJCFUtPA) / [Xiaohongshu](https://xhslink.com/m/ESxtgUNMdl): muippt
 
 ## License & Acknowledgments
 

@@ -209,13 +209,7 @@ Tell your AI agent "help me make a PPT" to trigger the workflow.
 
 If this project helps you, please give it a ⭐!
 
-<a href="https://star-history.com/#muippt/mu-ippt&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date" />
- </picture>
-</a>
+[![Star History Chart](assets/star-history.svg)](https://www.star-history.com/?repos=muippt%2Fmu-ippt&type=date)
 
 > In one line: Not "AI helps you pick a template" — it's "AI creates **truly editable** PPT for you from scratch like a designer."
 

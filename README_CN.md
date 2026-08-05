@@ -205,11 +205,17 @@ export GEMINI_API_KEY=AIzaXXX
 - 无遥测、无数据采集、无使用追踪
 - MIT License 开源友好，可自由修改和分发
 
-## ⭐ 给项目点 Star
+## Star 趋势
 
 如果这个项目对你有帮助，请给一个 ⭐！
 
-[![GitHub Stars](https://img.shields.io/github/stars/muippt/mu-ippt?style=flat&logo=github&label=Stars)](https://github.com/muippt/mu-ippt/stargazers)
+<a href="https://star-history.com/#muippt/mu-ippt&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muippt/mu-ippt&type=Date" />
+ </picture>
+</a>
 
 > 一句话总结：不是"AI帮你选模板"，是"AI像设计师一样从零为你创作**真正可编辑的**PPT"。
 

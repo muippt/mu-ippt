@@ -209,7 +209,7 @@ Tell your AI agent "help me make a PPT" to trigger the workflow.
 
 If this project helps you, please give it a ⭐!
 
-[![Star History Chart](assets/star-history.svg)](https://www.star-history.com/?repos=muippt%2Fmu-ippt&type=date)
+[![Star History Chart](assets/star-history.png)](https://www.star-history.com/?repos=muippt%2Fmu-ippt&type=date)
 
 > In one line: Not "AI helps you pick a template" — it's "AI creates **truly editable** PPT for you from scratch like a designer."
 
